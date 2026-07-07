@@ -83,6 +83,51 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
+// Swipeable carousels (case studies + testimonials) with dot indicators
+const setupCarousel = (trackSelector, dotsSelector, cardSelector) => {
+  const track = document.querySelector(trackSelector);
+  const dotsWrap = document.querySelector(dotsSelector);
+  if (!track || !dotsWrap) return;
+
+  const cards = Array.from(track.querySelectorAll(cardSelector));
+  if (!cards.length) return;
+
+  dotsWrap.innerHTML = '';
+  const dots = cards.map((_, i) => {
+    const dot = document.createElement('span');
+    if (i === 0) dot.classList.add('is-active');
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  const setActive = (index) => {
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+  };
+
+  const dotObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = cards.indexOf(entry.target);
+        if (index > -1) setActive(index);
+      }
+    });
+  }, {
+    root: track,
+    threshold: 0.6
+  });
+
+  cards.forEach((card) => dotObserver.observe(card));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      cards[i].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', inline: 'start', block: 'nearest' });
+    });
+  });
+};
+
+setupCarousel('#case-carousel', '#case-dots', '.case-card');
+setupCarousel('#testimonial-carousel', '#testimonial-dots', '.testimonial-card');
+
 // Tally embed fallback
 const loadTally = () => {
   if (typeof Tally !== 'undefined') {

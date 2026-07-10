@@ -176,19 +176,38 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 
 /* Card flip */
 .case-card { cursor: pointer; }
-.case-inner { border-radius: 6px; overflow: hidden; }
+.case-inner { border-radius: 8px; overflow: hidden; }
 .case-front {
   background: var(--card-bg, var(--deep-harbor)); color: var(--off-white);
-  padding: 2rem; min-height: 300px; position: relative; overflow: hidden;
-  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 0; min-height: auto; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
 }
 .case-pattern { position: absolute; inset: 0; pointer-events: none; opacity: 0.08; }
 .case-pattern img { width: 100%; height: 100%; object-fit: cover; }
-.case-front.has-photo { background-size: cover; background-position: center; }
-.case-front.has-photo::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(20,26,26,0.2) 0%, rgba(15,20,20,0.55) 55%, rgba(12,16,16,0.92) 100%); }
-.case-back { background: var(--off-white); color: var(--deep-harbor); padding: 1.75rem 2rem 2rem; display: none; flex-direction: column; gap: 0.85rem; overflow-y: auto; }
-.case-back-media { width: 100%; height: 130px; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
-.case-back-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Media region — shared by front + back, holds either a device-frame mockup or a plain photo */
+.case-media { position: relative; width: 100%; height: 230px; flex-shrink: 0; overflow: hidden; background: var(--frame-bg, #EBE5DA); }
+.case-media.photo-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.case-media.logo-media { display: flex; align-items: center; justify-content: center; }
+.case-media.logo-media img { width: 128px; height: auto; }
+.case-media.pattern-media { display: flex; align-items: center; justify-content: center; }
+.case-media.pattern-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; }
+
+/* Device / browser-window frame for site screenshots */
+.device-frame { position: absolute; inset: 16px 16px 0; border-radius: 8px 8px 2px 2px; overflow: hidden; background: #1a2424; box-shadow: 0 16px 34px rgba(15,20,20,0.32); display: flex; flex-direction: column; }
+.device-bar { height: 22px; flex-shrink: 0; display: flex; align-items: center; gap: 5px; padding: 0 9px; background: #ece7dd; }
+.device-dot { width: 7px; height: 7px; border-radius: 50%; background: #c9c2b4; }
+.device-dot.r { background: #dd7b6e; }
+.device-dot.y { background: #dcc272; }
+.device-dot.g { background: #7fb885; }
+.device-screen { flex: 1; overflow: hidden; }
+.device-screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.case-front-text { padding: 1.35rem 1.5rem 1.6rem; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; position: relative; z-index: 1; }
+
+.case-back { background: var(--off-white); color: var(--deep-harbor); padding: 0; display: none; flex-direction: column; overflow-y: auto; }
+.case-back .case-media { height: 150px; }
+.case-back-text { padding: 1.25rem 1.6rem 1.6rem; display: flex; flex-direction: column; gap: 0.7rem; }
 /* Tap to flip on mobile */
 .case-card.is-flipped .case-front { display: none; }
 .case-card.is-flipped .case-back { display: flex; }
@@ -196,8 +215,8 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 @media (min-width: 900px) {
   .cases { grid-template-columns: repeat(3, 1fr); }
   .cases-wrap { padding: 0 2.5rem; }
-  .case-card { min-height: 460px; perspective: 1200px; }
-  .case-inner { position: relative; width: 100%; height: 100%; min-height: 460px; transform-style: preserve-3d; transition: transform 0s; }
+  .case-card { min-height: 560px; perspective: 1200px; }
+  .case-inner { position: relative; width: 100%; height: 100%; min-height: 560px; transform-style: preserve-3d; transition: transform 0s; }
   .case-front, .case-back { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform 0.65s var(--ease); min-height: auto; }
   .case-front { transform: rotateY(0deg); display: flex; }
   .case-back { transform: rotateY(180deg); display: flex; }
@@ -205,6 +224,8 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .case-card.is-flipped .case-front { transform: rotateY(-180deg); display: flex; }
   .case-card:hover .case-back,
   .case-card.is-flipped .case-back { transform: rotateY(0deg); display: flex; }
+  .case-media { height: 280px; }
+  .case-back .case-media { height: 170px; }
 }
 .case-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; position: relative; z-index: 1; }
 .case-name-block { position: relative; z-index: 1; margin-top: auto; }

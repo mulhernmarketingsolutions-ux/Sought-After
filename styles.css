@@ -105,6 +105,14 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .hero-content { padding-left: max(2.5rem, calc((100vw - 1280px)/2 + 2.5rem)); }
 }
 
+/* Pinned sticker — tactile proof point, desktop only (mobile hero is already tight) */
+.hero-sticker { display: none; }
+@media (min-width: 768px) {
+  .hero-sticker { display: block; position: absolute; z-index: 3; top: 11%; right: 7%; background: var(--off-white); color: var(--deep-harbor); padding: 0.95rem 1.15rem; border-radius: 2px; transform: rotate(-4deg); box-shadow: 0 16px 32px rgba(0,0,0,0.28); font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; line-height: 1.35; max-width: 175px; transition: transform 0.3s var(--ease); }
+  .hero-sticker::before { content: ""; position: absolute; top: -13px; left: 50%; transform: translateX(-50%) rotate(-6deg); width: 58px; height: 21px; background: rgba(216,182,90,0.78); box-shadow: 0 2px 5px rgba(0,0,0,0.18); }
+  @media (hover:hover) { .hero-sticker:hover { transform: rotate(0deg); } }
+}
+
 /* ============================================ MARQUEE */
 .marquee-wrap { background: var(--deep-harbor); overflow: hidden; padding: 0.85rem 0; }
 .marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; gap: 1.5rem; align-items: center; }
@@ -148,8 +156,19 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .case-file { display: flex; flex-direction: column; gap: 1.1rem; padding: 2.25rem 0; border-top: 1px solid rgba(39,51,51,0.12); }
 .case-file:last-child { border-bottom: 1px solid rgba(39,51,51,0.12); }
 .case-file-num { font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; color: var(--terracotta); }
-.case-file-media { width: 100%; height: 210px; border-radius: 6px; overflow: hidden; clip-path: polygon(0 0, 100% 0, 100% 92%, 94% 100%, 0 100%); background: #e4ded2; }
-.case-file-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Polaroid + tape treatment — tactile, pinned-to-the-wall feel */
+.case-file-media { width: 100%; height: 250px; border-radius: 2px; overflow: visible; background: var(--off-white); padding: 0.55rem 0.55rem 1.6rem; box-shadow: 0 12px 28px rgba(39,51,51,0.16), 0 2px 6px rgba(39,51,51,0.08); position: relative; transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease); }
+.case-file-media::before { content: ""; position: absolute; top: -13px; left: 50%; width: 58px; height: 22px; background: rgba(216,182,90,0.72); box-shadow: 0 2px 5px rgba(0,0,0,0.15); z-index: 2; }
+.case-file:nth-child(odd) .case-file-media { transform: rotate(-2deg); }
+.case-file:nth-child(even) .case-file-media { transform: rotate(1.75deg); }
+.case-file:nth-child(odd) .case-file-media::before { transform: translateX(-50%) rotate(-7deg); }
+.case-file:nth-child(even) .case-file-media::before { transform: translateX(-50%) rotate(6deg); left: 42%; }
+@media (hover:hover) {
+  .case-file:nth-child(odd) .case-file-media:hover,
+  .case-file:nth-child(even) .case-file-media:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 20px 40px rgba(39,51,51,0.22), 0 4px 10px rgba(39,51,51,0.1); }
+}
+.case-file-media img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 1px; }
 .case-file-body { max-width: 60ch; }
 .case-file-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-stone); }
 .case-file-body h3 { font-size: 1.5rem; margin-top: 0.5rem; }
@@ -158,7 +177,7 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 @media (min-width: 768px) {
   .work { padding: 6rem 0; }
   .case-file { flex-direction: row; align-items: center; gap: 3rem; padding: 3.25rem 0; }
-  .case-file-media { width: 42%; height: 280px; flex-shrink: 0; }
+  .case-file-media { width: 42%; height: 320px; flex-shrink: 0; }
   .case-file-body { flex: 1; }
 }
 
@@ -251,13 +270,6 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .closing-cta { padding: 8rem 0; }
   .closing-compass { width: 520px; height: 520px; right: -60px; opacity: 0.12; }
 }
-
-/* ============================================ TAGLINE BAR */
-.tagline-bar { background: var(--deep-harbor); padding: 1.25rem 0; }
-.tagline-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.tagline { font-family: var(--font-h); font-style: italic; font-size: 1rem; color: var(--off-white); }
-.tagline strong { font-style: normal; font-weight: 700; color: var(--gold); }
-.site-url { font-size: 0.78rem; letter-spacing: 0.12em; color: var(--sage-stone); }
 
 /* ============================================ FOOTER */
 .site-footer { background: #1a2424; color: var(--off-white); padding: 3.5rem 0 2rem; font-family: var(--font-b); position: relative; overflow: hidden; }

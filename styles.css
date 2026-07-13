@@ -223,6 +223,28 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .trusted-row .dot { font-family: var(--font-b); font-style: normal; color: var(--terracotta); opacity: 0.55; }
 @media (min-width: 768px) { .trusted-row span { font-size: 1.15rem; } }
 
+/* ============================================ SPEED TIMELINE (mobile-first: vertical list -> horizontal row at desktop) */
+.timeline { background: var(--deep-harbor); color: var(--off-white); padding: 4rem 0; }
+.timeline-header { margin-bottom: 2.75rem; max-width: 36ch; }
+.timeline-header h2 { font-size: clamp(1.7rem, 6.5vw, 2.6rem); color: var(--off-white); margin-top: 0.75rem; }
+.timeline-sub { font-size: 0.97rem; color: var(--drift-sand); margin-top: 1rem; line-height: 1.65; }
+.timeline-steps { list-style: none; margin: 0; padding: 0; position: relative; display: flex; flex-direction: column; gap: 1.85rem; }
+.timeline-steps::before { content: ""; position: absolute; left: 13px; top: 4px; bottom: 4px; width: 2px; background: rgba(227,220,210,0.16); }
+.timeline-step { position: relative; padding-left: 2.75rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.timeline-dot { position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: var(--deep-harbor); font-weight: 700; font-size: 0.78rem; font-family: var(--font-b); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.timeline-wk { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-stone); }
+.timeline-label { font-size: 1.02rem; font-weight: 700; color: var(--off-white); line-height: 1.35; }
+.timeline-note { margin-top: 2.5rem; font-size: 0.95rem; color: var(--drift-sand); }
+.timeline-note strong { color: var(--gold); font-weight: 700; }
+@media (min-width: 768px) {
+  .timeline { padding: 6rem 0; }
+  .timeline-steps { flex-direction: row; gap: 1.5rem; }
+  .timeline-steps::before { left: 5%; right: 5%; top: 14px; bottom: auto; width: auto; height: 2px; }
+  .timeline-step { padding-left: 0; flex: 1; }
+  .timeline-dot { position: relative; margin-bottom: 0.85rem; }
+  .timeline-note { text-align: center; }
+}
+
 /* ============================================ SERVICES */
 .services { background: var(--off-white-warm); padding: 4rem 0; border-top: 1px solid rgba(39,51,51,0.07); }
 .services-header { margin-bottom: 2.5rem; }

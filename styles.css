@@ -140,60 +140,27 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .who-icon { width: 48px; height: 48px; }
 }
 
-/* ============================================ WORK / CASE CARDS */
+/* ============================================ WORK / CASE FILES (quiet, plainly stated) */
 .work { padding: 4rem 0; }
-.work-header { margin-bottom: 2.5rem; }
+.work-header { margin-bottom: 1rem; }
 .work-header h2 { font-size: clamp(1.7rem, 5.5vw, 2.5rem); margin-top: 0.75rem; }
-.work-hint { font-family: var(--font-h); font-style: italic; font-size: 0.95rem; color: var(--sage-stone); margin-top: 0.65rem; }
-.cases-wrap { padding: 0 1.25rem; }
-.cases { display: grid; grid-template-columns: 1fr; gap: 1.25rem; max-width: 1280px; margin: 0 auto; }
-
-/* Card flip */
-.case-card { cursor: pointer; transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
-@media (hover:hover) { .case-card:hover { transform: translateY(-6px); } }
-.case-inner { border-radius: 10px; overflow: hidden; box-shadow: 0 10px 26px rgba(20,26,26,0.1); }
-
-/* FRONT — photo with a clipped corner (nods to the logo mark), name + label sit below on a solid panel */
-.case-front { background: var(--card-bg, var(--deep-harbor)); color: var(--off-white); padding: 0; min-height: auto; position: relative; display: flex; flex-direction: column; }
-.case-photo { position: relative; width: 100%; height: 210px; flex-shrink: 0; overflow: hidden; clip-path: polygon(0 0, 100% 0, 100% 84%, 89% 100%, 0 100%); background: var(--frame-bg, #e4ded2); }
-.case-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.case-photo.logo-photo { display: flex; align-items: center; justify-content: center; }
-.case-photo.logo-photo img { width: 40%; height: auto; object-fit: contain; }
-.case-pattern { position: absolute; inset: 0; pointer-events: none; opacity: 0.12; }
-.case-pattern img { width: 100%; height: 100%; object-fit: cover; }
-.case-front-text { flex: 1; padding: 1.25rem 1.5rem 1.5rem; display: flex; flex-direction: column; justify-content: center; }
-.case-cat { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; }
-.case-name-block { margin-top: 0.8rem; }
-.case-tag { display: inline-block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--deep-harbor); background: var(--gold); padding: 0.3rem 0.7rem; border-radius: 20px; margin-bottom: 0.65rem; }
-.case-name-block h3 { font-size: 1.55rem; line-height: 1.15; }
-.case-name-block h3 em { font-size: 0.88rem; color: var(--drift-sand); display: block; margin-top: 0.25rem; font-style: italic; }
-
-/* BACK — clean, text-only reading panel */
-.case-back { background: var(--off-white); color: var(--deep-harbor); padding: 1.6rem 1.75rem; display: none; flex-direction: column; gap: 0.8rem; overflow-y: auto; }
-/* Tap to flip on mobile */
-.case-card.is-flipped .case-front { display: none; }
-.case-card.is-flipped .case-back { display: flex; }
-/* Hover flip on desktop */
-@media (min-width: 900px) {
-  .cases { grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 980px; }
-  .cases-wrap { padding: 0 2.5rem; }
-  .case-card { min-height: 460px; perspective: 1200px; }
-  .case-inner { position: relative; width: 100%; height: 100%; min-height: 440px; transform-style: preserve-3d; transition: transform 0s; }
-  .case-front, .case-back { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform 0.65s var(--ease); min-height: auto; }
-  .case-front { transform: rotateY(0deg); display: flex; }
-  .case-back { transform: rotateY(180deg); display: flex; }
-  .case-card:hover .case-front,
-  .case-card.is-flipped .case-front { transform: rotateY(-180deg); display: flex; }
-  .case-card:hover .case-back,
-  .case-card.is-flipped .case-back { transform: rotateY(0deg); display: flex; }
-  .case-photo { height: 240px; }
+.case-files { display: flex; flex-direction: column; }
+.case-file { display: flex; flex-direction: column; gap: 1.1rem; padding: 2.25rem 0; border-top: 1px solid rgba(39,51,51,0.12); }
+.case-file:last-child { border-bottom: 1px solid rgba(39,51,51,0.12); }
+.case-file-num { font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; color: var(--terracotta); }
+.case-file-media { width: 100%; height: 210px; border-radius: 6px; overflow: hidden; clip-path: polygon(0 0, 100% 0, 100% 92%, 94% 100%, 0 100%); background: #e4ded2; }
+.case-file-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.case-file-body { max-width: 60ch; }
+.case-file-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-stone); }
+.case-file-body h3 { font-size: 1.5rem; margin-top: 0.5rem; }
+.case-file-body p { font-size: 0.97rem; color: #4a5552; line-height: 1.65; margin-top: 0.75rem; }
+.case-file-outcome { font-size: 0.88rem; color: var(--juniper); font-weight: 700; margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid rgba(39,51,51,0.08); }
+@media (min-width: 768px) {
+  .work { padding: 6rem 0; }
+  .case-file { flex-direction: row; align-items: center; gap: 3rem; padding: 3.25rem 0; }
+  .case-file-media { width: 42%; height: 280px; flex-shrink: 0; }
+  .case-file-body { flex: 1; }
 }
-.case-cat-back { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-stone); }
-.case-back h3 { font-size: 1.4rem; line-height: 1.25; }
-.case-back p { font-size: 0.95rem; color: #3d4746; line-height: 1.66; }
-.case-result { font-size: 0.88rem !important; color: var(--juniper) !important; font-weight: 700; border-top: 1px solid rgba(39,51,51,0.1); padding-top: 0.85rem; }
-.case-back .btn { margin-top: auto; align-self: flex-start; }
-@media (min-width: 900px) { .work { padding: 6rem 0; } }
 
 /* ============================================ TRUSTED / LOGO WALL */
 .trusted { padding: 2.5rem 0 3.5rem; }
@@ -202,26 +169,22 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .trusted-row .dot { font-family: var(--font-b); font-style: normal; color: var(--terracotta); opacity: 0.55; }
 @media (min-width: 768px) { .trusted-row span { font-size: 1.15rem; } }
 
-/* ============================================ SPEED TIMELINE (mobile-first: vertical list -> horizontal row at desktop) */
-.timeline { background: var(--deep-harbor); color: var(--off-white); padding: 4.5rem 0 4rem; clip-path: polygon(0 18px, 8% 0, 100% 0, 100% 100%, 0 100%); margin-top: -18px; position: relative; z-index: 1; }
-.timeline-header { margin-bottom: 2.75rem; max-width: 36ch; }
-.timeline-header h2 { font-size: clamp(1.7rem, 6.5vw, 2.6rem); color: var(--off-white); margin-top: 0.75rem; }
-.timeline-sub { font-size: 0.97rem; color: var(--drift-sand); margin-top: 1rem; line-height: 1.65; }
-.timeline-steps { list-style: none; margin: 0; padding: 0; position: relative; display: flex; flex-direction: column; gap: 1.85rem; }
-.timeline-steps::before { content: ""; position: absolute; left: 13px; top: 4px; bottom: 4px; width: 2px; background: rgba(227,220,210,0.16); }
-.timeline-step { position: relative; padding-left: 2.75rem; display: flex; flex-direction: column; gap: 0.2rem; }
-.timeline-dot { position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: var(--deep-harbor); font-weight: 700; font-size: 0.78rem; font-family: var(--font-b); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.timeline-wk { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-stone); }
-.timeline-label { font-size: 1.02rem; font-weight: 700; color: var(--off-white); line-height: 1.35; }
-.timeline-note { margin-top: 2.5rem; font-size: 0.95rem; color: var(--drift-sand); }
-.timeline-note strong { color: var(--gold); font-weight: 700; }
+/* ============================================ QUIET STAT / SPEED */
+.stat-block { background: var(--deep-harbor); color: var(--off-white); padding: 4.5rem 0 4rem; clip-path: polygon(0 18px, 8% 0, 100% 0, 100% 100%, 0 100%); margin-top: -18px; position: relative; z-index: 1; }
+.stat-num { font-family: var(--font-h); font-size: clamp(4.5rem, 22vw, 7rem); line-height: 1; color: var(--off-white); margin: 0; }
+.stat-label { font-size: 1rem; color: var(--drift-sand); max-width: 30ch; line-height: 1.55; margin-top: 0.5rem; }
+.stat-detail { margin-top: 2.5rem; display: flex; flex-direction: column; }
+.stat-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; padding: 0.9rem 0; border-top: 1px solid rgba(227,220,210,0.12); }
+.stat-row:last-child { border-bottom: 1px solid rgba(227,220,210,0.12); }
+.stat-wk { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-stone); flex-shrink: 0; }
+.stat-desc { font-size: 0.95rem; color: var(--off-white); text-align: right; }
+.stat-note { margin-top: 2rem; font-size: 0.92rem; color: var(--drift-sand); }
+.stat-note strong { color: var(--gold); font-weight: 700; }
 @media (min-width: 768px) {
-  .timeline { padding: 6rem 0; }
-  .timeline-steps { flex-direction: row; gap: 1.5rem; }
-  .timeline-steps::before { left: 5%; right: 5%; top: 14px; bottom: auto; width: auto; height: 2px; }
-  .timeline-step { padding-left: 0; flex: 1; }
-  .timeline-dot { position: relative; margin-bottom: 0.85rem; }
-  .timeline-note { text-align: center; }
+  .stat-block { padding: 7rem 0; }
+  .stat-label { font-size: 1.1rem; }
+  .stat-row { padding: 1.1rem 0; }
+  .stat-desc { font-size: 1rem; }
 }
 
 /* ============================================ SERVICES */

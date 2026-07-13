@@ -119,27 +119,6 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .intro-line em { font-style: italic; color: var(--terracotta); }
 @media (min-width: 768px) { .intro { padding: 5rem 0; } }
 
-/* ============================================ OUTCOMES */
-.outcomes { background: var(--deep-harbor); color: var(--off-white); padding: 4rem 0 5rem; position: relative; overflow: hidden; }
-.outcomes-pattern { position: absolute; inset: 0; pointer-events: none; opacity: 0.06; }
-.outcomes-pattern img { width: 100%; height: 100%; object-fit: cover; }
-.outcomes .wrap { position: relative; z-index: 1; }
-.section-label { margin-bottom: 3rem; }
-.section-label h2 { font-size: clamp(1.8rem, 6vw, 3rem); color: var(--off-white); margin-top: 0.75rem; }
-.outcomes-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
-.outcome-item { border-top: 1px solid rgba(227,220,210,0.12); padding: 2rem 0; display: flex; flex-direction: column; gap: 0.65rem; }
-.outcome-icon { width: 44px; height: 44px; margin-bottom: 0.5rem; opacity: 0.9; }
-.outcome-icon img { width: 100%; height: 100%; object-fit: contain; }
-.outcome-num { font-family: var(--font-h); font-size: 2rem; font-weight: 700; color: var(--terracotta); opacity: 0.65; line-height: 1; }
-.outcome-item h3 { font-size: 1.2rem; color: var(--off-white); }
-.outcome-item p { font-size: 0.95rem; color: var(--drift-sand); line-height: 1.65; }
-@media (min-width: 768px) {
-  .outcomes { padding: 6rem 0 7rem; }
-  .outcomes-grid { grid-template-columns: 1fr 1fr; column-gap: 4rem; }
-  .outcome-num { font-size: 2.8rem; }
-  .outcome-icon { width: 52px; height: 52px; }
-}
-
 /* ============================================ WHO WE WORK WITH */
 .who { background: var(--off-white-warm); padding: 4rem 0; border-top: 1px solid rgba(39,51,51,0.07); }
 .who-header { margin-bottom: 2.5rem; }
@@ -196,9 +175,9 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .case-card.is-flipped .case-back { display: flex; }
 /* Hover flip on desktop */
 @media (min-width: 900px) {
-  .cases { grid-template-columns: repeat(3, 1fr); }
+  .cases { grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 980px; }
   .cases-wrap { padding: 0 2.5rem; }
-  .case-card { min-height: 440px; perspective: 1200px; }
+  .case-card { min-height: 460px; perspective: 1200px; }
   .case-inner { position: relative; width: 100%; height: 100%; min-height: 440px; transform-style: preserve-3d; transition: transform 0s; }
   .case-front, .case-back { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform 0.65s var(--ease); min-height: auto; }
   .case-front { transform: rotateY(0deg); display: flex; }
@@ -224,7 +203,7 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 @media (min-width: 768px) { .trusted-row span { font-size: 1.15rem; } }
 
 /* ============================================ SPEED TIMELINE (mobile-first: vertical list -> horizontal row at desktop) */
-.timeline { background: var(--deep-harbor); color: var(--off-white); padding: 4rem 0; }
+.timeline { background: var(--deep-harbor); color: var(--off-white); padding: 4.5rem 0 4rem; clip-path: polygon(0 18px, 8% 0, 100% 0, 100% 100%, 0 100%); margin-top: -18px; position: relative; z-index: 1; }
 .timeline-header { margin-bottom: 2.75rem; max-width: 36ch; }
 .timeline-header h2 { font-size: clamp(1.7rem, 6.5vw, 2.6rem); color: var(--off-white); margin-top: 0.75rem; }
 .timeline-sub { font-size: 0.97rem; color: var(--drift-sand); margin-top: 1rem; line-height: 1.65; }
@@ -274,22 +253,28 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .tier .btn { margin-top: auto; align-self: flex-start; }
 @media (min-width: 768px) { .services { padding: 6rem 0; } .tiers { grid-template-columns: 1fr 1fr; } }
 
-/* ============================================ MANIFESTO */
-.manifesto { background: var(--deep-harbor); color: var(--off-white); padding: 4rem 0; }
-.manifesto-header { margin-bottom: 2.5rem; }
-.manifesto-header h2 { font-size: clamp(1.6rem, 5.5vw, 2.3rem); color: var(--off-white); margin-top: 0.75rem; max-width: 26ch; }
-.manifesto-rows { display: flex; flex-direction: column; }
-.manifesto-row { display: flex; flex-direction: column; gap: 0.5rem; border-top: 1px solid rgba(227,220,210,0.12); padding: 1.5rem 0; }
-.m-before { font-size: 0.9rem; color: var(--sage-stone); font-style: italic; }
-.m-arrow { color: var(--terracotta); font-size: 1.25rem; font-weight: 700; line-height: 1; }
-.m-after { font-size: 1rem; color: var(--off-white); font-weight: 600; }
+/* ============================================ FAQ */
+.faq { background: var(--off-white-warm); padding: 4rem 0; border-top: 1px solid rgba(39,51,51,0.07); }
+.faq-header { margin-bottom: 2.5rem; }
+.faq-header h2 { font-size: clamp(1.7rem, 5.5vw, 2.5rem); margin-top: 0.75rem; max-width: 22ch; }
+.faq-list { display: flex; flex-direction: column; gap: 0.75rem; max-width: 760px; }
+.faq-item { background: var(--off-white); border-radius: 6px; border: 1px solid rgba(39,51,51,0.1); padding: 0; overflow: hidden; }
+.faq-item summary { list-style: none; cursor: pointer; padding: 1.15rem 1.35rem; font-family: var(--font-h); font-size: 1.02rem; font-weight: 600; color: var(--deep-harbor); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; font-family: var(--font-b); font-size: 1.3rem; font-weight: 700; color: var(--terracotta); flex-shrink: 0; transition: transform 0.25s var(--ease); }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { font-size: 0.95rem; color: #4a5552; line-height: 1.65; padding: 0 1.35rem 1.35rem; }
 @media (min-width: 768px) {
-  .manifesto { padding: 6rem 0; }
-  .manifesto-row { flex-direction: row; align-items: center; gap: 2.5rem; }
-  .m-before { flex: 1; font-size: 0.95rem; }
-  .m-arrow { flex-shrink: 0; font-size: 1.5rem; }
-  .m-after { flex: 1; font-size: 1.05rem; }
+  .faq { padding: 6rem 0; }
+  .faq-item summary { padding: 1.35rem 1.6rem; font-size: 1.08rem; }
+  .faq-item p { padding: 0 1.6rem 1.5rem; font-size: 1rem; }
 }
+
+/* ============================================ MANIFESTO (slim pull-quote) */
+.manifesto--slim { background: var(--deep-harbor); color: var(--off-white); padding: 3.5rem 0; text-align: center; }
+.manifesto-pull { font-family: var(--font-h); font-size: clamp(1.5rem, 5.5vw, 2.4rem); color: var(--off-white); margin-top: 0.9rem; max-width: 22ch; margin-left: auto; margin-right: auto; line-height: 1.35; }
+.manifesto-pull em { font-style: italic; color: var(--gold); }
+@media (min-width: 768px) { .manifesto--slim { padding: 5rem 0; } }
 
 /* ============================================ CLOSING CTA */
 .closing-cta { background: var(--terracotta); color: var(--off-white); padding: 5rem 0; text-align: center; position: relative; overflow: hidden; }

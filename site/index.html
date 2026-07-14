@@ -335,6 +335,73 @@
   </div>
 </section>
 
+<!-- ===================== QUIZ ===================== -->
+<section class="quiz" id="quiz">
+  <div class="wrap">
+    <div class="quiz-header reveal">
+      <p class="eyebrow eyebrow-dark">Quick Gut Check</p>
+      <h2>What's your brand actually missing?</h2>
+      <p class="quiz-intro">Four questions. An honest read — not a sales pitch.</p>
+    </div>
+
+    <div class="quiz-box reveal" id="quiz-box">
+
+      <div class="quiz-question is-active" data-q="1">
+        <p class="quiz-q-num">Question 1 of 4</p>
+        <h3>When someone finds you for the first time, what do they usually see?</h3>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-tag="presence">My Instagram — my website is outdated or barely exists</button>
+          <button type="button" class="quiz-option" data-tag="consistency">My website, but it doesn't really look like "me"</button>
+          <button type="button" class="quiz-option" data-tag="presence">Whatever a past client happens to share</button>
+          <button type="button" class="quiz-option" data-tag="consistency">Depends where they find me — it all looks a little different</button>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-q="2">
+        <p class="quiz-q-num">Question 2 of 4</p>
+        <h3>When people find out your prices, what's the usual reaction?</h3>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-tag="momentum">About what they expected</button>
+          <button type="button" class="quiz-option" data-tag="positioning">"Wait, that's it?" — they expected to pay more</button>
+          <button type="button" class="quiz-option" data-tag="presence">They don't ask — they just disappear</button>
+          <button type="button" class="quiz-option" data-tag="consistency">Prices aren't posted or clear anywhere</button>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-q="3">
+        <p class="quiz-q-num">Question 3 of 4</p>
+        <h3>What's actually stopped you from fixing this already?</h3>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-tag="momentum">I don't have the time to sit down and do it</button>
+          <button type="button" class="quiz-option" data-tag="momentum">I've started and stopped more than once</button>
+          <button type="button" class="quiz-option" data-tag="presence">I didn't know where to even begin</button>
+          <button type="button" class="quiz-option" data-tag="consistency">I have opinions about it but no one to build it with</button>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-q="4">
+        <p class="quiz-q-num">Question 4 of 4</p>
+        <h3>If a stranger looked at everything you've got online right now, would they guess how good you actually are?</h3>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-tag="positioning">Not even close</button>
+          <button type="button" class="quiz-option" data-tag="consistency">Only if they read closely</button>
+          <button type="button" class="quiz-option" data-tag="presence">They'd have to go looking — there's not much to find</button>
+          <button type="button" class="quiz-option" data-tag="momentum">Pretty much, but it took them a while to be sure</button>
+        </div>
+      </div>
+
+      <div class="quiz-result" id="quiz-result">
+        <p class="quiz-q-num">Your Result</p>
+        <h3 id="quiz-result-title"></h3>
+        <p id="quiz-result-desc"></p>
+        <a href="#contact" class="btn btn-dark" id="quiz-result-cta">Book a Free Brand Call →</a>
+        <button type="button" class="quiz-retake" id="quiz-retake">Retake the quiz</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ===================== CLOSING CTA ===================== -->
 <section class="closing-cta" id="contact">
   <div class="closing-compass" aria-hidden="true">
@@ -415,6 +482,16 @@
         <li><a href="mailto:hello@soughtafter.design">hello@soughtafter.design</a></li>
         <li><a href="https://calendar.app.google/8jDwpEgbE2kSfYRR7" target="_blank" rel="noopener">Book a free brand call</a></li>
       </ul>
+    </div>
+    <div class="footer-col footer-lead">
+      <p class="footer-heading">Free Checklist</p>
+      <p class="footer-lead-copy">12 honest questions that show you exactly what's missing.</p>
+      <form class="footer-lead-form" action="https://formspree.io/f/maqrygvr" method="POST">
+        <input type="hidden" name="_subject" value="Missing Piece Checklist request">
+        <input type="hidden" name="_next" value="https://soughtafter.design/assets/missing-piece-checklist.pdf">
+        <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
+        <button type="submit" class="btn btn-ghost footer-lead-btn">Get the Checklist →</button>
+      </form>
     </div>
   </div>
   <div class="wrap footer-bottom">

@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 
@@ -24,6 +24,7 @@
       <a href="#work">Work</a>
       <a href="#services">Services</a>
       <a href="#faq">FAQ</a>
+      <a href="#contact-form">Get a Quote</a>
     </nav>
     <div class="nav-right">
       <a href="#contact" class="btn btn-dark nav-cta">Book a Call</a>
@@ -38,6 +39,7 @@
       <a href="#work">Work</a>
       <a href="#services">Services</a>
       <a href="#faq">FAQ</a>
+      <a href="#contact-form">Get a Quote</a>
       <a href="#contact">Book a Call</a>
     </nav>
   </div>
@@ -47,7 +49,12 @@
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
-  <div class="wrap hero-grid">
+  <div class="hero-bg">
+    <img src="assets/hero/hero-puzzle-stones.png"
+         alt="Organic stone pieces with one missing, outlined in a dotted line."
+         width="1536" height="1024">
+  </div>
+  <div class="wrap hero-inner">
     <div class="hero-content">
       <p class="eyebrow eyebrow-dark hero-eyebrow">For Established Owners &amp; CRE Professionals</p>
       <h1>Your brand has<br>a missing piece.</h1>
@@ -57,15 +64,8 @@
         <a href="#contact" class="btn btn-ghost">Book a Free Brand Call →</a>
       </div>
     </div>
-    <div class="hero-collage">
-      <div class="hero-photo">
-        <img src="assets/hero/hero-puzzle-stones.png"
-             alt="Organic stone pieces with one missing, outlined in a dotted line."
-             width="1536" height="1024">
-      </div>
-      <div class="hero-sticker" aria-hidden="true">6 brands launched.<br>Zero half-finished.</div>
-    </div>
   </div>
+  <div class="hero-sticker" aria-hidden="true">6 brands launched.<br>Zero half-finished.</div>
 </section>
 
 <!-- ===================== QUIET STAT / SPEED ===================== -->
@@ -75,11 +75,11 @@
     <p class="stat-label reveal">week from first call to a live brand and website — built, launched, and yours.</p>
     <div class="stat-detail reveal">
       <div class="stat-row"><span class="stat-wk">Days 1–2</span><span class="stat-desc">Strategy call, brand voice &amp; positioning</span></div>
-      <div class="stat-row"><span class="stat-wk">Days 3–4</span><span class="stat-desc">Logo &amp; visual identity</span></div>
+      <div class="stat-row"><span class="stat-wk">Days 3–4</span><span class="stat-desc">Brand refresh &amp; visual identity</span></div>
       <div class="stat-row"><span class="stat-wk">Days 5–6</span><span class="stat-desc">Website build</span></div>
       <div class="stat-row"><span class="stat-wk">Day 7</span><span class="stat-desc">Launch</span></div>
     </div>
-    <p class="stat-note reveal">Want an ongoing growth engine too? The Full System runs <strong>4–6 weeks</strong> — lead-gen strategy and hands-on support included.</p>
+    <p class="stat-note reveal">Want the full brand build and a system for getting clients? The Full System runs <strong>4 weeks</strong>, working alongside you with weekly calls.</p>
   </div>
 </section>
 
@@ -295,7 +295,7 @@
       <form class="lead-magnet-form-wide lead-magnet-form" id="checklist-form-main">
         <input type="hidden" name="_type" value="lead-magnet">
         <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
-        <button type="submit" class="btn btn-dark">Get the Free Checklist →</button>
+        <button type="submit" class="btn btn-gold">Get the Free Checklist →</button>
       </form>
       <p class="form-status" id="checklist-msg-main"></p>
     </div>
@@ -343,8 +343,8 @@
     <div class="founder-body reveal">
       <p class="eyebrow eyebrow-dark">Who's Behind This</p>
       <h2>Meet John.</h2>
-      <p>Before Sought After, John spent over a decade moving between very different rooms — enterprise tech marketing at Epic and DISH, in-home sales and estimating for CertaPro Painters, communications and leadership at Cherry Hills Community Church, digital marketing for ActionCOACH, and eventually co-founding The Dudela Co. from scratch.</p>
-      <p>Different industries, same pattern every time: the businesses that won weren't the ones with the biggest budget. They were the ones whose brand and marketing finally matched the quality of the work they were already doing. Sought After exists to close that exact gap — on purpose, on a deadline, for businesses that have earned it and just haven't been told yet.</p>
+      <p>At the core, John is a storyteller. Every business he's worked with — enterprise tech, in-home sales, ministry, coaching, his own startup — taught him the same thing: people don't buy the work, they buy the story around it. The brands that win aren't the ones with the biggest budget. They're the ones who found the story that actually resonates with the people they're trying to reach, and told it clearly, everywhere.</p>
+      <p>That's the job at Sought After — not just a logo or a template, but figuring out what your story actually is and building a brand and site that tell it well. Jessie came in asking for a logo and left with a whole go-to-market story that changed who she sells to. <a href="jessies-coffee.html" style="color:var(--gold); text-decoration:underline; font-weight:600;">Read how that happened →</a></p>
     </div>
   </div>
 </section>
@@ -354,28 +354,49 @@
   <div class="wrap">
     <div class="services-header reveal">
       <p class="eyebrow eyebrow-dark">What We Offer</p>
-      <h2>Two ways in.<br>One clear outcome.</h2>
+      <h2>Pick your starting point.</h2>
     </div>
-    <div class="tiers">
+    <div class="tiers tiers--three">
+
+      <div class="tier tier--audit reveal">
+        <div class="tier-badge-row">
+          <span class="tier-badge tier-badge--deal">68% OFF <span class="tier-badge-expiry">· Ends Aug 1</span></span>
+        </div>
+        <div class="tier-icon">
+          <img src="assets/icons/compass-sand.svg" alt="">
+        </div>
+        <div class="tier-header">
+          <span class="tier-label">Start Here</span>
+          <span class="tier-price"><span class="tier-price-was">$397</span> $127</span>
+        </div>
+        <h3>Brand Audit</h3>
+        <p class="tier-desc">Not sure what's actually broken? A 90-minute working session through your whole customer journey — you leave with a real roadmap, not a sales pitch.</p>
+        <ul class="tier-list">
+          <li>90-minute live working session</li>
+          <li>Full customer-journey walkthrough</li>
+          <li>Leaks &amp; gaps identified, in writing</li>
+          <li>A clear roadmap to take with you</li>
+        </ul>
+        <a href="#contact-form" class="btn btn-outline">Reserve Your Audit →</a>
+      </div>
 
       <div class="tier reveal">
         <div class="tier-icon">
           <img src="assets/icons/hammer-sand.svg" alt="">
         </div>
         <div class="tier-header">
-          <span class="tier-label">Tier 1</span>
-          <span class="tier-price">$5,000 · ~1 week</span>
+          <span class="tier-label">Most Common</span>
+          <span class="tier-price">$3,250 · ~1 week</span>
         </div>
-        <h3>Brand + Site</h3>
-        <p class="tier-desc">Everything you need to launch — brand, logo, and a live website, built fast.</p>
+        <h3>Brand Refresh + Website</h3>
+        <p class="tier-desc">You've already got something — it just doesn't match where the business is now. A refreshed identity and a new website, live in about a week.</p>
         <ul class="tier-list">
-          <li>Brand strategy, voice &amp; positioning</li>
-          <li>Logo &amp; full visual identity</li>
+          <li>Brand refresh — voice, visual identity, positioning</li>
           <li>Custom website, built &amp; launched</li>
           <li>Marketing kickstart — templates &amp; starter content</li>
           <li>Bio &amp; caption scripts</li>
         </ul>
-        <a href="#contact" class="btn btn-outline">Book a Free Brand Call →</a>
+        <a href="#contact-form" class="btn btn-outline">Book a Free Brand Call →</a>
       </div>
 
       <div class="tier tier--featured reveal">
@@ -386,30 +407,54 @@
           <img src="assets/icons/Mountain2-white.svg" alt="">
         </div>
         <div class="tier-header">
-          <span class="tier-label">Tier 2</span>
-          <span class="tier-price">$10,000 · 4–6 wks</span>
+          <span class="tier-label">Go All In</span>
+          <span class="tier-price">$7,985 · 4 wks</span>
         </div>
         <h3>Full System</h3>
-        <p class="tier-desc">Everything in Tier 1, plus a system for getting clients — built and run alongside you.</p>
+        <p class="tier-desc">Starting from zero, or ready to actually invest in growth? Full brand build, new website, and a system for getting clients — built alongside you.</p>
         <ul class="tier-list">
-          <li>Everything in Tier 1</li>
+          <li>New logo &amp; full brand identity, built from scratch</li>
+          <li>Custom website, built &amp; launched</li>
           <li>Lead-gen strategy &amp; a built client-acquisition system</li>
-          <li>Ongoing site management</li>
-          <li>Hands-on meetings through launch and beyond</li>
-          <li>Content calendar &amp; templates</li>
+          <li>Weekly calls through the full 4 weeks</li>
+          <li>Social media starter kit — 30 premade posts</li>
+          <li>Ongoing site management &amp; content calendar</li>
         </ul>
-        <a href="#contact" class="btn btn-light">Book a Free Brand Call →</a>
+        <a href="#contact-form" class="btn btn-light">Book a Free Brand Call →</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ===================== MANIFESTO ===================== -->
-<section class="manifesto manifesto--slim">
-  <div class="wrap">
-    <p class="eyebrow eyebrow-light reveal">How We Talk</p>
-    <p class="manifesto-pull reveal">"AI helps us move faster — <em>the thinking is still ours.</em>"</p>
+<!-- ===================== CHAT BANNER (how we work) ===================== -->
+<section class="chat-banner">
+  <div class="wrap chat-banner-grid">
+    <div class="chat-copy reveal">
+      <p class="eyebrow eyebrow-light">How We Work</p>
+      <h2>Real conversations, not a questionnaire.</h2>
+      <p class="chat-copy-sub">Every project starts with an actual back-and-forth about your brand, not a form to fill out. Here's a snapshot of what that usually sounds like.</p>
+    </div>
+    <div class="phone-mockup reveal" aria-hidden="true">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="chat-scroll">
+            <div class="chat-bubble chat-bubble--them">Hey — I think my site just feels generic? Like it could be anyone's.</div>
+            <div class="chat-bubble chat-bubble--us">Totally get that. What's the one thing clients always say about working with you?</div>
+            <div class="chat-bubble chat-bubble--them">Honestly, that I actually show up and follow through. A lot of people in my industry don't.</div>
+            <div class="chat-bubble chat-bubble--us">That's the story. Reliability isn't boring — it's rare. Let's build the site around that.</div>
+            <div class="chat-bubble chat-bubble--them">Huh. I never thought to just say it that plainly.</div>
+            <div class="chat-bubble chat-bubble--us">That's the job — finding the thing you already know and saying it so it lands.</div>
+            <div class="chat-bubble chat-bubble--them" aria-hidden="true">Hey — I think my site just feels generic? Like it could be anyone's.</div>
+            <div class="chat-bubble chat-bubble--us" aria-hidden="true">Totally get that. What's the one thing clients always say about working with you?</div>
+            <div class="chat-bubble chat-bubble--them" aria-hidden="true">Honestly, that I actually show up and follow through. A lot of people in my industry don't.</div>
+            <div class="chat-bubble chat-bubble--us" aria-hidden="true">That's the story. Reliability isn't boring — it's rare. Let's build the site around that.</div>
+            <div class="chat-bubble chat-bubble--them" aria-hidden="true">Huh. I never thought to just say it that plainly.</div>
+            <div class="chat-bubble chat-bubble--us" aria-hidden="true">That's the job — finding the thing you already know and saying it so it lands.</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -434,7 +479,7 @@
 
       <details class="faq-item reveal">
         <summary>Is 1 week a real number, or a marketing one?</summary>
-        <p>Real — it's the same day-by-day breakdown above: strategy, identity, build, launch. Want the full growth system on top of it — lead gen, ongoing management, hands-on support? That runs 4–6 weeks. Either way, no half-year branding sagas.</p>
+        <p>Real — for the Brand Refresh + Website tier, it's the same day-by-day breakdown above: strategy, refresh, build, launch. Want the full brand build and growth system on top of it — new logo, lead gen, weekly calls? That's the Full System, and it runs 4 weeks. Either way, no half-year branding sagas.</p>
       </details>
 
       <details class="faq-item reveal">
@@ -444,7 +489,7 @@
 
       <details class="faq-item reveal">
         <summary>Not sure which package fits me?</summary>
-        <p>That's exactly what the free call is for. We'll tell you honestly which tier makes sense — even when that means recommending the smaller one.</p>
+        <p>That's exactly what the free call is for — or start with the $127 Brand Audit if you'd rather have a real working session before committing to either build package. Either way, we'll tell you honestly which one makes sense, even when that means recommending the smaller one.</p>
       </details>
 
       <details class="faq-item reveal">
@@ -502,9 +547,9 @@
           <label for="inq-tier">Which fits best?</label>
           <select id="inq-tier" name="interest">
             <option value="">Not sure yet</option>
-            <option value="Website Refresh (starting at $2,000)">Website Refresh — starting at $2,000</option>
-            <option value="Brand + Site (starting at $5,000)">Brand + Site — starting at $5,000</option>
-            <option value="Full System (starting at $10,000)">Full System — starting at $10,000</option>
+            <option value="Brand Audit ($127)">Brand Audit — $127</option>
+            <option value="Brand Refresh + Website ($3,250)">Brand Refresh + Website — $3,250</option>
+            <option value="Full System ($7,985)">Full System — $7,985</option>
           </select>
         </div>
         <div class="form-field">
@@ -569,6 +614,6 @@
   <p class="piece-tracker-label">Missing Piece</p>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>

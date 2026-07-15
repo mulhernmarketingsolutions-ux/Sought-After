@@ -2,12 +2,12 @@
 // Google Apps Script Web App (see /Lead Automation/Code.gs for setup).
 // Swap in your real Web App URL after deploying — it currently points at
 // a placeholder, so submissions won't go anywhere until that's done.
-const LEAD_ENDPOINT = "REPLACE_WITH_YOUR_APPS_SCRIPT_WEB_APP_URL";
+const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbwxmM4E7ozwZp4ccmc52ghtQ8nsPf-ju-MkrYb6CefOEuj2FJkko6V5ThbCHl2mXrGI/exec";
 
 function showFormSuccess(form, successMsg) {
   const wrap = document.createElement('div');
   wrap.className = 'form-success';
-  wrap.innerHTML = '<span class="form-success-check" aria-hidden="true">✓</span><p class="form-success-text"></p>';
+  wrap.innerHTML = '<span class="form-success-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="form-success-text"></p>';
   wrap.querySelector('.form-success-text').textContent = successMsg;
   form.style.display = 'none';
   form.insertAdjacentElement('afterend', wrap);
@@ -50,12 +50,12 @@ function wireForm(form, msgEl, successMsg) {
   });
 }
 
-wireForm(document.getElementById('inquiry-form'), document.getElementById('inquiry-msg'), "Thanks! We'll follow up within a couple of days.");
+wireForm(document.getElementById('inquiry-form'), document.getElementById('inquiry-msg'), "Got it — one piece closer. We'll follow up within a couple of days.");
 
 // Every checklist signup form on the page (footer + the dedicated section)
 // shares the same behavior — wire each one to its own adjacent status line.
 document.querySelectorAll('.lead-magnet-form').forEach((form) => {
-  wireForm(form, form.nextElementSibling, "Sent! Check your inbox for the checklist.");
+  wireForm(form, form.nextElementSibling, "Sent! Check your inbox — the checklist's on its way.");
 });
 
 // Missing-piece scroll tracker — the dashed circle fills in as you scroll
@@ -107,20 +107,6 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 document.querySelectorAll('.case-card').forEach(card => {
   card.addEventListener('click', () => card.classList.toggle('is-flipped'));
 });
-// Hero photo — subtle cursor-tilt, desktop pointer only
-const heroPhoto = document.querySelector('.hero-photo');
-if (heroPhoto && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  const collage = document.querySelector('.hero-collage');
-  collage.addEventListener('mousemove', (e) => {
-    const rect = heroPhoto.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    heroPhoto.style.transform = `rotate(${-1 + x * 2.5}deg) rotateX(${y * -4}deg) rotateY(${x * 4}deg)`;
-  });
-  collage.addEventListener('mouseleave', () => {
-    heroPhoto.style.transform = '';
-  });
-}
 // Quiz: What's your brand actually missing?
 const quizBox = document.getElementById('quiz-box');
 if (quizBox) {
@@ -189,5 +175,24 @@ contactToggleBtns.forEach(btn => {
     document.querySelectorAll('.contact-panel').forEach(p => p.classList.remove('is-active'));
     const target = document.getElementById(btn.dataset.target);
     if (target) target.classList.add('is-active');
+  });
+});
+
+// Deep link straight to the inquiry form — any link to #contact-form
+// switches the toggle to "Send an Inquiry" and scrolls it into view,
+// so the form isn't only reachable by scrolling to the bottom and clicking.
+function openInquiryForm() {
+  const formToggle = document.querySelector('.contact-toggle-btn[data-target="panel-form"]');
+  if (formToggle) formToggle.click();
+  const section = document.getElementById('contact');
+  if (section) setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
+}
+if (window.location.hash === '#contact-form') openInquiryForm();
+// Exact-match only — case study pages link to "index.html#contact-form"
+// and should navigate normally; the hash check above handles it on arrival.
+document.querySelectorAll('a[href="#contact-form"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    openInquiryForm();
   });
 });

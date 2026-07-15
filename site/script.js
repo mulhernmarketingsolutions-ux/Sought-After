@@ -1,3 +1,82 @@
+// Lead capture — inquiry form + checklist signup, both submit to the same
+// Google Apps Script Web App (see /Lead Automation/Code.gs for setup).
+// Swap in your real Web App URL after deploying — it currently points at
+// a placeholder, so submissions won't go anywhere until that's done.
+const LEAD_ENDPOINT = "REPLACE_WITH_YOUR_APPS_SCRIPT_WEB_APP_URL";
+
+function showFormSuccess(form, successMsg) {
+  const wrap = document.createElement('div');
+  wrap.className = 'form-success';
+  wrap.innerHTML = '<span class="form-success-check" aria-hidden="true">✓</span><p class="form-success-text"></p>';
+  wrap.querySelector('.form-success-text').textContent = successMsg;
+  form.style.display = 'none';
+  form.insertAdjacentElement('afterend', wrap);
+}
+
+function wireForm(form, msgEl, successMsg) {
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const required = form.querySelectorAll('[required]');
+    let missing = false;
+    required.forEach(field => { if (!field.value.trim()) missing = true; });
+    if (missing) {
+      if (msgEl) { msgEl.textContent = 'Please fill in the required field(s) before submitting.'; msgEl.style.color = 'var(--terracotta)'; }
+      return;
+    }
+
+    if (LEAD_ENDPOINT.indexOf('REPLACE_WITH') === 0) {
+      if (msgEl) { msgEl.textContent = 'Form isn\'t connected yet — set LEAD_ENDPOINT in script.js after deploying the Apps Script.'; msgEl.style.color = 'var(--terracotta)'; }
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type=submit]');
+    if (submitBtn) submitBtn.disabled = true;
+    if (msgEl) { msgEl.textContent = 'Sending...'; msgEl.style.color = 'var(--sage-stone)'; }
+
+    // Apps Script Web Apps don't return CORS headers, so the browser
+    // requires no-cors mode — the response is opaque, so a resolved
+    // fetch is treated as success.
+    fetch(LEAD_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new FormData(form) })
+      .then(() => {
+        if (msgEl) { msgEl.textContent = ''; msgEl.style.display = 'none'; }
+        showFormSuccess(form, successMsg);
+      })
+      .catch(() => {
+        if (msgEl) { msgEl.textContent = 'Something went wrong — please email hello@soughtafter.design directly.'; msgEl.style.color = 'var(--terracotta)'; }
+        if (submitBtn) submitBtn.disabled = false;
+      });
+  });
+}
+
+wireForm(document.getElementById('inquiry-form'), document.getElementById('inquiry-msg'), "Thanks! We'll follow up within a couple of days.");
+wireForm(document.getElementById('checklist-form'), document.getElementById('checklist-msg'), "Sent! Check your inbox for the checklist.");
+
+// Missing-piece scroll tracker — the dashed circle fills in as you scroll
+// the page, then swaps to solid once you've reached the bottom. Same
+// "the metaphor is the interaction" idea as Jessie's scroll-sipper.
+const pieceRing = document.querySelector('.piece-tracker-ring');
+const pieceLabel = document.querySelector('.piece-tracker-label');
+if (pieceRing) {
+  let pieceTicking = false;
+  const updatePieceTracker = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const fraction = scrollable > 0 ? window.scrollY / scrollable : 0;
+    const clamped = Math.max(0, Math.min(1, fraction));
+    document.documentElement.style.setProperty('--piece-progress', clamped.toFixed(3));
+    const complete = clamped > 0.92;
+    pieceRing.classList.toggle('is-complete', complete);
+    if (pieceLabel) pieceLabel.textContent = complete ? 'Found it.' : 'Missing Piece';
+    pieceTicking = false;
+  };
+  updatePieceTracker();
+  window.addEventListener('scroll', () => {
+    if (!pieceTicking) { window.requestAnimationFrame(updatePieceTracker); pieceTicking = true; }
+  });
+  window.addEventListener('resize', updatePieceTracker);
+}
+
 // Hamburger
 const btn = document.querySelector('.hamburger');
 const menu = document.querySelector('.mobile-menu');

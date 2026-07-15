@@ -149,7 +149,21 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .intro { padding: 3.5rem 0; border-bottom: 1px solid rgba(39,51,51,0.08); }
 .intro-line { font-family: var(--font-h); font-size: clamp(1.3rem, 4.5vw, 2rem); line-height: 1.45; max-width: 28ch; }
 .intro-line em { font-style: italic; color: var(--terracotta); }
-@media (min-width: 768px) { .intro { padding: 5rem 0; } }
+.intro-bullets { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+.intro-bullets li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 700; color: var(--deep-harbor); }
+.intro-bullets li::before { content: "✓"; color: var(--juniper); font-weight: 800; flex-shrink: 0; }
+@media (min-width: 768px) {
+  .intro { padding: 5rem 0; }
+  .intro-bullets { flex-direction: row; flex-wrap: wrap; gap: 0.75rem 2rem; margin-top: 2.5rem; }
+}
+
+/* ============================================ VIDEO SHOWCASE (homepage) */
+.video-showcase { padding: 3.5rem 0; }
+.video-showcase-header { text-align: center; max-width: 560px; margin: 0 auto 2rem; }
+.video-showcase-header h2 { font-size: clamp(1.7rem, 5.5vw, 2.5rem); margin-top: 0.75rem; }
+.video-showcase-sub { font-size: 0.98rem; color: #4a5552; margin-top: 0.75rem; line-height: 1.6; }
+.video-showcase-link { display: block; width: max-content; margin: 1.75rem auto 0; }
+@media (min-width: 768px) { .video-showcase { padding: 5.5rem 0; } }
 
 /* ============================================ WHO WE WORK WITH */
 .who { background: var(--off-white-warm); padding: 4rem 0; border-top: 1px solid rgba(39,51,51,0.07); }
@@ -242,16 +256,37 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .case-gallery-item img { width: 100%; height: 240px; object-fit: cover; display: block; }
 .case-gallery-cap { font-size: 0.85rem; color: var(--sage-stone); margin-top: 0.65rem; font-style: italic; font-family: var(--font-h); }
 
+/* ============================================ CASE DEMO VIDEO (scroll-through) */
+.case-demo { padding: 1rem 0 3rem; }
+.case-demo .wrap { max-width: 860px; }
+.case-demo-label { text-align: center; margin-bottom: 1.25rem; }
+.case-demo-video { border-radius: 10px; overflow: hidden; box-shadow: 0 20px 44px rgba(39,51,51,0.18); background: var(--deep-harbor); }
+.case-demo-video video { width: 100%; height: auto; display: block; }
+.case-demo-cap { text-align: center; font-size: 0.85rem; color: var(--sage-stone); margin-top: 0.85rem; font-style: italic; font-family: var(--font-h); }
+
 .case-outcome { background: var(--deep-harbor); color: var(--off-white); padding: 3.5rem 0; text-align: center; }
 .case-outcome h2 { font-size: clamp(1.7rem, 5vw, 2.4rem); margin-top: 0.75rem; max-width: 26ch; margin-left: auto; margin-right: auto; }
 .case-outcome p { max-width: 44ch; margin: 1rem auto 0; color: var(--drift-sand); line-height: 1.6; }
 .case-outcome .btn { margin-top: 2rem; }
+
+/* ============================================ CASE TESTIMONIAL */
+.case-testimonial { padding: 1rem 0 3.5rem; }
+.case-testimonial .wrap { max-width: 640px; }
+.case-testimonial-card { background: var(--off-white-warm); border-left: 3px solid var(--terracotta); border-radius: 4px; padding: 2rem 1.75rem; }
+.case-testimonial-quote { font-family: var(--font-h); font-style: italic; font-size: 1.15rem; line-height: 1.6; color: var(--deep-harbor); }
+.case-testimonial-quote::before { content: "\201C"; }
+.case-testimonial-quote::after { content: "\201D"; }
+.case-testimonial-attr { margin-top: 1.25rem; font-family: var(--font-b); font-size: 0.85rem; font-weight: 700; color: var(--terracotta); text-transform: uppercase; letter-spacing: 0.06em; }
+.case-testimonial-attr span { display: block; font-weight: 500; text-transform: none; letter-spacing: normal; color: var(--sage-stone); margin-top: 0.2rem; }
 
 @media (min-width: 768px) {
   .case-hero { padding: 4.5rem 0 3.5rem; }
   .case-hero-media img { height: 420px; }
   .case-gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .case-outcome { padding: 5rem 0; }
+  .case-testimonial { padding: 1.5rem 0 5rem; }
+  .case-testimonial-card { padding: 2.75rem 3rem; }
+  .case-testimonial-quote { font-size: 1.35rem; }
 }
 
 /* ============================================ TRUSTED / LOGO WALL */
@@ -260,6 +295,14 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .trusted-row span { font-family: var(--font-h); font-style: italic; font-size: 1rem; color: var(--deep-harbor); opacity: 0.7; }
 .trusted-row .dot { font-family: var(--font-b); font-style: normal; color: var(--terracotta); opacity: 0.55; }
 @media (min-width: 768px) { .trusted-row span { font-size: 1.15rem; } }
+
+/* Light-variant scrolling marquee — used for the full client list */
+.clients-marquee-wrap { background: var(--off-white-warm); overflow: hidden; padding: 1.35rem 0; border-radius: 6px; border: 1px solid rgba(39,51,51,0.08); margin-top: 1.25rem; }
+.clients-marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; gap: 2.5rem; align-items: center; }
+.clients-marquee-track span { font-family: var(--font-h); font-style: italic; font-size: 1.05rem; color: var(--deep-harbor); opacity: 0.75; white-space: nowrap; }
+.clients-marquee-track .dot { font-family: var(--font-b); font-style: normal; color: var(--terracotta); opacity: 0.5; }
+.clients-marquee-wrap:hover .clients-marquee-track { animation-play-state: paused; }
+@media (min-width: 768px) { .clients-marquee-track span { font-size: 1.25rem; } }
 
 /* ============================================ QUIET STAT / SPEED */
 .stat-block { background: var(--deep-harbor); color: var(--off-white); padding: 4.5rem 0 4rem; clip-path: polygon(0 18px, 8% 0, 100% 0, 100% 100%, 0 100%); margin-top: -18px; position: relative; z-index: 1; }
@@ -391,10 +434,29 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .form-field textarea { resize: vertical; min-height: 90px; }
 .form-field input:focus, .form-field select:focus, .form-field textarea:focus { outline: 2px solid var(--deep-harbor); outline-offset: 1px; }
 .contact-form .btn { align-self: flex-start; margin-top: 0.25rem; }
+.form-status { font-size: 0.85rem; margin: -0.25rem 0 0; min-height: 1.2em; }
+.form-status--footer { color: var(--drift-sand); opacity: 0.85; margin-top: 0.5rem; }
+.form-success { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.25rem; background: rgba(94,138,113,0.15); border: 1.5px solid var(--juniper); border-radius: 4px; }
+.form-success-check { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--juniper); color: var(--off-white); font-weight: 800; font-size: 0.85rem; flex-shrink: 0; }
+.form-success-text { color: var(--off-white); font-size: 0.92rem; font-weight: 600; }
 @media (min-width: 640px) { .form-row { flex-direction: row; gap: 1rem; } .form-row .form-field { flex: 1; } }
 @media (min-width: 768px) {
   .closing-cta { padding: 8rem 0; }
   .closing-compass { width: 520px; height: 520px; right: -60px; opacity: 0.12; }
+}
+
+/* ============================================ MISSING-PIECE SCROLL TRACKER */
+.piece-tracker { position: fixed; right: 1rem; bottom: 1rem; z-index: 150; display: flex; flex-direction: column; align-items: center; gap: 0.35rem; pointer-events: none; }
+.piece-tracker-ring { width: 38px; height: 38px; border-radius: 50%; border: 2px dashed var(--terracotta); display: flex; align-items: center; justify-content: center; background: rgba(227,220,210,0.92); backdrop-filter: blur(2px); transition: border-color 0.4s var(--ease), border-style 0.4s var(--ease); box-shadow: 0 6px 18px rgba(39,51,51,0.15); }
+.piece-tracker-ring.is-complete { border-color: var(--juniper); border-style: solid; }
+.piece-tracker-fill { width: 22px; height: 22px; border-radius: 50%; background: var(--terracotta); transform: scale(var(--piece-progress, 0)); opacity: var(--piece-progress, 0); transition: background 0.4s var(--ease); }
+.piece-tracker-ring.is-complete .piece-tracker-fill { background: var(--juniper); }
+.piece-tracker-label { font-family: var(--font-h); font-style: italic; font-size: 0.62rem; color: var(--deep-harbor); background: var(--off-white); padding: 0.15rem 0.5rem; border-radius: 20px; box-shadow: 0 4px 10px rgba(39,51,51,0.12); white-space: nowrap; }
+@media (min-width: 768px) {
+  .piece-tracker { right: 1.5rem; bottom: 1.5rem; }
+  .piece-tracker-ring { width: 46px; height: 46px; }
+  .piece-tracker-fill { width: 26px; height: 26px; }
+  .piece-tracker-label { font-size: 0.68rem; }
 }
 
 /* ============================================ FOOTER */

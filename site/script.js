@@ -51,7 +51,12 @@ function wireForm(form, msgEl, successMsg) {
 }
 
 wireForm(document.getElementById('inquiry-form'), document.getElementById('inquiry-msg'), "Thanks! We'll follow up within a couple of days.");
-wireForm(document.getElementById('checklist-form'), document.getElementById('checklist-msg'), "Sent! Check your inbox for the checklist.");
+
+// Every checklist signup form on the page (footer + the dedicated section)
+// shares the same behavior — wire each one to its own adjacent status line.
+document.querySelectorAll('.lead-magnet-form').forEach((form) => {
+  wireForm(form, form.nextElementSibling, "Sent! Check your inbox for the checklist.");
+});
 
 // Missing-piece scroll tracker — the dashed circle fills in as you scroll
 // the page, then swaps to solid once you've reached the bottom. Same

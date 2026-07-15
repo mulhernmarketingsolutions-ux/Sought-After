@@ -289,6 +289,27 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .case-testimonial-quote { font-size: 1.35rem; }
 }
 
+/* ============================================ FREE CHECKLIST (lead magnet) */
+.lead-magnet-section { padding: 3.5rem 0; background: var(--deep-harbor); color: var(--off-white); position: relative; overflow: hidden; }
+.lead-magnet-grid { display: flex; flex-direction: column; gap: 2.5rem; position: relative; z-index: 1; }
+.lead-magnet-copy h2 { color: var(--off-white); font-size: clamp(1.7rem, 5.5vw, 2.4rem); margin-top: 0.75rem; max-width: 18ch; }
+.lead-magnet-desc { color: var(--drift-sand); font-size: 1rem; line-height: 1.65; margin-top: 1rem; max-width: 42ch; }
+.lead-magnet-form-wide { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.75rem; max-width: 420px; }
+.lead-magnet-form-wide input[type="email"] { font-family: var(--font-b); font-size: 0.95rem; color: var(--deep-harbor); background: var(--off-white); border: none; border-radius: 3px; padding: 0.85rem 1rem; width: 100%; }
+.lead-magnet-form-wide input[type="email"]:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.lead-magnet-media { display: flex; justify-content: center; }
+.lead-magnet-card { background: var(--off-white-warm); color: var(--deep-harbor); border-radius: 8px; padding: 2rem 1.75rem; width: 100%; max-width: 320px; box-shadow: 0 20px 44px rgba(0,0,0,0.28); transform: rotate(1.5deg); }
+.lead-magnet-card-eyebrow { font-family: var(--font-h); font-style: italic; font-size: 1.05rem; margin-bottom: 1.25rem; color: var(--terracotta); }
+.lead-magnet-card-item { font-size: 0.95rem; font-weight: 600; padding: 0.6rem 0; border-top: 1px solid rgba(39,51,51,0.1); }
+@media (min-width: 768px) {
+  .lead-magnet-section { padding: 5.5rem 0; }
+  .lead-magnet-grid { flex-direction: row; align-items: center; gap: 4rem; }
+  .lead-magnet-copy { flex: 1.1; }
+  .lead-magnet-media { flex: 1; }
+  .lead-magnet-form-wide { flex-direction: row; }
+  .lead-magnet-form-wide input[type="email"] { flex: 1; }
+}
+
 /* ============================================ TRUSTED / LOGO WALL */
 .trusted { padding: 2.5rem 0 3.5rem; }
 .trusted-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.4rem; margin-top: 1rem; }
@@ -411,8 +432,9 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 @media (min-width: 768px) { .quiz { padding: 6rem 0; } .quiz-box { padding: 2.75rem; } }
 
 /* ============================================ CLOSING CTA */
-.closing-cta { background: var(--terracotta); color: var(--off-white); padding: 5rem 0; text-align: center; position: relative; overflow: hidden; }
-.closing-compass { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 380px; height: 380px; opacity: 0.1; pointer-events: none; }
+.closing-cta { background: linear-gradient(135deg, var(--terracotta) 0%, #8f5540 100%); color: var(--off-white); padding: 5rem 0; text-align: center; position: relative; overflow: hidden; }
+.closing-cta::before { content: ""; position: absolute; inset: 0; background-image: url('assets/patterns/texture-marble.webp'); background-size: cover; background-position: center; mix-blend-mode: soft-light; opacity: 0.5; pointer-events: none; }
+.closing-compass { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 380px; height: 380px; opacity: 0.14; pointer-events: none; }
 .closing-compass img { width: 100%; height: 100%; object-fit: contain; }
 .closing-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
 .closing-cta h2 { font-size: clamp(2.2rem, 8vw, 4rem); color: var(--off-white); margin-top: 0.75rem; }
@@ -443,6 +465,26 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 @media (min-width: 768px) {
   .closing-cta { padding: 8rem 0; }
   .closing-compass { width: 520px; height: 520px; right: -60px; opacity: 0.12; }
+}
+
+/* ============================================ SECTION TEXTURE (subtle marble overlay) */
+.who, .work, .video-showcase, .services, .quiz {
+  position: relative;
+}
+.who::before, .work::before, .video-showcase::before, .services::before, .quiz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/patterns/texture-marble.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+.who > .wrap, .work > .wrap, .video-showcase > .wrap, .services > .wrap, .quiz > .wrap {
+  position: relative;
+  z-index: 1;
 }
 
 /* ============================================ MISSING-PIECE SCROLL TRACKER */

@@ -573,6 +573,18 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .piece-tracker-label { font-size: 0.68rem; }
 }
 
+/* ============================================ LEGAL (Terms & Privacy) */
+.legal-updated { font-size: 0.85rem; color: var(--sage-stone); margin-top: 0.75rem; font-style: italic; font-family: var(--font-h); }
+.legal { background: var(--off-white); padding: 2.5rem 0 5rem; }
+.legal-wrap { max-width: 680px; }
+.legal-disclaimer { background: var(--off-white-warm); border-left: 3px solid var(--terracotta); border-radius: 4px; padding: 1.25rem 1.5rem; font-size: 0.92rem; color: #4a5552; line-height: 1.65; font-style: italic; margin-bottom: 2.5rem; }
+.legal h2 { font-size: clamp(1.5rem, 4.5vw, 1.9rem); color: var(--deep-harbor); margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(39,51,51,0.12); }
+.legal h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+.legal h3 { font-size: 1.1rem; color: var(--terracotta); margin-top: 1.75rem; }
+.legal p { font-size: 0.97rem; color: #4a5552; line-height: 1.7; margin-top: 0.65rem; }
+.legal-link { color: var(--terracotta); font-weight: 600; text-decoration: underline; }
+@media (min-width: 768px) { .legal { padding: 3rem 0 6rem; } }
+
 /* ============================================ FOOTER */
 .site-footer { background: #1a2424; color: var(--off-white); padding: 3.5rem 0 2rem; font-family: var(--font-b); position: relative; overflow: hidden; }
 .footer-pattern { position: absolute; inset: 0; pointer-events: none; opacity: 0.04; }

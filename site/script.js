@@ -2,7 +2,7 @@
 // Google Apps Script Web App (see /Lead Automation/Code.gs for setup).
 // Swap in your real Web App URL after deploying — it currently points at
 // a placeholder, so submissions won't go anywhere until that's done.
-const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbwxmM4E7ozwZp4ccmc52ghtQ8nsPf-ju-MkrYb6CefOEuj2FJkko6V5ThbCHl2mXrGI/exec";
+const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbwc5_Lt13blZpfAhlq7dVpipWiBACy0MgEoc7rxVfBjkJFFYmH89wqNprQOru4XEWVs/exec";
 
 const PUZZLE_PATH = "M9,7 H14 C14,3 22,3 22,7 H27 A2,2 0 0 1 29,9 V14 C33,14 33,22 29,22 V27 A2,2 0 0 1 27,29 H9 A2,2 0 0 1 7,27 V9 A2,2 0 0 1 9,7 Z";
 

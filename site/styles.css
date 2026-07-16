@@ -117,10 +117,10 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
 
 @keyframes sticker-float {
-  0%, 100% { transform: rotate(4deg) translateY(0); }
-  50% { transform: rotate(6deg) translateY(-7px); }
+  0%, 100% { transform: rotate(3deg); }
+  50% { transform: rotate(7deg); }
 }
-.hero-sticker { display: inline-block; position: relative; z-index: 1; margin: 0 1.25rem 2rem; background: rgba(227,220,210,0.12); color: var(--off-white); border: 1px solid rgba(227,220,210,0.35); padding: 0.6rem 1rem; border-radius: 20px; font-family: var(--font-h); font-size: 0.82rem; font-weight: 600; line-height: 1.4; }
+.hero-sticker { display: none; }
 
 @media (min-width: 768px) {
   .hero { min-height: 640px; display: flex; align-items: center; }
@@ -130,7 +130,7 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .hero-inner { width: 100%; padding: 5rem 0; }
   .hero-content { max-width: 480px; padding: 0; }
   .hero h1 { font-size: clamp(2.8rem, 4.5vw, 3.8rem); }
-  .hero-sticker { display: block; position: absolute; z-index: 3; bottom: 2rem; right: 2rem; margin: 0; border: none; background: var(--off-white); color: var(--deep-harbor); padding: 1rem 1.25rem; border-radius: 2px; box-shadow: 0 16px 32px rgba(0,0,0,0.4); font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; line-height: 1.35; max-width: 175px; animation: sticker-float 4.5s ease-in-out infinite; }
+  .hero-sticker { display: block; position: absolute; z-index: 3; bottom: 2rem; right: 2rem; margin: 0; border: none; background: var(--off-white); color: var(--deep-harbor); padding: 1rem 1.25rem; border-radius: 2px; box-shadow: 0 16px 32px rgba(0,0,0,0.4); font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; line-height: 1.35; max-width: 175px; transform-origin: top center; animation: sticker-float 4.5s ease-in-out infinite; }
   .hero-sticker::before { content: ""; position: absolute; top: -13px; left: 50%; transform: translateX(-50%) rotate(6deg); width: 58px; height: 21px; background: rgba(216,182,90,0.78); box-shadow: 0 2px 5px rgba(0,0,0,0.18); }
   @media (hover:hover) { .hero-sticker:hover { animation-play-state: paused; transform: rotate(0deg); } }
 }
@@ -255,7 +255,7 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .case-gallery { background: var(--off-white-warm); padding: 2rem 0 3rem; }
 .case-gallery-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
 .case-gallery-item { border-radius: 8px; overflow: hidden; box-shadow: 0 12px 28px rgba(39,51,51,0.14); }
-.case-gallery-item img { width: 100%; height: 240px; object-fit: cover; display: block; }
+.case-gallery-item img { width: 100%; height: 280px; object-fit: cover; display: block; }
 .case-gallery-cap { font-size: 0.85rem; color: var(--sage-stone); margin-top: 0.65rem; font-style: italic; font-family: var(--font-h); }
 
 /* ============================================ CASE DEMO VIDEO (scroll-through) — dark */
@@ -286,6 +286,7 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .case-hero { padding: 4.5rem 0 3.5rem; }
   .case-hero-media img { height: 420px; }
   .case-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .case-gallery-item img { height: 320px; }
   .case-outcome { padding: 5rem 0; }
   .case-testimonial { padding: 1.5rem 0 5rem; }
   .case-testimonial-card { padding: 2.75rem 3rem; }
@@ -309,8 +310,9 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .lead-magnet-grid { flex-direction: row; align-items: center; gap: 4rem; }
   .lead-magnet-copy { flex: 1.1; }
   .lead-magnet-media { flex: 1; }
-  .lead-magnet-form-wide { flex-direction: row; }
-  .lead-magnet-form-wide input[type="email"] { flex: 1; }
+  .lead-magnet-form-wide { flex-direction: row; flex-wrap: wrap; }
+  .lead-magnet-form-wide input[type="email"] { flex: 1 1 240px; min-width: 240px; }
+  .lead-magnet-form-wide button { flex-shrink: 0; }
 }
 
 /* ============================================ TRUSTED / LOGO WALL */
@@ -331,7 +333,6 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 /* ============================================ QUIET STAT / SPEED */
 .stat-block { background: var(--deep-harbor); color: var(--off-white); padding: 4.5rem 0 4rem; clip-path: polygon(0 18px, 8% 0, 100% 0, 100% 100%, 0 100%); margin-top: -18px; position: relative; z-index: 1; }
 .stat-num-badge { position: relative; display: inline-flex; align-items: center; justify-content: center; width: clamp(120px, 32vw, 170px); height: clamp(120px, 32vw, 170px); border-radius: 50%; border: 2px dashed rgba(216,182,90,0.55); }
-.stat-num-icon { position: absolute; width: 44%; height: 44%; opacity: 0.18; pointer-events: none; }
 .stat-num { position: relative; z-index: 1; font-family: var(--font-h); font-size: clamp(3rem, 12vw, 4.4rem); line-height: 1; color: var(--off-white); margin: 0; }
 .stat-label { font-size: 1rem; color: var(--drift-sand); max-width: 30ch; line-height: 1.55; margin-top: 0.5rem; }
 .stat-detail { margin-top: 2.5rem; display: flex; flex-direction: column; }
@@ -568,19 +569,28 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   z-index: 1;
 }
 
-/* ============================================ MISSING-PIECE SCROLL TRACKER — quiet brand accent, not a control */
-.piece-tracker { position: fixed; right: 1rem; bottom: 1rem; z-index: 150; display: flex; flex-direction: column; align-items: center; gap: 0.35rem; pointer-events: none; }
-.piece-tracker-ring { width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center; background: rgba(227,220,210,0.92); backdrop-filter: blur(2px); transition: background 0.4s var(--ease); box-shadow: 0 6px 18px rgba(39,51,51,0.15); }
-.piece-tracker-ring.is-complete { background: rgba(94,138,113,0.2); }
-.piece-tracker-icon { width: 24px; height: 24px; }
-.piece-tracker-icon .pt-outline { fill: none; stroke: var(--terracotta); stroke-width: 1.5; opacity: 0.5; }
-.piece-tracker-icon .pt-fill { fill: var(--terracotta); opacity: var(--piece-progress, 0); transition: opacity 0.15s linear, fill 0.4s var(--ease); }
-.piece-tracker-ring.is-complete .piece-tracker-icon .pt-fill { fill: var(--juniper); }
-.piece-tracker-label { font-family: var(--font-h); font-style: italic; font-size: 0.62rem; color: var(--deep-harbor); background: var(--off-white); padding: 0.15rem 0.5rem; border-radius: 20px; box-shadow: 0 4px 10px rgba(39,51,51,0.12); white-space: nowrap; }
+/* ============================================ MISSING-PIECE SCROLL TRACKER — quiet brand accent, not a control.
+   No badge/box — just the piece itself, faint outline at rest, filling in
+   gold as you scroll, with a small settle-pop when it's whole. */
+@keyframes pt-pop { 0% { transform: scale(1) rotate(0deg); } 45% { transform: scale(1.3) rotate(0deg); } 70% { transform: scale(0.92) rotate(0deg); } 100% { transform: scale(1) rotate(0deg); } }
+@keyframes pt-search { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+.piece-tracker { position: fixed; right: 1rem; bottom: 1rem; z-index: 150; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; pointer-events: none; }
+.piece-tracker-ring { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+.piece-tracker-icon { width: 26px; height: 26px; filter: drop-shadow(0 2px 5px rgba(39,51,51,0.35)); transform-origin: 80% 80%; }
+.piece-tracker-ring:not(.is-complete) .piece-tracker-icon { animation: pt-search 3.5s ease-in-out infinite; }
+.piece-tracker-ring.is-complete .piece-tracker-icon { animation: pt-pop 0.55s var(--ease); }
+.piece-tracker-icon .pt-lens { fill: none; stroke: var(--terracotta); stroke-width: 1.7; opacity: 0.65; }
+.piece-tracker-icon .pt-handle { stroke: var(--terracotta); stroke-width: 1.7; stroke-linecap: round; opacity: 0.65; }
+.piece-tracker-icon .pt-outline { fill: none; stroke: var(--terracotta); stroke-width: 1.6; opacity: 0.6; }
+.piece-tracker-icon .pt-fill { fill: var(--gold); opacity: var(--piece-progress, 0); transition: opacity 0.15s linear, fill 0.4s var(--ease); }
+.piece-tracker-ring.is-complete .piece-tracker-icon .pt-fill { fill: var(--juniper); opacity: 1; }
+.piece-tracker-ring.is-complete .piece-tracker-icon .pt-lens,
+.piece-tracker-ring.is-complete .piece-tracker-icon .pt-handle { stroke: var(--juniper); opacity: 0.85; }
+.piece-tracker-label { font-family: var(--font-h); font-style: italic; font-size: 0.62rem; color: var(--deep-harbor); background: var(--off-white); padding: 0.15rem 0.5rem; border-radius: 20px; box-shadow: 0 4px 10px rgba(39,51,51,0.12); white-space: nowrap; opacity: 0.85; }
 @media (min-width: 768px) {
   .piece-tracker { right: 1.5rem; bottom: 1.5rem; }
-  .piece-tracker-ring { width: 48px; height: 48px; border-radius: 13px; }
-  .piece-tracker-icon { width: 29px; height: 29px; }
+  .piece-tracker-ring { width: 48px; height: 48px; }
+  .piece-tracker-icon { width: 32px; height: 32px; }
   .piece-tracker-label { font-size: 0.68rem; }
 }
 
@@ -607,7 +617,7 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .footer-lead-form input[type="email"] { font-family: var(--font-b); font-size: 0.9rem; color: var(--off-white); background: rgba(227,220,210,0.08); border: 1.5px solid rgba(227,220,210,0.3); border-radius: 3px; padding: 0.65rem 0.85rem; width: 100%; }
 .footer-lead-form input[type="email"]::placeholder { color: rgba(227,220,210,0.5); }
 .footer-lead-form input[type="email"]:focus { outline: none; border-color: var(--gold); }
-.footer-lead-btn { font-size: 0.7rem; padding: 0.65rem 1.1rem; align-self: flex-start; }
+.footer-lead-btn { font-size: 0.7rem; padding: 0.65rem 1.1rem; width: 100%; text-align: center; }
 .footer-logo { height: 60px; width: auto; }
 .footer-tagline { font-family: var(--font-h); font-style: italic; font-size: 0.95rem; color: var(--drift-sand); margin-top: 1.25rem; line-height: 1.5; }
 .footer-heading { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-stone); margin-bottom: 1rem; }

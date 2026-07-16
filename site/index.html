@@ -20,7 +20,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
 
@@ -28,7 +28,7 @@
 <header class="site-header">
   <div class="nav-inner">
     <a href="/" class="logo-lockup" aria-label="Sought After Co. home">
-      <img src="assets/logos/logo-horizontal-white.svg" alt="Sought After Co." class="logo-img">
+      <img src="assets/logos/logo-horizontal-color.svg" alt="Sought After Co." class="logo-img">
     </a>
     <nav class="desktop-nav" aria-label="Primary">
       <a href="#quiz">Quiz</a>
@@ -82,7 +82,10 @@
 <!-- ===================== QUIET STAT / SPEED ===================== -->
 <section class="stat-block">
   <div class="wrap">
-    <p class="stat-num reveal">1</p>
+    <div class="stat-num-badge reveal">
+      <img src="assets/icons/compass-white.svg" alt="" class="stat-num-icon">
+      <span class="stat-num">1</span>
+    </div>
     <p class="stat-label reveal">week from first call to a live brand and website — built, launched, and yours.</p>
     <div class="stat-detail reveal">
       <div class="stat-row"><span class="stat-wk">Days 1–2</span><span class="stat-desc">Strategy call, brand voice &amp; positioning</span></div>
@@ -243,6 +246,7 @@
         <span class="case-teaser-cat">Food &amp; Beverage · Winery</span>
         <h3>Ori Wines</h3>
         <p class="case-teaser-hook">A full identity and launch site, ready before Ori's very first bottle shipped.</p>
+        <span class="case-teaser-cta">Learn More →</span>
       </a>
 
       <a href="jessies-coffee.html" class="case-teaser reveal">
@@ -253,6 +257,7 @@
         <span class="case-teaser-cat">Startup Launch · Food &amp; Bev</span>
         <h3>Jessie's.</h3>
         <p class="case-teaser-hook">A name and a notebook of ideas, turned into a full brand, a site, and a working lead pipeline in about a week.</p>
+        <span class="case-teaser-cta">Learn More →</span>
       </a>
 
       <a href="double-joy-cookies.html" class="case-teaser reveal">
@@ -263,6 +268,7 @@
         <span class="case-teaser-cat">Small Business · Food &amp; Bev</span>
         <h3>Double Joy Cookies</h3>
         <p class="case-teaser-hook">A kitchen-table cookie business, turned into a site that takes and runs its own orders.</p>
+        <span class="case-teaser-cta">Learn More →</span>
       </a>
 
       <a href="pinnacle-resort.html" class="case-teaser reveal">
@@ -273,6 +279,7 @@
         <span class="case-teaser-cat">Hospitality · Vacation Rentals</span>
         <h3>Pinnacle Resort</h3>
         <p class="case-teaser-hook">Landing pages and brand voice that turned scenic listings into consistent bookings.</p>
+        <span class="case-teaser-cta">Learn More →</span>
       </a>
 
     </div>
@@ -352,7 +359,7 @@
       <img src="assets/work/dudela/Phone-focus.JPEG" alt="John Mulhern, founder of Sought After Co., recording the Dudela podcast">
     </div>
     <div class="founder-body reveal">
-      <p class="eyebrow eyebrow-dark">Who's Behind This</p>
+      <p class="eyebrow eyebrow-dark">Meet the Founder</p>
       <h2>Meet John.</h2>
       <p>At the core, John is a storyteller. Every business he's worked with — enterprise tech, in-home sales, ministry, coaching, his own startup — taught him the same thing: people don't buy the work, they buy the story around it. The brands that win aren't the ones with the biggest budget. They're the ones who found the story that actually resonates with the people they're trying to reach, and told it clearly, everywhere.</p>
       <p>That's the job at Sought After — not just a logo or a template, but figuring out what your story actually is and building a brand and site that tell it well. Jessie came in asking for a logo and left with a whole go-to-market story that changed who she sells to. <a href="jessies-coffee.html" style="color:var(--gold); text-decoration:underline; font-weight:600;">Read how that happened →</a></p>
@@ -620,11 +627,14 @@
 
 <div class="piece-tracker" aria-hidden="true">
   <div class="piece-tracker-ring">
-    <div class="piece-tracker-fill"></div>
+    <svg class="piece-tracker-icon" viewBox="0 0 36 36">
+      <path class="pt-outline" d="M9,7 H14 C14,3 22,3 22,7 H27 A2,2 0 0 1 29,9 V14 C33,14 33,22 29,22 V27 A2,2 0 0 1 27,29 H9 A2,2 0 0 1 7,27 V9 A2,2 0 0 1 9,7 Z"/>
+      <path class="pt-fill" d="M9,7 H14 C14,3 22,3 22,7 H27 A2,2 0 0 1 29,9 V14 C33,14 33,22 29,22 V27 A2,2 0 0 1 27,29 H9 A2,2 0 0 1 7,27 V9 A2,2 0 0 1 9,7 Z"/>
+    </svg>
   </div>
   <p class="piece-tracker-label">Missing Piece</p>
 </div>
 
-<script src="script.js?v=3"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>

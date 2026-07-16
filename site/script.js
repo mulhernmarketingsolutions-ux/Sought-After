@@ -4,10 +4,12 @@
 // a placeholder, so submissions won't go anywhere until that's done.
 const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbwxmM4E7ozwZp4ccmc52ghtQ8nsPf-ju-MkrYb6CefOEuj2FJkko6V5ThbCHl2mXrGI/exec";
 
+const PUZZLE_PATH = "M9,7 H14 C14,3 22,3 22,7 H27 A2,2 0 0 1 29,9 V14 C33,14 33,22 29,22 V27 A2,2 0 0 1 27,29 H9 A2,2 0 0 1 7,27 V9 A2,2 0 0 1 9,7 Z";
+
 function showFormSuccess(form, successMsg) {
   const wrap = document.createElement('div');
   wrap.className = 'form-success';
-  wrap.innerHTML = '<span class="form-success-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="form-success-text"></p>';
+  wrap.innerHTML = `<span class="form-success-check" aria-hidden="true"><svg viewBox="0 0 36 36"><path class="fs-slot" d="${PUZZLE_PATH}"/><path class="fs-piece" d="${PUZZLE_PATH}"/></svg></span><p class="form-success-text"></p>`;
   wrap.querySelector('.form-success-text').textContent = successMsg;
   form.style.display = 'none';
   form.insertAdjacentElement('afterend', wrap);
@@ -50,12 +52,12 @@ function wireForm(form, msgEl, successMsg) {
   });
 }
 
-wireForm(document.getElementById('inquiry-form'), document.getElementById('inquiry-msg'), "Got it — one piece closer. We'll follow up within a couple of days.");
+wireForm(document.getElementById('inquiry-form'), document.getElementById('inquiry-msg'), "Found it. We'll follow up within a couple of days.");
 
 // Every checklist signup form on the page (footer + the dedicated section)
 // shares the same behavior — wire each one to its own adjacent status line.
 document.querySelectorAll('.lead-magnet-form').forEach((form) => {
-  wireForm(form, form.nextElementSibling, "Sent! Check your inbox — the checklist's on its way.");
+  wireForm(form, form.nextElementSibling, "Found it — check your inbox for the checklist.");
 });
 
 // Missing-piece scroll tracker — the dashed circle fills in as you scroll

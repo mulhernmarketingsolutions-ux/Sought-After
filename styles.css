@@ -402,6 +402,21 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 @media (min-width: 768px) { .services { padding: 6rem 0; } .tiers { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 960px) { .tiers--three { grid-template-columns: repeat(3, 1fr); } .tiers--three .tier { padding: 1.75rem; } }
 
+/* ============================================ JOURNEY (problem-based path, replaces price tiers on homepage) */
+.journey-sub { color: rgba(227,220,210,0.72); font-size: 1.05rem; line-height: 1.6; margin-top: 0.85rem; max-width: 620px; }
+.journey-path { position: relative; margin-top: 1.5rem; }
+.journey-step { display: flex; gap: 1.25rem; padding: 1.6rem 0; position: relative; }
+.journey-step:not(:last-child)::after { content: ""; position: absolute; left: 23px; top: 62px; bottom: -6px; width: 1px; background: rgba(216,182,90,0.25); }
+.journey-step-marker { flex: 0 0 48px; width: 48px; height: 48px; border-radius: 50%; background: rgba(216,182,90,0.1); border: 1.5px solid rgba(216,182,90,0.5); display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+.journey-step-marker span { font-family: var(--font-b); font-weight: 800; font-size: 0.92rem; letter-spacing: 0.02em; color: var(--gold); }
+.journey-step-body h3 { color: var(--off-white); font-size: 1.2rem; font-style: italic; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.35; }
+.journey-step-body p { color: rgba(227,220,210,0.82); font-size: 0.96rem; line-height: 1.65; margin-bottom: 0.65rem; max-width: 60ch; }
+.journey-step-link { color: var(--gold); font-weight: 600; font-size: 0.88rem; text-decoration: underline; text-underline-offset: 2px; }
+.journey-close { margin-top: 2.25rem; padding-top: 2.25rem; border-top: 1px solid rgba(227,220,210,0.14); text-align: center; }
+.journey-close p { color: rgba(227,220,210,0.72); margin-bottom: 1.35rem; font-size: 0.98rem; }
+.journey-close p a { color: var(--gold); text-decoration: underline; }
+@media (min-width: 768px) { .journey-step { padding: 2rem 0; } .journey-step-body h3 { font-size: 1.35rem; } }
+
 /* ============================================ FAQ */
 .faq { background: var(--off-white-warm); padding: 4rem 0; border-top: 1px solid rgba(39,51,51,0.07); }
 .faq-header { margin-bottom: 2.5rem; }
@@ -469,6 +484,8 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .quiz-result p { font-size: 1rem; color: #4a5552; line-height: 1.65; margin-top: 1rem; max-width: 46ch; margin-left: auto; margin-right: auto; }
 .quiz-result .btn { margin-top: 1.5rem; }
 .quiz-retake { display: block; margin: 1rem auto 0; background: none; border: none; font-family: var(--font-b); font-size: 0.82rem; color: var(--sage-stone); text-decoration: underline; cursor: pointer; }
+.quiz-result-advice { font-style: italic; font-size: 0.92rem !important; color: var(--terracotta) !important; }
+.quiz-result-fit { font-weight: 600; }
 @media (min-width: 768px) { .quiz { padding: 6rem 0; } .quiz-box { padding: 2.75rem; } }
 
 /* ============================================ CLOSING CTA */

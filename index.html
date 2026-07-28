@@ -20,7 +20,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
-<link rel="stylesheet" href="styles.css?v=17">
+<link rel="stylesheet" href="styles.css?v=18">
 </head>
 <body>
 
@@ -71,7 +71,7 @@
       <h1>Your brand has<br>a missing piece.</h1>
       <p class="hero-pivot">That's where we come in.</p>
       <div class="hero-ctas">
-        <a href="#services" class="btn btn-light">See Our Packages</a>
+        <a href="#services" class="btn btn-light">See How We Work</a>
         <a href="#contact" class="btn btn-ghost">Book a Free Brand Call →</a>
       </div>
     </div>
@@ -219,6 +219,8 @@
         <p class="quiz-q-num">Your Result</p>
         <h3 id="quiz-result-title"></h3>
         <p id="quiz-result-desc"></p>
+        <p class="quiz-result-advice" id="quiz-result-advice"></p>
+        <p class="quiz-result-fit" id="quiz-result-fit"></p>
         <a href="#contact" class="btn btn-dark" id="quiz-result-cta">Book a Free Brand Call →</a>
         <button type="button" class="quiz-retake" id="quiz-retake">Retake the quiz</button>
       </div>
@@ -366,81 +368,60 @@
   </div>
 </section>
 
-<!-- ===================== SERVICES ===================== -->
-<section class="services" id="services">
+<!-- ===================== SERVICES / JOURNEY ===================== -->
+<section class="services journey" id="services">
   <div class="wrap">
     <div class="services-header reveal">
-      <p class="eyebrow eyebrow-dark">What We Offer</p>
-      <h2>Pick your starting point.</h2>
+      <p class="eyebrow eyebrow-dark">How We Work Together</p>
+      <h2>There's no package that fits everyone. There's a path — and yours starts wherever you are.</h2>
+      <p class="journey-sub reveal">Every project gets scoped on a call, not picked off a list below. Here's the shape most journeys take.</p>
     </div>
-    <div class="tiers tiers--three">
 
-      <div class="tier tier--audit reveal">
-        <div class="tier-badge-row">
-          <span class="tier-badge tier-badge--deal">68% OFF <span class="tier-badge-expiry">· Ends Aug 1</span></span>
+    <div class="journey-path">
+
+      <div class="journey-step reveal">
+        <div class="journey-step-marker"><span>01</span></div>
+        <div class="journey-step-body">
+          <h3>"I don't actually know what's broken."</h3>
+          <p>Start with a real working session through your whole customer journey — site, socials, first impression, all of it. You leave with an honest, written roadmap: what's leaking, what's working, and what to fix first. No pressure to book anything after.</p>
+          <a href="#contact-form" class="journey-step-link">Reserve a diagnostic call →</a>
         </div>
-        <div class="tier-icon">
-          <img src="assets/icons/compass-sand.svg" alt="">
-        </div>
-        <div class="tier-header">
-          <span class="tier-label">Start Here</span>
-          <span class="tier-price"><span class="tier-price-was">$397</span> $127</span>
-        </div>
-        <h3>Brand Audit</h3>
-        <p class="tier-desc">Not sure what's actually broken? A 90-minute working session through your whole customer journey — you leave with a real roadmap, not a sales pitch.</p>
-        <ul class="tier-list">
-          <li>90-minute live working session</li>
-          <li>Full customer-journey walkthrough</li>
-          <li>Leaks &amp; gaps identified, in writing</li>
-          <li>A clear roadmap to take with you</li>
-        </ul>
-        <a href="#contact-form" class="btn btn-outline">Reserve Your Audit →</a>
       </div>
 
-      <div class="tier reveal">
-        <div class="tier-icon">
-          <img src="assets/icons/hammer-sand.svg" alt="">
+      <div class="journey-step reveal">
+        <div class="journey-step-marker"><span>02</span></div>
+        <div class="journey-step-body">
+          <h3>"The look still doesn't feel like me."</h3>
+          <p>Sometimes it's just the mark — a logo, colors, and fonts that finally hold together. Sometimes it's the whole identity system. Either way, this is where we build (or rebuild) the visual foundation everything else sits on.</p>
+          <a href="#contact-form" class="journey-step-link">Talk about your identity →</a>
         </div>
-        <div class="tier-header">
-          <span class="tier-label">The Sweet Spot</span>
-          <span class="tier-price">$3,250</span>
-        </div>
-        <h3>Brand Refresh + Website</h3>
-        <p class="tier-desc">You've already got something — it just doesn't match where the business is now. A refreshed identity and a new website, built without the back-and-forth dragging on for months.</p>
-        <ul class="tier-list">
-          <li>Brand refresh — voice, visual identity, positioning</li>
-          <li>Custom website, built &amp; launched</li>
-          <li>Marketing kickstart — templates &amp; starter content</li>
-          <li>Bio &amp; caption scripts</li>
-        </ul>
-        <a href="#contact-form" class="btn btn-outline">Book a Free Brand Call →</a>
       </div>
 
-      <div class="tier tier--featured reveal">
-        <div class="tier-badge-row">
-          <span class="tier-badge">Most Popular</span>
+      <div class="journey-step reveal">
+        <div class="journey-step-marker"><span>03</span></div>
+        <div class="journey-step-body">
+          <h3>"I've got a real business — it just doesn't have a home online yet."</h3>
+          <p>A refreshed identity and a custom website, built around who you actually are now, not who you were when you started. No months of back-and-forth — a build that matches the pace you already run your business at.</p>
+          <a href="#contact-form" class="journey-step-link">Talk about a rebuild →</a>
         </div>
-        <div class="tier-icon">
-          <img src="assets/icons/Mountain2-white.svg" alt="">
+      </div>
+
+      <div class="journey-step reveal">
+        <div class="journey-step-marker"><span>04</span></div>
+        <div class="journey-step-body">
+          <h3>"I'm starting at zero and want it handled."</h3>
+          <p>Full brand build, new website, and a system for actually getting clients from it — built alongside you with weekly calls, not handed off and disappeared on.</p>
+          <a href="#contact-form" class="journey-step-link">Talk about starting from scratch →</a>
         </div>
-        <div class="tier-header">
-          <span class="tier-label">Go All In</span>
-          <span class="tier-price">$7,985</span>
-        </div>
-        <h3>Full System</h3>
-        <p class="tier-desc">Starting from zero, or ready to actually invest in growth? Full brand build, new website, and a system for getting clients — built alongside you.</p>
-        <ul class="tier-list">
-          <li>New logo &amp; full brand identity, built from scratch</li>
-          <li>Custom website, built &amp; launched</li>
-          <li>Lead-gen strategy &amp; a built client-acquisition system</li>
-          <li>Weekly calls throughout the build</li>
-          <li>Social media starter kit — 30 premade posts</li>
-          <li>Ongoing site management &amp; content calendar</li>
-        </ul>
-        <a href="#contact-form" class="btn btn-light">Book a Free Brand Call →</a>
       </div>
 
     </div>
+
+    <div class="journey-close reveal">
+      <p>Not sure which one is you? <a href="#quiz">Take the 90-second quiz ↑</a> — or just tell us where you're at.</p>
+      <a href="#contact-form" class="btn btn-light btn-lg">Send an Inquiry →</a>
+    </div>
+
   </div>
 </section>
 
@@ -533,7 +514,7 @@
     <h2>Stop being overlooked.</h2>
     <p>If your work is already good, your brand shouldn't be the thing holding you back. Let's find the missing piece.</p>
 
-    <div class="contact-toggle" role="tablist" aria-label="Ways to get in touch">
+    <div class="contact-toggle" id="contact-form" role="tablist" aria-label="Ways to get in touch">
       <button type="button" class="contact-toggle-btn is-active" data-target="panel-call" role="tab" aria-selected="true">Book a Call</button>
       <button type="button" class="contact-toggle-btn" data-target="panel-form" role="tab" aria-selected="false">Send an Inquiry</button>
     </div>
@@ -638,6 +619,6 @@
   <p class="piece-tracker-label">Missing Piece</p>
 </div>
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>

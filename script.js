@@ -116,25 +116,35 @@ if (quizBox) {
   const resultPanel = document.getElementById('quiz-result');
   const resultTitle = document.getElementById('quiz-result-title');
   const resultDesc = document.getElementById('quiz-result-desc');
+  const resultAdvice = document.getElementById('quiz-result-advice');
+  const resultFit = document.getElementById('quiz-result-fit');
   const retakeBtn = document.getElementById('quiz-retake');
   const scores = { consistency: 0, presence: 0, positioning: 0, momentum: 0 };
 
   const results = {
     consistency: {
       title: 'Consistency',
-      desc: "Your brand says something a little different everywhere someone finds it — which quietly makes people trust it a little less each time. This isn't a taste problem, it's a system problem: one voice, one look, everywhere."
+      desc: "Your brand says something a little different everywhere someone finds it — which quietly makes people trust it a little less each time. This isn't a taste problem, it's a system problem: one voice, one look, everywhere.",
+      advice: "Try this: pull up your website, your Instagram, and your Google listing side by side. If they don't look like the same business at a glance, that's the actual gap.",
+      fit: "That usually points to a brand refresh — sometimes just the visual identity, sometimes the identity plus the website that carries it."
     },
     presence: {
       title: 'Presence',
-      desc: "People already like your work enough to talk about it — there just isn't a real home to send them to yet. Word of mouth can only carry a business so far without something solid to land on."
+      desc: "People already like your work enough to talk about it — there just isn't a real home to send them to yet. Word of mouth can only carry a business so far without something solid to land on.",
+      advice: "Try this: next time someone asks for your info, notice what you actually send them. If it's a screenshot, a DM, or \"just search my name,\" that's the gap.",
+      fit: "That usually points to getting a real site built — the thing referrals can actually land on."
     },
     positioning: {
       title: 'Positioning',
-      desc: "Once people actually see the work, they're surprised. That means your brand is underselling you before you even open your mouth — and you're likely leaving money on the table because of it."
+      desc: "Once people actually see the work, they're surprised. That means your brand is underselling you before you even open your mouth — and you're likely leaving money on the table because of it.",
+      advice: "Try this: ask your last three clients what almost made them not reach out. Their answer is usually exactly what your brand isn't saying loudly enough.",
+      fit: "That usually points to starting with a diagnostic call — figuring out exactly what's being undersold before rebuilding around it."
     },
     momentum: {
       title: 'Momentum',
-      desc: "You already know exactly what needs to happen. What's missing isn't clarity — it's a deadline that actually holds."
+      desc: "You already know exactly what needs to happen. What's missing isn't clarity — it's a deadline that actually holds.",
+      advice: "Try this: notice how many times \"I'll get to the website\" has shown up on your to-do list this year. That number is the real cost of not having a deadline.",
+      fit: "That usually points to just starting — a scoped project with a real timeline, built alongside you instead of squeezed into leftover time."
     }
   };
 
@@ -152,6 +162,8 @@ if (quizBox) {
           const winner = Object.keys(scores).reduce((a, b) => scores[b] > scores[a] ? b : a);
           resultTitle.textContent = 'Your missing piece is ' + results[winner].title + '.';
           resultDesc.textContent = results[winner].desc;
+          if (resultAdvice) resultAdvice.textContent = results[winner].advice;
+          if (resultFit) resultFit.textContent = results[winner].fit;
           questions.forEach(qq => qq.classList.remove('is-active'));
           resultPanel.classList.add('is-active');
         }

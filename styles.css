@@ -407,6 +407,14 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .tier-case-text { font-size: 0.82rem; font-weight: 700; color: var(--terracotta); }
 .tier--featured .tier-case-text { color: var(--gold); }
 
+/* Value-stack breakdown (Full Build tier, example-projects.html) */
+.tier-list--value li { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
+.tier-value-price { flex-shrink: 0; font-weight: 600; color: var(--sage-stone); font-variant-numeric: tabular-nums; }
+.tier-value-total { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.85rem; color: var(--sage-stone); padding-top: 0.75rem; margin-top: 0.25rem; border-top: 1px dashed rgba(74,85,82,0.25); }
+.tier-value-total-was { text-decoration: line-through; font-variant-numeric: tabular-nums; }
+.tier-value-total--final { border-top: none; padding-top: 0.3rem; margin-top: 0; font-size: 1.05rem; font-weight: 800; color: var(--deep-harbor); }
+.tier-value-total--final span:last-child { font-variant-numeric: tabular-nums; }
+
 @media (min-width: 768px) { .services { padding: 6rem 0; } .tiers { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 960px) { .tiers--three { grid-template-columns: repeat(3, 1fr); } .tiers--three .tier { padding: 1.75rem; } }
 

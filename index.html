@@ -20,7 +20,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
-<link rel="stylesheet" href="styles.css?v=22">
+<link rel="stylesheet" href="styles.css?v=23">
 </head>
 <body>
 
@@ -562,18 +562,9 @@
     <h2>Stop being overlooked.</h2>
     <p>If your work is already good, your brand shouldn't be the thing holding you back. Let's find the missing piece.</p>
 
-    <div class="contact-toggle" id="contact-form" role="tablist" aria-label="Ways to get in touch">
-      <button type="button" class="contact-toggle-btn is-active" data-target="panel-call" role="tab" aria-selected="true">Book a Call</button>
-      <button type="button" class="contact-toggle-btn" data-target="panel-form" role="tab" aria-selected="false">Send an Inquiry</button>
-    </div>
-
-    <div class="contact-panel is-active" id="panel-call" role="tabpanel">
-      <p class="contact-panel-note">Free, no pressure, 30 minutes.</p>
-      <a href="https://calendar.app.google/8jDwpEgbE2kSfYRR7" target="_blank" rel="noopener" class="btn btn-light btn-lg">Grab a Time →</a>
-    </div>
-
-    <div class="contact-panel" id="panel-form" role="tabpanel">
+    <div class="contact-panel is-active" id="contact-form">
       <p class="contact-panel-note">Every project gets scoped on a quick call — these are starting points, not a fixed menu. Tell us where you're at and we'll figure out the right fit together.</p>
+      <p class="contact-panel-note" style="margin-top:0.5rem;">Curious what it actually costs first? <a href="example-projects.html" style="color:var(--gold); text-decoration:underline;">See real project ranges →</a></p>
       <form class="contact-form" id="inquiry-form">
         <div class="form-row">
           <div class="form-field">
@@ -606,6 +597,7 @@
         <p class="form-status" id="inquiry-msg"></p>
         <button type="submit" class="btn btn-light btn-lg">Send Inquiry →</button>
       </form>
+      <p class="contact-panel-alt">Prefer to talk it through first? <a href="https://calendar.app.google/8jDwpEgbE2kSfYRR7" target="_blank" rel="noopener">Book a free call →</a></p>
     </div>
   </div>
 </section>
@@ -668,6 +660,6 @@
   <p class="piece-tracker-label">Missing Piece</p>
 </div>
 
-<script src="script.js?v=7"></script>
+<script src="script.js?v=8"></script>
 </body>
 </html>

@@ -206,27 +206,16 @@ if (quizBox) {
     });
   }
 }
-// Contact toggle: Book a Call vs Send an Inquiry
-const contactToggleBtns = document.querySelectorAll('.contact-toggle-btn');
-contactToggleBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    contactToggleBtns.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
-    btn.classList.add('is-active');
-    btn.setAttribute('aria-selected', 'true');
-    document.querySelectorAll('.contact-panel').forEach(p => p.classList.remove('is-active'));
-    const target = document.getElementById(btn.dataset.target);
-    if (target) target.classList.add('is-active');
-  });
-});
-
 // Deep link straight to the inquiry form — any link to #contact-form
-// switches the toggle to "Send an Inquiry" and scrolls it into view,
-// so the form isn't only reachable by scrolling to the bottom and clicking.
+// scrolls the form into view and focuses the first field, so it isn't
+// only reachable by scrolling to the bottom of the page.
 function openInquiryForm() {
-  const formToggle = document.querySelector('.contact-toggle-btn[data-target="panel-form"]');
-  if (formToggle) formToggle.click();
-  const section = document.getElementById('contact');
-  if (section) setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
+  const panel = document.getElementById('contact-form');
+  if (panel) {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const firstField = document.getElementById('inq-name');
+    if (firstField) setTimeout(() => firstField.focus({ preventScroll: true }), 400);
+  }
 }
 if (window.location.hash === '#contact-form') openInquiryForm();
 // Exact-match only — case study pages link to "index.html#contact-form"

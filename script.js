@@ -1,7 +1,10 @@
 // Lead capture — inquiry form + checklist signup, both submit to the same
 // Google Apps Script Web App (see /Lead Automation/Code.gs for setup).
-// Swap in your real Web App URL after deploying — it currently points at
-// a placeholder, so submissions won't go anywhere until that's done.
+// NOTE: fetch() below runs in no-cors mode (Apps Script doesn't return CORS
+// headers), so the response is opaque — a resolved fetch is always treated
+// as success even if the deployment is broken or stale. If forms ever seem
+// to "work" but leads never arrive, re-check the deployment URL below
+// against Code.gs's actual Web App URL before assuming it's a front-end bug.
 const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbwc5_Lt13blZpfAhlq7dVpipWiBACy0MgEoc7rxVfBjkJFFYmH89wqNprQOru4XEWVs/exec";
 
 const PUZZLE_PATH = "M9,7 H14 C14,3 22,3 22,7 H27 A2,2 0 0 1 29,9 V14 C33,14 33,22 29,22 V27 A2,2 0 0 1 27,29 H9 A2,2 0 0 1 7,27 V9 A2,2 0 0 1 9,7 Z";

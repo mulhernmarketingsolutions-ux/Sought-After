@@ -109,10 +109,17 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 document.querySelectorAll('.case-card').forEach(card => {
   card.addEventListener('click', () => card.classList.toggle('is-flipped'));
 });
-// Quiz: What's your brand actually missing?
+// Quiz: What's your brand actually missing? (branches after Q1 based on the answer given)
 const quizBox = document.getElementById('quiz-box');
 if (quizBox) {
-  const questions = Array.from(quizBox.querySelectorAll('.quiz-question'));
+  const q1 = quizBox.querySelector('.quiz-question[data-q="1"]');
+  const q2Variants = {};
+  quizBox.querySelectorAll('.quiz-question[data-q="2"]').forEach(el => {
+    q2Variants[el.dataset.branch] = el;
+  });
+  const q3 = quizBox.querySelector('.quiz-question[data-q="3"]');
+  const q4 = quizBox.querySelector('.quiz-question[data-q="4"]');
+  const allQuestions = [q1, ...Object.values(q2Variants), q3, q4];
   const resultPanel = document.getElementById('quiz-result');
   const resultTitle = document.getElementById('quiz-result-title');
   const resultDesc = document.getElementById('quiz-result-desc');
@@ -148,34 +155,51 @@ if (quizBox) {
     }
   };
 
-  function showQuestion(index) {
-    questions.forEach((q, i) => q.classList.toggle('is-active', i === index));
+  let flow = [q1];
+  let stepIndex = 0;
+
+  function showActive(el) {
+    allQuestions.forEach(q => q.classList.toggle('is-active', q === el));
   }
 
-  questions.forEach((q, index) => {
-    q.querySelectorAll('.quiz-option').forEach(btn => {
+  function finishQuiz() {
+    const winner = Object.keys(scores).reduce((a, b) => scores[b] > scores[a] ? b : a);
+    resultTitle.textContent = 'Your missing piece is ' + results[winner].title + '.';
+    resultDesc.textContent = results[winner].desc;
+    if (resultAdvice) resultAdvice.textContent = results[winner].advice;
+    if (resultFit) resultFit.textContent = results[winner].fit;
+    allQuestions.forEach(qq => qq.classList.remove('is-active'));
+    resultPanel.classList.add('is-active');
+  }
+
+  function bindQuestion(el) {
+    el.querySelectorAll('.quiz-option').forEach(btn => {
       btn.addEventListener('click', () => {
         scores[btn.dataset.tag]++;
-        if (index < questions.length - 1) {
-          showQuestion(index + 1);
+        // The first answer determines which Q2 variant comes next.
+        if (el === q1) {
+          const branch = btn.dataset.branch;
+          flow = [q1, q2Variants[branch], q3, q4];
+        }
+        stepIndex++;
+        if (stepIndex < flow.length) {
+          showActive(flow[stepIndex]);
         } else {
-          const winner = Object.keys(scores).reduce((a, b) => scores[b] > scores[a] ? b : a);
-          resultTitle.textContent = 'Your missing piece is ' + results[winner].title + '.';
-          resultDesc.textContent = results[winner].desc;
-          if (resultAdvice) resultAdvice.textContent = results[winner].advice;
-          if (resultFit) resultFit.textContent = results[winner].fit;
-          questions.forEach(qq => qq.classList.remove('is-active'));
-          resultPanel.classList.add('is-active');
+          finishQuiz();
         }
       });
     });
-  });
+  }
+
+  allQuestions.forEach(bindQuestion);
 
   if (retakeBtn) {
     retakeBtn.addEventListener('click', () => {
       Object.keys(scores).forEach(k => scores[k] = 0);
+      flow = [q1];
+      stepIndex = 0;
       resultPanel.classList.remove('is-active');
-      showQuestion(0);
+      showActive(q1);
     });
   }
 }

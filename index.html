@@ -175,32 +175,65 @@
         <p class="quiz-q-num">Question 1 of 4</p>
         <h3>When someone finds you for the first time, what do they usually see?</h3>
         <div class="quiz-options">
-          <button type="button" class="quiz-option" data-tag="presence">My Instagram — my website is outdated or barely exists</button>
-          <button type="button" class="quiz-option" data-tag="consistency">My website, but it doesn't really look like "me"</button>
-          <button type="button" class="quiz-option" data-tag="presence">Whatever a past client happens to share</button>
-          <button type="button" class="quiz-option" data-tag="consistency">Depends where they find me — it all looks a little different</button>
+          <button type="button" class="quiz-option" data-tag="presence" data-branch="noSite">My Instagram — my website is outdated or barely exists</button>
+          <button type="button" class="quiz-option" data-tag="consistency" data-branch="mismatch">My website, but it doesn't really look like "me"</button>
+          <button type="button" class="quiz-option" data-tag="presence" data-branch="wordOfMouth">Whatever a past client happens to share</button>
+          <button type="button" class="quiz-option" data-tag="consistency" data-branch="scattered">Depends where they find me — it all looks a little different</button>
         </div>
       </div>
 
-      <div class="quiz-question" data-q="2">
+      <div class="quiz-question" data-q="2" data-branch="noSite">
         <p class="quiz-q-num">Question 2 of 4</p>
+        <h3>When someone actually goes looking for your website, what happens?</h3>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-tag="presence">They don't find one — I don't really have a real site</button>
+          <button type="button" class="quiz-option" data-tag="presence">They find something, but it's outdated or half-built</button>
+          <button type="button" class="quiz-option" data-tag="positioning">They find a decent site, but it doesn't say much about pricing or scope</button>
+          <button type="button" class="quiz-option" data-tag="consistency">They find it, and it's fine, but it doesn't match my Instagram at all</button>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-q="2" data-branch="mismatch">
+        <p class="quiz-q-num">Question 2 of 4</p>
+        <h3>What part usually feels most "off" compared to the real you?</h3>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-tag="consistency">The colors or logo — visually it just isn't me</button>
+          <button type="button" class="quiz-option" data-tag="positioning">The words — the copy doesn't sound like how I actually talk</button>
+          <button type="button" class="quiz-option" data-tag="presence">It's fine on desktop but falls apart on mobile or social</button>
+          <button type="button" class="quiz-option" data-tag="momentum">It hasn't been touched in so long it feels like a different business</button>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-q="2" data-branch="wordOfMouth">
+        <p class="quiz-q-num">Question 2 of 4</p>
+        <h3>When a referral actually goes to check you out, what do they find?</h3>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-tag="presence">Not much — maybe an old post or a mention somewhere</button>
+          <button type="button" class="quiz-option" data-tag="positioning">A page that undersells what you actually charge or do</button>
+          <button type="button" class="quiz-option" data-tag="consistency">Something different depending on where they look</button>
+          <button type="button" class="quiz-option" data-tag="momentum">Nothing current — most of what's up is old</button>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-q="2" data-branch="scattered">
+        <p class="quiz-q-num">Question 2 of 4</p>
+        <h3>Which version of you shows up the weakest, out of everywhere people find you?</h3>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-tag="presence">The professional/website version — it's the weakest link</button>
+          <button type="button" class="quiz-option" data-tag="consistency">The social version — posting and branding are inconsistent</button>
+          <button type="button" class="quiz-option" data-tag="positioning">The pricing/service version — people don't know what to expect</button>
+          <button type="button" class="quiz-option" data-tag="momentum">The "currently active" version — feels stale everywhere</button>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-q="3">
+        <p class="quiz-q-num">Question 3 of 4</p>
         <h3>When people find out your prices, what's the usual reaction?</h3>
         <div class="quiz-options">
           <button type="button" class="quiz-option" data-tag="momentum">About what they expected</button>
           <button type="button" class="quiz-option" data-tag="positioning">"Wait, that's it?" — they expected to pay more</button>
           <button type="button" class="quiz-option" data-tag="presence">They don't ask — they just disappear</button>
           <button type="button" class="quiz-option" data-tag="consistency">Prices aren't posted or clear anywhere</button>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-q="3">
-        <p class="quiz-q-num">Question 3 of 4</p>
-        <h3>What's actually stopped you from fixing this already?</h3>
-        <div class="quiz-options">
-          <button type="button" class="quiz-option" data-tag="momentum">I don't have the time to sit down and do it</button>
-          <button type="button" class="quiz-option" data-tag="momentum">I've started and stopped more than once</button>
-          <button type="button" class="quiz-option" data-tag="presence">I didn't know where to even begin</button>
-          <button type="button" class="quiz-option" data-tag="consistency">I have opinions about it but no one to build it with</button>
         </div>
       </div>
 
@@ -620,6 +653,6 @@
   <p class="piece-tracker-label">Missing Piece</p>
 </div>
 
-<script src="script.js?v=6"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>

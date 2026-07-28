@@ -185,6 +185,14 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .who-icon { width: 48px; height: 48px; }
 }
 
+/* ============================================ PLATFORMS / EXPERTISE — light */
+.platforms { background: var(--off-white-warm); padding: 3.5rem 0; border-bottom: 1px solid rgba(39,51,51,0.08); }
+.platforms h2 { font-size: clamp(1.5rem, 5vw, 2.1rem); margin-top: 0.75rem; max-width: 30ch; line-height: 1.2; }
+.platforms-sub { font-size: 0.98rem; color: #4a5552; margin-top: 0.9rem; max-width: 52ch; line-height: 1.6; }
+.platforms-list { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; padding: 0; list-style: none; }
+.platforms-list li { background: var(--off-white); border: 1.5px solid rgba(177,116,88,0.35); border-radius: 30px; padding: 0.55rem 1.25rem; font-size: 0.88rem; font-weight: 700; color: var(--deep-harbor); }
+@media (min-width: 768px) { .platforms { padding: 4.5rem 0; } .platforms-list li { font-size: 0.95rem; padding: 0.65rem 1.5rem; } }
+
 /* ============================================ WORK / CASE FILES — dark */
 .work { background: var(--deep-harbor); padding: 4rem 0; }
 .work .eyebrow-dark { color: var(--gold); }
@@ -331,7 +339,8 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 @media (min-width: 768px) { .clients-marquee-track span { font-size: 1.25rem; } }
 
 /* ============================================ QUIET STAT / SPEED */
-.stat-block { background: var(--deep-harbor); color: var(--off-white); padding: 4.5rem 0 4rem; clip-path: polygon(0 18px, 8% 0, 100% 0, 100% 100%, 0 100%); margin-top: -18px; position: relative; z-index: 1; }
+.stat-block { background: radial-gradient(ellipse at 30% 0%, #32403f 0%, var(--deep-harbor) 60%); color: var(--off-white); padding: 4.5rem 0 4rem; clip-path: polygon(0 18px, 8% 0, 100% 0, 100% 100%, 0 100%); margin-top: -18px; position: relative; z-index: 1; }
+.stat-block::after { content: ""; position: absolute; inset: 0; background-image: url('assets/patterns/Deep_Harbor_Lines.svg'); background-size: 480px; background-repeat: repeat; opacity: 0.05; pointer-events: none; z-index: 0; }
 .stat-num-badge { position: relative; display: inline-flex; align-items: center; justify-content: center; width: clamp(120px, 32vw, 170px); height: clamp(120px, 32vw, 170px); border-radius: 50%; border: 2px dashed rgba(216,182,90,0.55); }
 .stat-num { position: relative; z-index: 1; font-family: var(--font-h); font-size: clamp(3rem, 12vw, 4.4rem); line-height: 1; color: var(--off-white); margin: 0; }
 .stat-label { font-size: 1rem; color: var(--drift-sand); max-width: 30ch; line-height: 1.55; margin-top: 0.5rem; }
@@ -595,6 +604,9 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   pointer-events: none;
   z-index: 0;
 }
+/* Stat block specifically gets a stronger texture pass — flat single color read as "boring" */
+.stat-block::before { opacity: 0.3; mix-blend-mode: soft-light; }
+
 .who > .wrap, .work > .wrap, .services > .wrap,
 .case-insight > .wrap, .case-demo > .wrap, .case-outcome > .wrap,
 .lead-magnet-section > .wrap, .chat-banner > .wrap, .stat-block > .wrap {

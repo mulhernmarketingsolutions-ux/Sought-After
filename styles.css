@@ -399,6 +399,14 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .tier-badge-expiry { font-weight: 600; text-transform: none; letter-spacing: normal; opacity: 0.85; }
 .tier-price-was { font-weight: 500; color: var(--sage-stone); text-decoration: line-through; margin-right: 0.4rem; }
 
+/* Per-tier case study chip (example-projects.html) */
+.tier-case { display: flex; align-items: center; gap: 0.65rem; margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(74,85,82,0.15); text-decoration: none; transition: opacity 0.2s; }
+.tier-case:hover { opacity: 0.75; }
+.tier--featured .tier-case { border-top-color: rgba(227,220,210,0.25); }
+.tier-case-img { width: 44px; height: 44px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
+.tier-case-text { font-size: 0.82rem; font-weight: 700; color: var(--terracotta); }
+.tier--featured .tier-case-text { color: var(--gold); }
+
 @media (min-width: 768px) { .services { padding: 6rem 0; } .tiers { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 960px) { .tiers--three { grid-template-columns: repeat(3, 1fr); } .tiers--three .tier { padding: 1.75rem; } }
 

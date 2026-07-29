@@ -187,7 +187,7 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 
 /* ============================================ PLATFORMS / EXPERTISE — sage-stone + Deep Harbor Lines watermark for real texture */
 .platforms { background: linear-gradient(135deg, var(--sage-stone) 0%, #7d8177 100%); padding: 3.5rem 0; position: relative; overflow: hidden; }
-.platforms-graphic { position: absolute; left: -140px; top: 50%; transform: translateY(-50%); width: 460px; height: 460px; opacity: 0.22; pointer-events: none; z-index: 0; }
+.platforms-graphic { position: absolute; right: -50px; top: -30px; width: 200px; height: 200px; opacity: 0.16; pointer-events: none; z-index: 0; }
 .platforms-graphic img { width: 100%; height: 100%; object-fit: contain; }
 .platforms .eyebrow-dark { color: var(--terracotta); }
 .platforms h2 { color: var(--deep-harbor); font-size: clamp(1.5rem, 5vw, 2.1rem); margin-top: 0.75rem; max-width: 34ch; line-height: 1.2; }
@@ -198,11 +198,14 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .platform-card-label { font-size: 0.66rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); }
 .platform-card h3 { font-size: 1.1rem; color: var(--deep-harbor); margin: 0.4rem 0 0.5rem; }
 .platform-card p { font-size: 0.87rem; color: #4a5552; line-height: 1.55; }
-@media (min-width: 640px) { .platforms-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 640px) {
+  .platforms-grid { grid-template-columns: 1fr 1fr; }
+  .platforms-graphic { right: auto; left: -90px; top: 50%; transform: translateY(-50%); width: 300px; height: 300px; opacity: 0.18; }
+}
 @media (min-width: 960px) {
   .platforms { padding: 5rem 0; }
   .platforms-grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  .platforms-graphic { width: 640px; height: 640px; left: -180px; opacity: 0.26; }
+  .platforms-graphic { width: 420px; height: 420px; left: -110px; opacity: 0.2; }
 }
 
 /* ============================================ WORK / CASE FILES — dark */
@@ -620,11 +623,6 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 }
 /* Stat block specifically gets a stronger texture pass — flat single color read as "boring" */
 .stat-block::before { opacity: 0.3; mix-blend-mode: soft-light; }
-
-/* Platforms — lighter mid-tone section, softer texture pass tuned for a light background instead of the dark-overlay treatment above */
-.platforms { position: relative; }
-.platforms::before { content: ""; position: absolute; inset: 0; background-image: url('assets/patterns/texture-marble.webp'); background-size: cover; background-position: center; mix-blend-mode: multiply; opacity: 0.08; pointer-events: none; z-index: 0; }
-.platforms > .wrap { position: relative; z-index: 1; }
 
 .who > .wrap, .work > .wrap, .services > .wrap,
 .case-insight > .wrap, .case-demo > .wrap, .case-outcome > .wrap,

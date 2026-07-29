@@ -185,11 +185,11 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
   .who-icon { width: 48px; height: 48px; }
 }
 
-/* ============================================ PLATFORMS / EXPERTISE — juniper (breaks the cream/dark-teal binary) */
-.platforms { background: linear-gradient(135deg, var(--juniper) 0%, #3f6650 100%); padding: 3.5rem 0; position: relative; overflow: hidden; }
-.platforms .eyebrow-dark { color: var(--gold); }
-.platforms h2 { color: var(--off-white); font-size: clamp(1.5rem, 5vw, 2.1rem); margin-top: 0.75rem; max-width: 34ch; line-height: 1.2; }
-.platforms-sub { font-size: 0.98rem; color: rgba(227,220,210,0.88); margin-top: 0.9rem; max-width: 56ch; line-height: 1.6; }
+/* ============================================ PLATFORMS / EXPERTISE — sage-stone (breaks the cream/dark-teal binary) */
+.platforms { background: linear-gradient(135deg, var(--sage-stone) 0%, #7d8177 100%); padding: 3.5rem 0; position: relative; overflow: hidden; }
+.platforms .eyebrow-dark { color: var(--terracotta); }
+.platforms h2 { color: var(--deep-harbor); font-size: clamp(1.5rem, 5vw, 2.1rem); margin-top: 0.75rem; max-width: 34ch; line-height: 1.2; }
+.platforms-sub { font-size: 0.98rem; color: rgba(39,51,51,0.75); margin-top: 0.9rem; max-width: 56ch; line-height: 1.6; }
 .platforms-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem; }
 .platform-card { background: var(--off-white); border-radius: 8px; padding: 1.5rem 1.35rem; }
 .platform-card-label { font-size: 0.66rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); }
@@ -528,12 +528,23 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .closing-cta p { font-size: 1rem; max-width: 44ch; margin: 1.25rem auto 0; line-height: 1.7; }
 .closing-cta .btn { margin-top: 2.5rem; }
 
-.contact-panel { margin-top: 2.25rem; }
 .contact-panel-note { font-size: 0.9rem; color: var(--off-white); opacity: 0.85; margin-bottom: 1.25rem; }
-.contact-panel-alt { margin-top: 1.5rem; font-size: 0.85rem; color: var(--off-white); opacity: 0.7; text-align: center; }
-.contact-panel-alt a { color: var(--gold); text-decoration: underline; }
 .pricing-peek-link { display: inline-block; margin: 0 0 1.75rem; padding: 0.65rem 1.25rem; border: 1.5px solid rgba(227,220,210,0.5); border-radius: 30px; font-size: 0.85rem; font-weight: 700; color: var(--off-white); text-decoration: none; transition: background 0.2s, border-color 0.2s; }
 .pricing-peek-link:hover { background: rgba(227,220,210,0.12); border-color: var(--off-white); }
+
+/* Book a Call + Send an Inquiry, side by side — both always visible, no toggle to get stuck on */
+.contact-split { margin-top: 2.25rem; display: flex; flex-direction: column; gap: 2rem; width: 100%; }
+.contact-split-call { text-align: center; }
+.contact-split-divider { display: flex; align-items: center; gap: 0.85rem; color: var(--off-white); opacity: 0.5; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.contact-split-divider::before, .contact-split-divider::after { content: ""; flex: 1; height: 1px; background: rgba(227,220,210,0.3); }
+.contact-split-form { text-align: left; }
+@media (min-width: 860px) {
+  .contact-split { flex-direction: row; align-items: flex-start; gap: 2.5rem; }
+  .contact-split-call { flex: 0 0 220px; padding-top: 0.5rem; }
+  .contact-split-divider { flex-direction: column; align-self: stretch; }
+  .contact-split-divider::before, .contact-split-divider::after { width: 1px; height: auto; }
+  .contact-split-form { flex: 1; }
+}
 
 .contact-form { max-width: 520px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 1rem; }
 .form-row { display: flex; flex-direction: column; gap: 1rem; }
@@ -592,12 +603,12 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 /* Dark sections — brighter overlay so it still reads against the dark background */
 .hero, .who, .work, .services,
 .case-insight, .case-demo, .case-outcome,
-.stat-block, .lead-magnet-section, .chat-banner, .platforms {
+.stat-block, .lead-magnet-section, .chat-banner {
   position: relative;
 }
 .hero::before, .who::before, .work::before, .services::before,
 .case-insight::before, .case-demo::before, .case-outcome::before,
-.stat-block::before, .lead-magnet-section::before, .chat-banner::before, .platforms::before {
+.stat-block::before, .lead-magnet-section::before, .chat-banner::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -611,8 +622,11 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 }
 /* Stat block specifically gets a stronger texture pass — flat single color read as "boring" */
 .stat-block::before { opacity: 0.3; mix-blend-mode: soft-light; }
+
+/* Platforms — lighter mid-tone section, softer texture pass tuned for a light background instead of the dark-overlay treatment above */
+.platforms { position: relative; }
+.platforms::before { content: ""; position: absolute; inset: 0; background-image: url('assets/patterns/texture-marble.webp'); background-size: cover; background-position: center; mix-blend-mode: multiply; opacity: 0.08; pointer-events: none; z-index: 0; }
 .platforms > .wrap { position: relative; z-index: 1; }
-.platforms .platform-card { position: relative; z-index: 1; }
 
 .who > .wrap, .work > .wrap, .services > .wrap,
 .case-insight > .wrap, .case-demo > .wrap, .case-outcome > .wrap,

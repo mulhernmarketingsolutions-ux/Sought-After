@@ -20,7 +20,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
-<link rel="stylesheet" href="styles.css?v=24">
+<link rel="stylesheet" href="styles.css?v=25">
 </head>
 <body>
 
@@ -578,10 +578,19 @@
     <h2>Stop being overlooked.</h2>
     <p>If your work is already good, your brand shouldn't be the thing holding you back. Let's find the missing piece.</p>
 
-    <div class="contact-panel is-active" id="contact-form">
-      <p class="contact-panel-note">Every project gets scoped on a quick call — these are starting points, not a fixed menu. Tell us where you're at and we'll figure out the right fit together.</p>
-      <a href="example-projects.html" class="pricing-peek-link">Curious what it costs? See real project ranges →</a>
-      <form class="contact-form" id="inquiry-form">
+    <div class="contact-split">
+
+      <div class="contact-split-call">
+        <p class="contact-panel-note">Free, no pressure, 30 minutes.</p>
+        <a href="https://calendar.app.google/8jDwpEgbE2kSfYRR7" target="_blank" rel="noopener" class="btn btn-light btn-lg">Book a Call →</a>
+      </div>
+
+      <div class="contact-split-divider" aria-hidden="true"><span>or</span></div>
+
+      <div class="contact-split-form" id="contact-form">
+        <p class="contact-panel-note">Every project gets scoped on a quick call — these are starting points, not a fixed menu. Tell us where you're at and we'll figure out the right fit together.</p>
+        <a href="example-projects.html" class="pricing-peek-link">Curious what it costs? See real project ranges →</a>
+        <form class="contact-form" id="inquiry-form">
         <div class="form-row">
           <div class="form-field">
             <label for="inq-name">Name</label>
@@ -612,8 +621,9 @@
         </div>
         <p class="form-status" id="inquiry-msg"></p>
         <button type="submit" class="btn btn-light btn-lg">Send Inquiry →</button>
-      </form>
-      <p class="contact-panel-alt">Prefer to talk it through first? <a href="https://calendar.app.google/8jDwpEgbE2kSfYRR7" target="_blank" rel="noopener">Book a free call →</a></p>
+        </form>
+      </div>
+
     </div>
   </div>
 </section>

@@ -200,12 +200,13 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .platform-card p { font-size: 0.87rem; color: #4a5552; line-height: 1.55; }
 @media (min-width: 640px) {
   .platforms-grid { grid-template-columns: 1fr 1fr; }
-  .platforms-graphic { right: auto; left: -90px; top: 50%; transform: translateY(-50%); width: 300px; height: 300px; opacity: 0.18; }
+  .platforms-graphic { right: auto; left: 0; top: 0; bottom: 0; transform: none; width: 300px; height: auto; opacity: 0.18; overflow: hidden; }
+  .platforms-graphic img { width: 145%; height: 145%; object-fit: cover; transform: translate(-16%, -12%); }
 }
 @media (min-width: 960px) {
   .platforms { padding: 5rem 0; }
   .platforms-grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  .platforms-graphic { width: 420px; height: 420px; left: -110px; opacity: 0.2; }
+  .platforms-graphic { width: 440px; opacity: 0.2; }
 }
 
 /* ============================================ WORK / CASE FILES — dark */
@@ -538,11 +539,13 @@ a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .closing-cta p { font-size: 1rem; max-width: 44ch; margin: 1.25rem auto 0; line-height: 1.7; }
 .closing-cta .btn { margin-top: 2.5rem; }
 
-.contact-toggle { display: flex; gap: 0.75rem; justify-content: center; margin-top: 2.25rem; flex-wrap: wrap; }
-.contact-toggle-btn { background: transparent; border: 1.5px solid rgba(227,220,210,0.55); color: var(--off-white); font-family: var(--font-b); font-weight: 700; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.7rem 1.4rem; border-radius: 2px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
-.contact-toggle-btn.is-active { background: var(--off-white); color: var(--deep-harbor); border-color: var(--off-white); }
+.contact-toggle { position: relative; display: inline-flex; gap: 0; justify-content: center; margin: 2.25rem auto 0; background: rgba(227,220,210,0.12); border: 1px solid rgba(227,220,210,0.3); border-radius: 999px; padding: 4px; }
+.contact-toggle-indicator { position: absolute; top: 4px; left: 0; bottom: 4px; width: 50%; background: var(--off-white); border-radius: 999px; box-shadow: 0 3px 10px rgba(0,0,0,0.18); transition: transform 0.35s cubic-bezier(0.65,0,0.35,1), width 0.35s cubic-bezier(0.65,0,0.35,1); z-index: 0; }
+.contact-toggle-btn { position: relative; z-index: 1; background: transparent; border: none; color: var(--off-white); font-family: var(--font-b); font-weight: 700; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.7rem 1.4rem; border-radius: 999px; cursor: pointer; transition: color 0.3s; white-space: nowrap; }
+.contact-toggle-btn.is-active { color: var(--deep-harbor); }
+@keyframes contact-panel-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .contact-panel { display: none; margin-top: 2rem; }
-.contact-panel.is-active { display: block; }
+.contact-panel.is-active { display: block; animation: contact-panel-in 0.4s var(--ease); }
 .contact-panel-note { font-size: 0.9rem; color: var(--off-white); opacity: 0.85; margin-bottom: 1.25rem; }
 .pricing-peek-link { display: inline-block; margin: 0 0 1.75rem; padding: 0.65rem 1.25rem; border: 1.5px solid rgba(227,220,210,0.5); border-radius: 30px; font-size: 0.85rem; font-weight: 700; color: var(--off-white); text-decoration: none; transition: background 0.2s, border-color 0.2s; }
 .pricing-peek-link:hover { background: rgba(227,220,210,0.12); border-color: var(--off-white); }

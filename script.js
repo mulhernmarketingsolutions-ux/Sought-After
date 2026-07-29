@@ -206,17 +206,33 @@ if (quizBox) {
     });
   }
 }
-// Contact toggle: Book a Call vs Send an Inquiry
+// Contact toggle: Book a Call vs Send an Inquiry — sliding pill indicator
+// moves to sit behind whichever button is active.
 const contactToggleBtns = document.querySelectorAll('.contact-toggle-btn');
+const contactToggleIndicator = document.querySelector('.contact-toggle-indicator');
+function moveContactIndicator(btn) {
+  if (!contactToggleIndicator || !btn) return;
+  contactToggleIndicator.style.width = btn.offsetWidth + 'px';
+  contactToggleIndicator.style.transform = 'translateX(' + btn.offsetLeft + 'px)';
+}
 contactToggleBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     contactToggleBtns.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
     btn.classList.add('is-active');
     btn.setAttribute('aria-selected', 'true');
+    moveContactIndicator(btn);
     document.querySelectorAll('.contact-panel').forEach(p => p.classList.remove('is-active'));
     const target = document.getElementById(btn.dataset.target);
     if (target) target.classList.add('is-active');
   });
+});
+// Position the indicator on load, and re-sync on resize since button
+// widths can shift (e.g. text wrapping at narrow widths).
+const initialContactBtn = document.querySelector('.contact-toggle-btn.is-active');
+if (initialContactBtn) moveContactIndicator(initialContactBtn);
+window.addEventListener('resize', () => {
+  const active = document.querySelector('.contact-toggle-btn.is-active');
+  if (active) moveContactIndicator(active);
 });
 
 // Deep link straight to the inquiry form — any link to #contact-form

@@ -20,10 +20,11 @@ const GROW_DESC = "Everything in Launch, plus Google Business Profile setup and 
 const PLANS = {
   "launch-deposit": { name: "Launch website: 50% deposit", desc: LAUNCH_DESC, cents: 62500, mode: "payment", image: "launch" },
   "launch-balance": { name: "Launch website: final 50%", desc: LAUNCH_DESC, cents: 62500, mode: "payment", image: "launch" },
-  "launch-full": { name: "Launch website: paid in full", desc: LAUNCH_DESC, cents: 125000, mode: "payment", image: "launch" },
+  // Paid-in-full gets a discount (saves $100 / $250) to reward cash up front.
+  "launch-full": { name: "Launch website: paid in full (saved $100)", desc: LAUNCH_DESC, cents: 115000, mode: "payment", image: "launch" },
   "grow-deposit": { name: "Launch + Grow: 50% deposit", desc: GROW_DESC, cents: 175000, mode: "payment", image: "grow" },
   "grow-balance": { name: "Launch + Grow: final 50%", desc: GROW_DESC, cents: 175000, mode: "payment", image: "grow" },
-  "grow-full": { name: "Launch + Grow: paid in full", desc: GROW_DESC, cents: 350000, mode: "payment", image: "grow" },
+  "grow-full": { name: "Launch + Grow: paid in full (saved $250)", desc: GROW_DESC, cents: 325000, mode: "payment", image: "grow" },
   "care-monthly": { name: "Care plan (monthly)", desc: "Site health, basic SEO, Google profile management, lead tracking and a call every two weeks. Cancel anytime.", cents: 50000, mode: "subscription", image: "care" },
   // Custom = any one-off invoice (Google profile setup, extra pages, edits).
   // Amount comes from the request but is bounded below.

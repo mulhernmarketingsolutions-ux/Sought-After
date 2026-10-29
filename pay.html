@@ -42,6 +42,10 @@
 .co-how label:has(input:checked) { border-color: var(--terracotta); background: #F6ECE6; }
 .co-how label:has(input:focus-visible) { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .co-how b { font-size: 1rem; }
+.co-full { position: relative; }
+.co-save { position: absolute; top: -10px; right: 10px; background: var(--juniper); color: #fff; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 999px; }
+.co-row s { opacity: 0.7; margin-right: 0.4rem; }
+.co-row.is-save { color: #9fd0b2; font-weight: 700; }
 .co-how small { font-size: 0.85rem; opacity: 0.8; }
 
 /* Summary */
@@ -144,7 +148,7 @@
             <h2 class="co-step-h"><span class="co-num">2</span>How do you want to pay?</h2>
             <div class="co-how">
               <label><input class="co-sr" type="radio" name="how" value="deposit" checked><b>Split it</b><small>50% now, 50% at launch</small></label>
-              <label><input class="co-sr" type="radio" name="how" value="full"><b>Pay in full</b><small>All at once, done</small></label>
+              <label class="co-full"><input class="co-sr" type="radio" name="how" value="full"><span class="co-save" id="co-save-tag">Save $250</span><b>Pay in full</b><small id="co-full-sub">$3,250 today, done</small></label>
             </div>
           </section>
 
@@ -177,6 +181,7 @@
               <div class="co-row is-today"><span id="sum-today-label">Due today</span><span id="sum-today">$1,750</span></div>
               <div class="co-row" id="sum-later-row"><span>Due at launch</span><span id="sum-later">$1,750</span></div>
               <div class="co-row" id="sum-total-row"><span>Total</span><span id="sum-total">$3,500</span></div>
+              <div class="co-row is-save" id="sum-save-row" hidden><span>You save</span><span id="sum-save">$250</span></div>
             </div>
             <p class="co-note" id="sum-note">After your 3 months of care, you can keep it going for $500/month. Only if you want to.</p>
           </div>
@@ -202,8 +207,8 @@
     invoice: 'assets/icons/stone-sand.svg'
   };
   var PKG = {
-    launch: { name: 'Launch', total: 1250, note: 'Your site is yours once it launches. Need changes later? Just ask.' },
-    grow: { name: 'Launch + Grow', total: 3500, note: 'After your 3 months of care, you can keep it going for $500/month. Only if you want to.' }
+    launch: { name: 'Launch', total: 1250, full: 1150, note: 'Your site is yours once it launches. Need changes later? Just ask.' },
+    grow: { name: 'Launch + Grow', total: 3500, full: 3250, note: 'After your 3 months of care, you can keep it going for $500/month. Only if you want to.' }
   };
   var SINGLE = {
     'launch-balance': { name: 'Launch: final 50%', sub: 'Your site is live', cents: 62500, icon: 'launch', title: 'Final payment', lead: 'Your site is live. Here is the final 50% for your Launch package.' },
@@ -243,12 +248,15 @@
   if (q.get('business')) $('co-biz').value = q.get('business');
 
   function render() {
-    var today, later = null, total = null, name, sub, icon, note = '', monthly = false;
+    var today, later = null, total = null, save = 0, name, sub, icon, note = '', monthly = false;
     if (mode === 'package') {
       var k = val('pkg'), how = val('how'), pk = PKG[k];
-      name = pk.name; icon = k; total = pk.total; note = pk.note;
-      if (how === 'full') { today = total; sub = 'Paid in full'; }
-      else { today = total / 2; later = total / 2; sub = '50% deposit'; }
+      name = pk.name; icon = k; note = pk.note;
+      var saved = pk.total - pk.full;
+      $('co-save-tag').textContent = 'Save ' + money(saved);
+      $('co-full-sub').textContent = money(pk.full) + ' today, done';
+      if (how === 'full') { today = pk.full; total = pk.full; sub = 'Paid in full'; save = saved; }
+      else { today = pk.total / 2; later = pk.total / 2; total = pk.total; sub = '50% deposit'; }
     } else {
       var s = SINGLE[singleKey];
       icon = s.icon; monthly = !!s.monthly;
@@ -263,7 +271,9 @@
     $('sum-today-label').textContent = monthly ? 'Monthly' : 'Due today';
     $('sum-today').textContent = today ? money(today) + (monthly ? '/mo' : '') : '$0';
     $('sum-later-row').hidden = later === null; if (later !== null) $('sum-later').textContent = money(later);
-    $('sum-total-row').hidden = total === null; if (total !== null) $('sum-total').textContent = money(total);
+    $('sum-total-row').hidden = total === null;
+    if (total !== null) $('sum-total').innerHTML = save ? '<s>' + money(total + save) + '</s>' + money(total) : money(total);
+    $('sum-save-row').hidden = !save; if (save) $('sum-save').textContent = money(save);
     $('sum-note').hidden = !note; $('sum-note').textContent = note;
     $('co-btn').textContent = today ? (monthly ? 'Start for ' + money(today) + '/mo →' : 'Pay ' + money(today) + ' securely →') : 'Continue to secure checkout →';
   }

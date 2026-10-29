@@ -25,6 +25,8 @@ const PLANS = {
   "grow-deposit": { name: "Launch + Grow: 50% deposit", desc: GROW_DESC, cents: 175000, mode: "payment", image: "grow" },
   "grow-balance": { name: "Launch + Grow: final 50%", desc: GROW_DESC, cents: 175000, mode: "payment", image: "grow" },
   "grow-full": { name: "Launch + Grow: paid in full (saved $250)", desc: GROW_DESC, cents: 325000, mode: "payment", image: "grow" },
+  // Lighter build for simple needs. Link-only (not shown in the package picker).
+  "one-page": { name: "One-page website", desc: "One clean page with your services, photos and a free estimate form, connected to your existing domain. Live in a few days.", cents: 75000, mode: "payment", image: "launch" },
   "care-monthly": { name: "Care plan (monthly)", desc: "Site health, basic SEO, Google profile management, lead tracking and a call every two weeks. Cancel anytime.", cents: 50000, mode: "subscription", image: "care" },
   // Custom = any one-off invoice (Google profile setup, extra pages, edits).
   // Amount comes from the request but is bounded below.

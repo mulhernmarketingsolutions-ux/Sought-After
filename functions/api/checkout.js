@@ -137,7 +137,9 @@ export async function onRequestPost({ request, env }) {
   const out = await res.json().catch(() => ({}));
   if (!res.ok || !out.url) {
     console.log("Stripe error", res.status, out && out.error && out.error.message);
-    return json({ error: "Couldn't start checkout. Please try again or email hello@soughtafter.design." }, 502);
+    // 400, not 502: Cloudflare swaps 502 responses for its own HTML error page,
+    // which hides this message from the checkout page.
+    return json({ error: "Couldn't start checkout. Please try again or email hello@soughtafter.design." }, 400);
   }
   return json({ url: out.url });
 }

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Websites for Local Businesses, Live in 14 Days | Sought After Co.</title>
+<meta name="description" content="A custom website that brings in work, live in two weeks. Every message in one place, a simple way to get paid, and a site that looks as good as your work.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://soughtafter.design/launch">
+<meta property="og:title" content="A website that actually brings in work. Live in 14 days.">
+<meta property="og:description" content="Custom websites for local service businesses. Every message in one place, simple payments, and a site that looks as good as your work.">
+<meta property="og:image" content="https://soughtafter.design/assets/social-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A website that actually brings in work. Live in 14 days.">
+<meta name="twitter:description" content="Custom websites for local service businesses, from Sought After Co.">
+<meta name="twitter:image" content="https://soughtafter.design/assets/social-share.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+<link rel="stylesheet" href="styles.css?v=28">
+<style>
+/* ============ LAUNCH PAGE (scoped: .ln-) ============ */
+.ln-hero { background: var(--off-white-warm); padding: 3rem 0 4rem; overflow: hidden; position: relative; }
+.ln-hero-grid { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 900px) { .ln-hero-grid { grid-template-columns: 1.1fr 0.9fr; } .ln-hero { padding: 5rem 0 6rem; } }
+.ln-hero h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); line-height: 1.03; letter-spacing: -0.01em; margin-top: 1rem; }
+.ln-hero h1 em { font-style: italic; color: var(--terracotta); position: relative; white-space: nowrap; isolation: isolate; }
+.ln-hero h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: -0.08em; height: 0.16em; background: var(--gold); opacity: 0.55; border-radius: 99px; transform: scaleX(0); transform-origin: left; animation: ln-underline 0.9s 0.6s var(--ease) forwards; z-index: -1; }
+@keyframes ln-underline { to { transform: scaleX(1); } }
+.ln-sub { font-size: 1.15rem; line-height: 1.6; margin-top: 1.25rem; max-width: 34em; }
+.ln-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+.ln-btn-main { background: var(--terracotta); color: #fff; border-radius: 999px; font-size: 0.85rem; padding: 1.15rem 2rem; box-shadow: 0 10px 24px rgba(177,116,88,0.35); }
+.ln-btn-main:hover { background: #9c6249; }
+.ln-btn-main .ln-arrow { display: inline-block; margin-left: 0.5rem; transition: transform 0.2s var(--ease); }
+.ln-btn-main:hover .ln-arrow { transform: translateX(4px); }
+.ln-btn-sec { border-radius: 999px; font-size: 0.85rem; padding: 1.1rem 1.8rem; }
+.ln-trust { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin-top: 1.5rem; font-size: 0.9rem; font-weight: 600; }
+.ln-trust span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.ln-trust svg { width: 16px; height: 16px; color: var(--juniper); flex: none; }
+
+/* Hero visual */
+.ln-visual { position: relative; display: flex; justify-content: center; min-height: 460px; }
+.ln-blob { position: absolute; border-radius: 52% 48% 44% 56% / 55% 42% 58% 45%; }
+.ln-blob-1 { width: 330px; height: 330px; background: var(--drift-sand); top: 30px; left: 50%; transform: translateX(-60%); }
+.ln-blob-2 { width: 130px; height: 130px; background: var(--sage-stone); bottom: 10px; right: 6%; border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%; }
+.ln-phone { position: relative; width: 250px; background: #FBF9F5; border: 10px solid var(--deep-harbor); border-radius: 36px; overflow: hidden; box-shadow: 0 30px 60px rgba(39,51,51,0.28); z-index: 1; margin-top: 1.5rem; }
+.ln-phone-top { height: 140px; background: url('assets/work/jessies/product-1.jpg') center/cover; position: relative; }
+.ln-phone-top::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(39,51,51,0.75)); }
+.ln-phone-top span { position: absolute; left: 14px; bottom: 12px; z-index: 1; color: #fff; font-family: var(--font-h); font-size: 1.3rem; font-weight: 600; }
+.ln-phone-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.ln-phone-body p { font-size: 0.78rem; line-height: 1.45; }
+.ln-phone-btns { display: flex; gap: 6px; }
+.ln-phone-btns span { flex: 1; text-align: center; font-size: 0.7rem; font-weight: 700; padding: 8px 4px; border-radius: 8px; }
+.ln-phone-btns span:first-child { background: var(--deep-harbor); color: var(--off-white); }
+.ln-phone-btns span:last-child { border: 1.5px solid var(--deep-harbor); }
+.ln-phone-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+.ln-phone-grid i { aspect-ratio: 1; border-radius: 5px; background: center/cover; }
+.ln-chip { position: absolute; z-index: 2; background: #fff; border-radius: 14px; padding: 10px 14px; box-shadow: 0 14px 30px rgba(39,51,51,0.18); display: flex; align-items: center; gap: 10px; font-size: 0.8rem; line-height: 1.3; max-width: 230px; opacity: 0; animation: ln-pop 0.6s var(--ease) forwards, ln-bob 5s ease-in-out infinite; }
+.ln-chip b { display: block; font-size: 0.82rem; }
+.ln-chip-icon { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; }
+.ln-chip-icon svg { width: 18px; height: 18px; }
+.ln-chip-1 { top: 8%; left: 0; animation-delay: 0.5s, 1.1s; }
+.ln-chip-2 { top: 44%; right: 0; animation-delay: 1.1s, 1.7s; }
+.ln-chip-3 { bottom: 4%; left: 4%; animation-delay: 1.7s, 2.3s; }
+@keyframes ln-pop { from { opacity: 0; transform: translateY(14px) scale(0.92); } to { opacity: 1; transform: none; } }
+@keyframes ln-bob { 0%,100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+.ln-sticker { position: absolute; top: -6px; right: 4%; z-index: 3; width: 104px; height: 104px; border-radius: 50%; background: var(--gold); color: var(--deep-harbor); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-family: var(--font-h); font-weight: 600; line-height: 1; transform: rotate(10deg); animation: ln-wiggle 4s ease-in-out infinite; box-shadow: 0 8px 18px rgba(39,51,51,0.2); }
+.ln-sticker strong { font-size: 2rem; }
+.ln-sticker small { font-family: var(--font-b); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+@keyframes ln-wiggle { 0%,100% { transform: rotate(10deg); } 50% { transform: rotate(4deg); } }
+
+/* Marquee */
+.ln-marquee { background: var(--deep-harbor); color: var(--off-white); overflow: hidden; padding: 0.9rem 0; }
+.ln-marquee-track { display: flex; gap: 2rem; width: max-content; animation: ln-scroll 32s linear infinite; font-family: var(--font-h); font-size: 1.15rem; font-style: italic; }
+.ln-marquee-track span.dot { color: var(--gold); font-style: normal; }
+@keyframes ln-scroll { to { transform: translateX(-50%); } }
+
+/* Sections */
+.ln-section { padding: 5rem 0; }
+.ln-head { max-width: 40rem; margin-bottom: 2.5rem; }
+.ln-head h2 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.75rem; }
+.ln-head p { font-size: 1.05rem; margin-top: 1rem; }
+
+/* Pain notes */
+.ln-notes { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.ln-note { background: #FBF9F5; padding: 1.6rem 1.4rem 1.4rem; border-radius: 4px; box-shadow: 0 10px 22px rgba(39,51,51,0.1); position: relative; transition: transform 0.3s var(--ease); }
+.ln-note:nth-child(1) { transform: rotate(-1.6deg); }
+.ln-note:nth-child(2) { transform: rotate(1.2deg); }
+.ln-note:nth-child(3) { transform: rotate(-0.8deg); }
+.ln-note:nth-child(4) { transform: rotate(1.8deg); }
+@media (hover:hover) { .ln-note:hover { transform: rotate(0) translateY(-4px); } }
+.ln-note::before { content: ""; position: absolute; top: -10px; left: 50%; width: 70px; height: 20px; margin-left: -35px; background: rgba(216,182,90,0.55); transform: rotate(-3deg); }
+.ln-note h3 { font-size: 1.25rem; }
+.ln-note p { font-size: 0.95rem; margin-top: 0.5rem; }
+.ln-note-tag { display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.5rem; }
+.ln-fix { margin-top: 2.5rem; font-family: var(--font-h); font-size: clamp(1.4rem, 3.4vw, 2rem); line-height: 1.25; }
+.ln-fix em { color: var(--terracotta); }
+
+/* Offer */
+.ln-offer { background: var(--drift-sand); }
+.ln-cards { display: grid; gap: 1.5rem; }
+@media (min-width: 860px) { .ln-cards { grid-template-columns: 1fr 1fr; align-items: stretch; } }
+.ln-card { background: #FBF9F5; border-radius: 22px; padding: 2.25rem; display: flex; flex-direction: column; gap: 1.1rem; position: relative; }
+.ln-card-dark { background: var(--deep-harbor); color: var(--off-white); box-shadow: 0 24px 50px rgba(39,51,51,0.3); }
+.ln-badge { position: absolute; top: -14px; right: 24px; background: var(--gold); color: var(--deep-harbor); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.45rem 0.9rem; border-radius: 999px; transform: rotate(3deg); }
+.ln-card h3 { font-size: 2rem; }
+.ln-card-tag { font-size: 1rem; font-family: var(--font-h); font-style: italic; }
+.ln-card-dark .ln-card-tag { color: var(--gold); }
+.ln-list { display: flex; flex-direction: column; gap: 0.7rem; }
+.ln-list li { display: flex; gap: 0.65rem; align-items: flex-start; font-size: 1rem; line-height: 1.5; }
+.ln-list svg { width: 20px; height: 20px; flex: none; margin-top: 2px; color: var(--juniper); }
+.ln-card-dark .ln-list svg { color: var(--gold); }
+.ln-plus { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.ln-card .btn { margin-top: auto; justify-content: center; border-radius: 999px; padding: 1.1rem 1.5rem; }
+.ln-offer-foot { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; align-items: center; }
+.ln-offer-foot p { font-weight: 700; font-size: 1.05rem; }
+.ln-offer-foot a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Work */
+.ln-work-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.ln-work { background: #FBF9F5; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s var(--ease), box-shadow 0.25s; }
+@media (hover:hover) { .ln-work:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(39,51,51,0.14); } }
+.ln-work-media { aspect-ratio: 4 / 3; background: var(--deep-harbor); overflow: hidden; }
+.ln-work-media video { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.ln-work-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+.ln-work-body .eyebrow { color: var(--terracotta); }
+.ln-work-body h3 { font-size: 1.6rem; }
+.ln-quote { font-family: var(--font-h); font-style: italic; font-size: 1rem; border-left: 3px solid var(--gold); padding-left: 0.85rem; margin-top: 0.25rem; }
+.ln-work-link { margin-top: auto; padding-top: 0.75rem; font-weight: 700; color: var(--terracotta); }
+
+/* Timeline */
+.ln-how { background: var(--deep-harbor); color: var(--off-white); }
+.ln-how .ln-head h2 { color: var(--off-white); }
+.ln-steps { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); position: relative; }
+.ln-step { display: flex; flex-direction: column; gap: 0.6rem; position: relative; }
+.ln-step-day { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.ln-step-dot { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-h); font-size: 1.5rem; color: #fff; }
+.ln-step h3 { font-size: 1.35rem; color: var(--off-white); }
+.ln-step p { color: var(--drift-sand); font-size: 0.98rem; }
+.ln-step-you { display: inline-block; margin-top: 0.25rem; font-size: 0.78rem; font-weight: 700; color: var(--off-white); background: rgba(227,220,210,0.12); padding: 0.3rem 0.7rem; border-radius: 999px; align-self: flex-start; }
+
+/* John */
+.ln-john { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 820px) { .ln-john { grid-template-columns: 320px 1fr; } }
+.ln-john-photo { aspect-ratio: 4 / 5; border-radius: 48% 52% 46% 54% / 40% 42% 58% 60%; overflow: hidden; background: var(--drift-sand); }
+.ln-john-photo img { width: 100%; height: 100%; object-fit: cover; }
+.ln-john h2 { font-size: clamp(2rem, 5vw, 2.8rem); margin-top: 0.75rem; }
+.ln-john p { font-size: 1.08rem; margin-top: 1rem; max-width: 36em; }
+
+/* FAQ */
+.ln-faq { background: var(--off-white-warm); }
+.ln-faq-list { display: flex; flex-direction: column; gap: 0.75rem; max-width: 760px; }
+.ln-faq-list details { background: #FBF9F5; border-radius: 12px; padding: 0 1.25rem; }
+.ln-faq-list summary { cursor: pointer; list-style: none; padding: 1.15rem 0; font-weight: 700; font-size: 1.05rem; display: flex; justify-content: space-between; gap: 1rem; align-items: center; min-height: 44px; }
+.ln-faq-list summary::-webkit-details-marker { display: none; }
+.ln-faq-list summary::after { content: "+"; font-family: var(--font-h); font-size: 1.6rem; color: var(--terracotta); transition: transform 0.25s var(--ease); line-height: 1; }
+.ln-faq-list details[open] summary::after { transform: rotate(45deg); }
+.ln-faq-list details p { padding: 0 0 1.2rem; font-size: 1rem; }
+
+/* Final CTA */
+.ln-book { text-align: left; padding: 5rem 0; }
+.ln-book-grid { display: grid; gap: 2.5rem; align-items: start; position: relative; z-index: 1; }
+@media (min-width: 900px) { .ln-book-grid { grid-template-columns: 1fr 1fr; } }
+.ln-book h2 { font-size: clamp(2.4rem, 7vw, 4rem); color: var(--off-white); }
+.ln-book .ln-book-copy p { font-size: 1.1rem; margin: 1rem 0 0; max-width: 32ch; }
+.ln-book .btn { margin-top: 2rem; }
+.ln-btn-cream { background: var(--off-white); color: var(--deep-harbor); border-radius: 999px; font-size: 0.9rem; padding: 1.2rem 2.2rem; box-shadow: 0 12px 26px rgba(0,0,0,0.2); }
+.ln-btn-cream:hover { background: #fff; }
+.ln-book-note { font-size: 0.9rem; opacity: 0.85; margin-top: 0.9rem !important; }
+.ln-form-card { background: rgba(39,51,51,0.28); border: 1px solid rgba(227,220,210,0.25); border-radius: 20px; padding: 1.75rem; }
+.ln-form-card h3 { font-size: 1.4rem; color: var(--off-white); margin-bottom: 1rem; }
+.ln-form-card .contact-form { max-width: none; }
+.ln-form-card .btn { margin-top: 0.25rem; border-radius: 999px; }
+
+/* Sticky mobile CTA */
+.ln-sticky { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 300; display: flex; justify-content: center; transform: translateY(140%); transition: transform 0.35s var(--ease); }
+.ln-sticky.is-on { transform: none; }
+.ln-sticky a { width: 100%; max-width: 420px; justify-content: center; border-radius: 999px; padding: 1.05rem 1.5rem; font-size: 0.85rem; box-shadow: 0 12px 30px rgba(39,51,51,0.35); }
+@media (min-width: 900px) { .ln-sticky { display: none; } }
+@media (prefers-reduced-motion: reduce) { .ln-chip { opacity: 1; } .ln-marquee-track { animation: none; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="/" class="logo-lockup" aria-label="Sought After Co. home">
+      <img src="assets/logos/logo-horizontal-color.svg" alt="Sought After Co." class="logo-img">
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="#offer">What You Get</a>
+      <a href="#work">Work</a>
+      <a href="#how">How It Works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#book" class="btn btn-dark nav-cta">Book a Call</a>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav>
+      <a href="#offer">What You Get</a>
+      <a href="#work">Work</a>
+      <a href="#how">How It Works</a>
+      <a href="#faq">FAQ</a>
+      <a href="#book">Book a Free Call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="ln-hero">
+  <div class="wrap ln-hero-grid">
+    <div>
+      <p class="eyebrow eyebrow-dark">For local service businesses</p>
+      <h1>A website that actually <em>brings in work.</em></h1>
+      <p class="ln-sub">Live in two weeks. Every message lands in one place, customers can pay you without the back-and-forth, and your site finally looks as good as your work.</p>
+      <div class="ln-ctas">
+        <a href="https://calendar.app.google/8jDwpEgbE2kSfYRR7" target="_blank" rel="noopener" class="btn ln-btn-main">Book my free 15-min call<span class="ln-arrow" aria-hidden="true">→</span></a>
+        <a href="#work" class="btn btn-outline ln-btn-sec">See sites I've built</a>
+      </div>
+      <div class="ln-trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Fixed price</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Live in 14 days</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>You own it</span>
+      </div>
+    </div>
+
+    <div class="ln-visual" aria-hidden="true">
+      <div class="ln-blob ln-blob-1"></div>
+      <div class="ln-blob ln-blob-2"></div>
+      <div class="ln-sticker"><strong>14</strong><small>days to<br>live</small></div>
+      <div class="ln-phone">
+        <div class="ln-phone-top"><span>Your Business</span></div>
+        <div class="ln-phone-body">
+          <p>Serving your area. Real photos, real reviews, and a fast way to reach you.</p>
+          <div class="ln-phone-btns"><span>Get a quote</span><span>Call</span></div>
+          <div class="ln-phone-grid">
+            <i style="background-image:url('assets/work/doublejoy/cookies-easy.jpg')"></i>
+            <i style="background-image:url('assets/work/ori/hero-bottles.jpg')"></i>
+            <i style="background-image:url('assets/work/jessies/latte-art.jpg')"></i>
+          </div>
+        </div>
+      </div>
+      <div class="ln-chip ln-chip-1">
+        <span class="ln-chip-icon" style="background:#E7EFE9;color:var(--juniper)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H7l-3 3z"/></svg></span>
+        <span><b>New quote request</b>Kitchen repaint, this month</span>
+      </div>
+      <div class="ln-chip ln-chip-2">
+        <span class="ln-chip-icon" style="background:#F6EFD9;color:#8a6d1c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></span>
+        <span><b>Invoice paid</b>Deposit received, online</span>
+      </div>
+      <div class="ln-chip ln-chip-3">
+        <span class="ln-chip-icon" style="background:#F3E6DF;color:var(--terracotta)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span>
+        <span><b>New 5-star review</b>"Showed up on time, did great work."</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ln-marquee" aria-hidden="true">
+  <div class="ln-marquee-track">
+    <span>Painters</span><span class="dot">·</span><span>Contractors</span><span class="dot">·</span><span>Plumbers</span><span class="dot">·</span><span>Roofers</span><span class="dot">·</span><span>Landscapers</span><span class="dot">·</span><span>Cleaners</span><span class="dot">·</span><span>Electricians</span><span class="dot">·</span><span>Bakers</span><span class="dot">·</span><span>Coaches</span><span class="dot">·</span>
+    <span>Painters</span><span class="dot">·</span><span>Contractors</span><span class="dot">·</span><span>Plumbers</span><span class="dot">·</span><span>Roofers</span><span class="dot">·</span><span>Landscapers</span><span class="dot">·</span><span>Cleaners</span><span class="dot">·</span><span>Electricians</span><span class="dot">·</span><span>Bakers</span><span class="dot">·</span><span>Coaches</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="ln-section">
+  <div class="wrap">
+    <div class="ln-head reveal">
+      <p class="eyebrow eyebrow-dark">Sound familiar?</p>
+      <h2>Your work is great. The stuff around it is costing you jobs.</h2>
+    </div>
+    <div class="ln-notes">
+      <div class="ln-note reveal"><span class="ln-note-tag">Lost leads</span><h3>Messages everywhere.</h3><p>Texts, DMs, voicemails, emails. Somebody asked for a quote last week and it's buried.</p></div>
+      <div class="ln-note reveal"><span class="ln-note-tag">Payments</span><h3>Chasing people to pay.</h3><p>Venmo, checks, "I'll send it Friday." Getting paid shouldn't take a follow-up text.</p></div>
+      <div class="ln-note reveal"><span class="ln-note-tag">Invoicing</span><h3>Invoices on the fly.</h3><p>Typing up estimates at night in a notes app is not a system.</p></div>
+      <div class="ln-note reveal"><span class="ln-note-tag">First impression</span><h3>Looks like a side gig.</h3><p>A Facebook page and a Gmail address make pro work look amateur. People Google you before they call.</p></div>
+    </div>
+    <p class="ln-fix reveal">We fix all four, <em>in two weeks,</em> for one fixed price.</p>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="ln-section ln-offer" id="offer">
+  <div class="wrap">
+    <div class="ln-head reveal">
+      <p class="eyebrow eyebrow-dark">What you get</p>
+      <h2>Two simple options. Pick how much you want off your plate.</h2>
+    </div>
+    <div class="ln-cards">
+      <div class="ln-card reveal">
+        <h3>Launch</h3>
+        <p class="ln-card-tag">Your site, built and live in 14 days.</p>
+        <ul class="ln-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>A custom site built for your business, not a template</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Every inquiry lands in one place, with a heads-up on your phone</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Simple online payments and invoicing, set up and ready</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>I write the words. You send photos of your work.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Revisions until it's right during the two weeks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Then it's yours</li>
+        </ul>
+        <a href="#book" class="btn btn-outline">Talk about Launch →</a>
+      </div>
+      <div class="ln-card ln-card-dark reveal">
+        <span class="ln-badge">Most popular</span>
+        <h3>Launch + Grow</h3>
+        <p class="ln-card-tag">Everything in Launch, plus 3 months of me in your corner.</p>
+        <p class="ln-plus">Everything in Launch, plus</p>
+        <ul class="ln-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Google Business Profile set up, so you show up on Maps</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Every lead tracked in a simple CRM, so nothing slips</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Site health, updates and basic SEO, handled</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Your Google profile kept fresh, with help getting more reviews</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>A call every two weeks: what came in, what's working, in plain English</li>
+        </ul>
+        <a href="#book" class="btn btn-gold">Talk about Launch + Grow →</a>
+      </div>
+    </div>
+    <div class="ln-offer-foot reveal">
+      <p>One fixed price, quoted on our call. No hourly billing, no surprises.</p>
+      <a href="index.html#services">Need a full brand or logo first? See the full studio →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="ln-section" id="work">
+  <div class="wrap">
+    <div class="ln-head reveal">
+      <p class="eyebrow eyebrow-dark">Recent work</p>
+      <h2>Real small businesses. Real sites. Already bringing people in.</h2>
+    </div>
+    <div class="ln-work-grid">
+      <a href="jessies-coffee.html" class="ln-work reveal">
+        <div class="ln-work-media"><video autoplay muted loop playsinline preload="metadata" aria-label="Scrolling preview of the Jessie's website"><source src="assets/video/jessies-scroll-demo.mp4" type="video/mp4"></video></div>
+        <div class="ln-work-body">
+          <p class="eyebrow">Mobile coffee &amp; syrups</p>
+          <h3>Jessie's.</h3>
+          <p>From a name and a notebook to a booking-ready site with a working lead pipeline, in about a week.</p>
+          <p class="ln-quote">"The website has already started bringing people in."</p>
+          <span class="ln-work-link">See the story →</span>
+        </div>
+      </a>
+      <a href="double-joy-cookies.html" class="ln-work reveal">
+        <div class="ln-work-media"><video autoplay muted loop playsinline preload="metadata" aria-label="Scrolling preview of the Double Joy Cookies website"><source src="assets/video/doublejoy-scroll-demo.mp4" type="video/mp4"></video></div>
+        <div class="ln-work-body">
+          <p class="eyebrow">Custom cookies</p>
+          <h3>Double Joy Cookies</h3>
+          <p>A kitchen-table cookie business, turned into a site that takes and runs its own orders.</p>
+          <p class="ln-quote">"I've already had people tell me they found me through it."</p>
+          <span class="ln-work-link">See the story →</span>
+        </div>
+      </a>
+      <a href="ori-wines.html" class="ln-work reveal">
+        <div class="ln-work-media"><video autoplay muted loop playsinline preload="metadata" aria-label="Scrolling preview of the Ori Wines website"><source src="assets/video/ori-scroll-demo.mp4" type="video/mp4"></video></div>
+        <div class="ln-work-body">
+          <p class="eyebrow">Winery</p>
+          <h3>Ori Wines</h3>
+          <p>A full brand and launch site, built around the systems they already had. Live before their first public sale.</p>
+          <p class="ln-quote">"Everything just works better now."</p>
+          <span class="ln-work-link">See the story →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="ln-section ln-how" id="how">
+  <div class="wrap">
+    <div class="ln-head reveal">
+      <p class="eyebrow eyebrow-light">How it works</p>
+      <h2>Two weeks from hello to live. Almost none of it is your job.</h2>
+    </div>
+    <div class="ln-steps">
+      <div class="ln-step reveal">
+        <span class="ln-step-day">Day 1</span>
+        <span class="ln-step-dot" style="background:var(--terracotta)">1</span>
+        <h3>Quick call</h3>
+        <p>15 minutes. What you do, where you work, and what jobs you want more of.</p>
+        <span class="ln-step-you">You: 15 minutes</span>
+      </div>
+      <div class="ln-step reveal">
+        <span class="ln-step-day">Days 2–3</span>
+        <span class="ln-step-dot" style="background:var(--juniper)">2</span>
+        <h3>Send photos</h3>
+        <p>Snap a few pictures of your work. I write every word on the site.</p>
+        <span class="ln-step-you">You: a few photos</span>
+      </div>
+      <div class="ln-step reveal">
+        <span class="ln-step-day">Days 4–12</span>
+        <span class="ln-step-dot" style="background:var(--sage-stone)">3</span>
+        <h3>I build, you tweak</h3>
+        <p>You see it come together and ask for changes until it feels right.</p>
+        <span class="ln-step-you">You: your opinions</span>
+      </div>
+      <div class="ln-step reveal">
+        <span class="ln-step-day">Day 14</span>
+        <span class="ln-step-dot" style="background:var(--gold);color:var(--deep-harbor)">4</span>
+        <h3>You're live</h3>
+        <p>We walk through it together, and you're open for business online.</p>
+        <span class="ln-step-you">You: say yes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOHN -->
+<section class="ln-section">
+  <div class="wrap ln-john">
+    <div class="ln-john-photo reveal">
+      <img src="assets/work/dudela/Phone-focus.JPEG" alt="John Mulhern, founder of Sought After Co.">
+    </div>
+    <div class="reveal">
+      <p class="eyebrow eyebrow-dark">Who you'll work with</p>
+      <h2>Hi, I'm John.</h2>
+      <p>I build every site myself, right here in the Littleton area. No account managers, no outsourcing, no runaround.</p>
+      <p>What my clients tell me they value most is that I explain everything in plain English: what it costs, what it does, and what came in because of it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="ln-section ln-faq" id="faq">
+  <div class="wrap">
+    <div class="ln-head reveal">
+      <p class="eyebrow eyebrow-dark">Questions</p>
+      <h2>The stuff people ask before they book.</h2>
+    </div>
+    <div class="ln-faq-list reveal">
+      <details><summary>What does it cost?</summary><p>One fixed price, based on which option fits you. I'll quote it on our 15-minute call, before you commit to anything. No hourly billing, ever.</p></details>
+      <details><summary>What do you need from me?</summary><p>15 minutes on the phone, some photos of your work, and a list of what you offer. I handle the writing, design and setup.</p></details>
+      <details><summary>What if I don't love it?</summary><p>You get revisions until it's right during the two weeks. We don't launch until you're happy with it.</p></details>
+      <details><summary>Do I own the site?</summary><p>Yes. Your domain, your site, your customers. No lock-in.</p></details>
+      <details><summary>What happens after it's live?</summary><p>On Launch, it's yours to run, and you can always ask for changes later. On Launch + Grow, I keep it healthy, manage your Google profile and track your leads for three months, with a check-in call every two weeks.</p></details>
+      <details><summary>I don't have a logo. Is that a problem?</summary><p>Not at all. If you want a full brand built first, that's what the <a href="index.html#services" style="color:var(--terracotta);font-weight:700;text-decoration:underline;">main studio</a> does. Ask about it on the call.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="closing-cta ln-book" id="book">
+  <div class="wrap ln-book-grid">
+    <div class="ln-book-copy reveal">
+      <p class="eyebrow eyebrow-light">Ready?</p>
+      <h2>Let's get you found.</h2>
+      <p>Grab 15 minutes. You'll leave knowing exactly what you'd get, what it costs, and when it'd be live.</p>
+      <a href="https://calendar.app.google/8jDwpEgbE2kSfYRR7" target="_blank" rel="noopener" class="btn ln-btn-cream">Book my free 15-min call →</a>
+      <p class="ln-book-note">Free, no pressure. Pick any open time.</p>
+    </div>
+    <div class="ln-form-card reveal">
+      <h3>Rather type? Send a quick note.</h3>
+      <form class="contact-form" id="inquiry-form">
+        <input type="hidden" name="source" value="launch-page">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="ln-name">Name</label>
+            <input type="text" id="ln-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="ln-email">Email</label>
+            <input type="email" id="ln-email" name="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="ln-business">Business name</label>
+          <input type="text" id="ln-business" name="business">
+        </div>
+        <div class="form-field">
+          <label for="ln-interest">Which sounds right?</label>
+          <select id="ln-interest" name="interest">
+            <option value="Launch">Launch: get my site live</option>
+            <option value="Launch + Grow">Launch + Grow: site plus 3 months of help</option>
+            <option value="Not sure">Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="ln-message">What's the biggest headache right now?</label>
+          <textarea id="ln-message" name="message" rows="3"></textarea>
+        </div>
+        <p class="form-status" id="inquiry-msg"></p>
+        <button type="submit" class="btn btn-light btn-lg">Send it →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="ln-sticky" id="ln-sticky">
+  <a href="https://calendar.app.google/8jDwpEgbE2kSfYRR7" target="_blank" rel="noopener" class="btn ln-btn-main">Book my free 15-min call →</a>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-pattern" aria-hidden="true">
+    <img src="assets/patterns/Deep_Harbor_Lines.svg" alt="">
+  </div>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logos/logo-stacked-white.svg" alt="Sought After Co." class="footer-logo">
+      <p class="footer-tagline">Stop being overlooked.<br>Start being sought after.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Explore</p>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#services">Full studio services</a></li>
+        <li><a href="#offer">Launch packages</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Get in touch</p>
+      <ul>
+        <li><a href="mailto:hello@soughtafter.design">hello@soughtafter.design</a></li>
+        <li><a href="https://calendar.app.google/8jDwpEgbE2kSfYRR7" target="_blank" rel="noopener">Book a free call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© 2026 Sought After Co.</p>
+    <p><a href="terms.html" style="color:inherit;">Terms &amp; Privacy</a> · soughtafter.design</p>
+  </div>
+</footer>
+
+<script src="script.js?v=10"></script>
+<script>
+// Sticky mobile CTA: shows after the hero, hides when the booking section is on screen
+(function () {
+  var bar = document.getElementById('ln-sticky');
+  var hero = document.querySelector('.ln-hero');
+  var book = document.getElementById('book');
+  if (!bar || !hero || !book || !('IntersectionObserver' in window)) return;
+  var heroVisible = true, bookVisible = false;
+  function update() { bar.classList.toggle('is-on', !heroVisible && !bookVisible); }
+  new IntersectionObserver(function (e) { heroVisible = e[0].isIntersecting; update(); }).observe(hero);
+  new IntersectionObserver(function (e) { bookVisible = e[0].isIntersecting; update(); }).observe(book);
+})();
+</script>
+</body>
+</html>

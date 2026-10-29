@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make a Payment | Sought After Co.</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+<link rel="stylesheet" href="styles.css?v=28">
+<style>
+.py { background: var(--off-white-warm); min-height: 70vh; padding: 3rem 0 5rem; }
+.py .wrap { max-width: 640px; }
+.py h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); margin-top: 0.75rem; }
+.py-lead { font-size: 1.05rem; margin-top: 0.75rem; }
+.py-card { background: #FBF9F5; border-radius: 20px; padding: 1.75rem; margin-top: 2rem; box-shadow: 0 14px 34px rgba(39,51,51,0.08); }
+.py-legend { font-family: var(--font-h); font-weight: 600; font-size: 1.25rem; margin-bottom: 0.9rem; padding: 0; }
+.py-group { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); margin: 1.1rem 0 0.5rem; }
+.py-opt { display: flex; align-items: center; gap: 0.85rem; padding: 0.95rem 1rem; border: 1.5px solid rgba(39,51,51,0.15); border-radius: 12px; cursor: pointer; margin-bottom: 0.5rem; transition: border-color 0.15s, background 0.15s; min-height: 44px; }
+.py-opt:hover { border-color: var(--deep-harbor); }
+.py-opt input { accent-color: var(--terracotta); width: 18px; height: 18px; flex: none; }
+.py-opt:has(input:checked) { border-color: var(--terracotta); background: #F6ECE6; }
+.py-opt span { flex: 1; font-weight: 600; }
+.py-opt b { font-family: var(--font-h); font-size: 1.15rem; }
+.py-custom { display: none; gap: 0.75rem; margin: 0.25rem 0 0.75rem; }
+.py-custom.is-on { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .py-custom.is-on { grid-template-columns: 160px 1fr; } }
+.py label.py-l { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.35rem; }
+.py input[type=text], .py input[type=email], .py input[type=number] { width: 100%; font: inherit; font-size: 1rem; padding: 0.8rem 0.9rem; border: 1.5px solid rgba(39,51,51,0.2); border-radius: 10px; background: #fff; color: var(--deep-harbor); min-height: 48px; }
+.py input:focus { outline: 2px solid var(--terracotta); outline-offset: 1px; border-color: transparent; }
+.py-fields { display: grid; gap: 0.9rem; margin-top: 1.25rem; }
+@media (min-width: 560px) { .py-fields { grid-template-columns: 1fr 1fr; } .py-fields .py-full { grid-column: 1 / -1; } }
+.py-pay { width: 100%; justify-content: center; margin-top: 1.5rem; border-radius: 999px; background: var(--terracotta); color: #fff; font-size: 0.9rem; padding: 1.15rem 1.5rem; box-shadow: 0 10px 24px rgba(177,116,88,0.35); }
+.py-pay:hover { background: #9c6249; }
+.py-pay[disabled] { opacity: 0.6; cursor: wait; }
+.py-err { color: #9c3d2a; font-weight: 600; margin-top: 0.9rem; min-height: 1.2em; }
+.py-safe { display: flex; gap: 0.5rem; align-items: center; justify-content: center; font-size: 0.85rem; margin-top: 0.9rem; opacity: 0.8; }
+.py-safe svg { width: 16px; height: 16px; }
+fieldset { border: 0; margin: 0; padding: 0; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="/" class="logo-lockup" aria-label="Sought After Co. home">
+      <img src="assets/logos/logo-horizontal-color.svg" alt="Sought After Co." class="logo-img">
+    </a>
+    <div class="nav-right">
+      <a href="mailto:hello@soughtafter.design" class="btn btn-outline nav-cta" style="background:transparent;color:var(--deep-harbor)">Questions?</a>
+    </div>
+  </div>
+</header>
+
+<main class="py">
+  <div class="wrap">
+    <p class="eyebrow eyebrow-dark">Secure payment</p>
+    <h1>Let's get you live.</h1>
+    <p class="py-lead">Pick what you're paying for, add your details, and you'll check out securely with Stripe. You'll get a receipt by email.</p>
+
+    <form class="py-card" id="pay-form" novalidate>
+      <fieldset>
+        <legend class="py-legend">What are you paying for?</legend>
+
+        <p class="py-group">Launch + Grow</p>
+        <label class="py-opt"><input type="radio" name="plan" value="grow-deposit"><span>50% deposit</span><b>$1,750</b></label>
+        <label class="py-opt"><input type="radio" name="plan" value="grow-balance"><span>Final 50% at launch</span><b>$1,750</b></label>
+        <label class="py-opt"><input type="radio" name="plan" value="grow-full"><span>Paid in full</span><b>$3,500</b></label>
+
+        <p class="py-group">Launch</p>
+        <label class="py-opt"><input type="radio" name="plan" value="launch-deposit"><span>50% deposit</span><b>$625</b></label>
+        <label class="py-opt"><input type="radio" name="plan" value="launch-balance"><span>Final 50% at launch</span><b>$625</b></label>
+        <label class="py-opt"><input type="radio" name="plan" value="launch-full"><span>Paid in full</span><b>$1,250</b></label>
+
+        <p class="py-group">Ongoing</p>
+        <label class="py-opt"><input type="radio" name="plan" value="care-monthly"><span>Grow care plan, monthly</span><b>$500/mo</b></label>
+        <label class="py-opt"><input type="radio" name="plan" value="custom"><span>Something else (an invoice from John)</span><b>Custom</b></label>
+        <div class="py-custom" id="py-custom">
+          <div><label class="py-l" for="py-amount">Amount ($)</label><input type="number" id="py-amount" min="50" max="10000" step="1" inputmode="decimal"></div>
+          <div><label class="py-l" for="py-desc">What's it for?</label><input type="text" id="py-desc" maxlength="80" placeholder="e.g. Google profile setup"></div>
+        </div>
+      </fieldset>
+
+      <div class="py-fields">
+        <div><label class="py-l" for="py-name">Your name</label><input type="text" id="py-name" autocomplete="name" required></div>
+        <div><label class="py-l" for="py-email">Email for your receipt</label><input type="email" id="py-email" autocomplete="email" required></div>
+        <div class="py-full"><label class="py-l" for="py-biz">Business name</label><input type="text" id="py-biz" autocomplete="organization"></div>
+      </div>
+
+      <button type="submit" class="btn py-pay" id="py-btn">Continue to secure checkout →</button>
+      <p class="py-err" id="py-err" role="alert"></p>
+      <p class="py-safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Payments processed by Stripe. Card details never touch our site.</p>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <p>© 2026 Sought After Co.</p>
+    <p><a href="terms.html" style="color:inherit;">Terms &amp; Privacy</a> · soughtafter.design</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('pay-form');
+  var custom = document.getElementById('py-custom');
+  var err = document.getElementById('py-err');
+  var btn = document.getElementById('py-btn');
+  var q = new URLSearchParams(location.search);
+
+  function syncCustom() {
+    var sel = form.querySelector('input[name=plan]:checked');
+    custom.classList.toggle('is-on', !!sel && sel.value === 'custom');
+  }
+  form.querySelectorAll('input[name=plan]').forEach(function (r) { r.addEventListener('change', syncCustom); });
+
+  // Prefill from a link John sends: /pay?plan=grow-deposit or /pay?plan=custom&amount=400&for=Google%20profile%20setup
+  var plan = q.get('plan');
+  if (plan) {
+    var r = form.querySelector('input[name=plan][value="' + plan.replace(/[^a-z-]/g, '') + '"]');
+    if (r) r.checked = true;
+  }
+  if (q.get('amount')) document.getElementById('py-amount').value = q.get('amount');
+  if (q.get('for')) document.getElementById('py-desc').value = q.get('for');
+  if (q.get('name')) document.getElementById('py-name').value = q.get('name');
+  if (q.get('business')) document.getElementById('py-biz').value = q.get('business');
+  syncCustom();
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.textContent = '';
+    var sel = form.querySelector('input[name=plan]:checked');
+    var body = {
+      plan: sel ? sel.value : '',
+      amount: document.getElementById('py-amount').value,
+      description: document.getElementById('py-desc').value,
+      name: document.getElementById('py-name').value,
+      email: document.getElementById('py-email').value,
+      business: document.getElementById('py-biz').value
+    };
+    if (!body.plan) { err.textContent = "Please pick what you're paying for."; return; }
+    if (!body.name.trim() || !body.email.trim()) { err.textContent = 'Please add your name and email.'; return; }
+    btn.disabled = true; btn.textContent = 'Opening secure checkout...';
+    fetch('/api/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d && d.url) { location.href = d.url; return; }
+        throw new Error((d && d.error) || 'Something went wrong.');
+      })
+      .catch(function (x) {
+        err.textContent = x.message || 'Something went wrong. Please email hello@soughtafter.design.';
+        btn.disabled = false; btn.textContent = 'Continue to secure checkout →';
+      });
+  });
+})();
+</script>
+</body>
+</html>

@@ -4,23 +4,30 @@
 // Same pattern as Dudela's lib/stripe.ts: raw fetch to Stripe's REST API (no SDK),
 // prices set inline with price_data so nothing has to be created in the Stripe
 // Dashboard first. Prices live HERE, server-side, so nobody can edit the amount
-// in their browser.
+// in their browser. Keep these in sync with the PLANS list in /pay.html.
 //
 // Required Cloudflare Pages secret (Settings > Variables and Secrets):
 //   STRIPE_SECRET_KEY = sk_test_... while testing, sk_live_... when ready
 // Use the Sought After / John and Viv Ventures Stripe account, NOT Dudela's.
+//
+// Invoicing: every one-time payment creates a Stripe invoice + receipt
+// (invoice_creation). The care plan is a Stripe subscription, so Stripe bills
+// it monthly and emails the invoice on its own.
+
+const LAUNCH_DESC = "Custom website, live in 14 days. Inquiries in one place, simple online payments, revisions until it's right.";
+const GROW_DESC = "Everything in Launch, plus Google Business Profile setup and 3 months of care: site health, basic SEO, lead tracking and a call every two weeks.";
 
 const PLANS = {
-  "launch-deposit": { name: "Launch: 50% deposit", cents: 62500, mode: "payment" },
-  "launch-balance": { name: "Launch: final 50% at launch", cents: 62500, mode: "payment" },
-  "launch-full": { name: "Launch: paid in full", cents: 125000, mode: "payment" },
-  "grow-deposit": { name: "Launch + Grow: 50% deposit", cents: 175000, mode: "payment" },
-  "grow-balance": { name: "Launch + Grow: final 50% at launch", cents: 175000, mode: "payment" },
-  "grow-full": { name: "Launch + Grow: paid in full", cents: 350000, mode: "payment" },
-  "care-monthly": { name: "Grow care plan (monthly)", cents: 50000, mode: "subscription" },
+  "launch-deposit": { name: "Launch website: 50% deposit", desc: LAUNCH_DESC, cents: 62500, mode: "payment", image: "launch" },
+  "launch-balance": { name: "Launch website: final 50%", desc: LAUNCH_DESC, cents: 62500, mode: "payment", image: "launch" },
+  "launch-full": { name: "Launch website: paid in full", desc: LAUNCH_DESC, cents: 125000, mode: "payment", image: "launch" },
+  "grow-deposit": { name: "Launch + Grow: 50% deposit", desc: GROW_DESC, cents: 175000, mode: "payment", image: "grow" },
+  "grow-balance": { name: "Launch + Grow: final 50%", desc: GROW_DESC, cents: 175000, mode: "payment", image: "grow" },
+  "grow-full": { name: "Launch + Grow: paid in full", desc: GROW_DESC, cents: 350000, mode: "payment", image: "grow" },
+  "care-monthly": { name: "Care plan (monthly)", desc: "Site health, basic SEO, Google profile management, lead tracking and a call every two weeks. Cancel anytime.", cents: 50000, mode: "subscription", image: "care" },
   // Custom = any one-off invoice (Google profile setup, extra pages, edits).
   // Amount comes from the request but is bounded below.
-  "custom": { name: "Sought After Co. invoice", cents: null, mode: "payment" },
+  "custom": { name: "Sought After Co. invoice", desc: "", cents: null, mode: "payment", image: "invoice" },
 };
 
 const CUSTOM_MIN_CENTS = 5000;     // $50
@@ -67,8 +74,13 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "Please add your name and a valid email." }, 400);
   }
 
+  if (data.agree !== true) {
+    return json({ error: "Please agree to the payment terms to continue." }, 400);
+  }
+
   let cents = plan.cents;
   let productName = plan.name;
+  let desc = plan.desc;
   if (planKey === "custom") {
     const dollars = Number(data.amount);
     cents = Math.round(dollars * 100);
@@ -76,9 +88,10 @@ export async function onRequestPost({ request, env }) {
       return json({ error: "Please enter an amount between $50 and $10,000." }, 400);
     }
     const label = clean(data.description, 80);
-    if (label) productName = `Sought After Co.: ${label}`;
+    if (label) productName = label;
+    desc = "Invoice from Sought After Co.";
   }
-  if (business) productName = `${productName} (${business})`;
+  if (business) desc = `${business}. ${desc}`.trim();
 
   const origin = new URL(request.url).origin;
   const params = {
@@ -90,9 +103,12 @@ export async function onRequestPost({ request, env }) {
     "line_items[0][price_data][currency]": "usd",
     "line_items[0][price_data][unit_amount]": cents,
     "line_items[0][price_data][product_data][name]": productName,
+    "line_items[0][price_data][product_data][description]": desc,
+    "line_items[0][price_data][product_data][images][0]": `${origin}/assets/pay/${plan.image}.png`,
     "metadata[plan]": planKey,
     "metadata[client_name]": name,
     "metadata[business]": business,
+    "metadata[agreed_terms]": `yes ${new Date().toISOString()}`,
     allow_promotion_codes: "true",
   };
   if (plan.mode === "subscription") {
@@ -102,6 +118,8 @@ export async function onRequestPost({ request, env }) {
   } else {
     // Gives the client a real invoice + receipt PDF for one-time payments.
     params["invoice_creation[enabled]"] = "true";
+    params["invoice_creation[invoice_data][description]"] = productName;
+    params["invoice_creation[invoice_data][footer]"] = "Thank you! Questions: hello@soughtafter.design";
     params["payment_intent_data[description]"] = productName;
     params["payment_intent_data[metadata][plan]"] = planKey;
     params["payment_intent_data[metadata][business]"] = business;

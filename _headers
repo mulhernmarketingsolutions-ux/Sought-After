@@ -1,0 +1,20 @@
+# Cloudflare Pages security headers (applies to static pages, not /api functions)
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+/pay
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+/pay.html
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+/pay-thanks
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+/pay-thanks.html
+  Cache-Control: no-store
+  X-Robots-Tag: noindex

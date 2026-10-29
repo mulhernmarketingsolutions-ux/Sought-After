@@ -3,41 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Make a Payment | Sought After Co.</title>
+<title>Secure Checkout | Sought After Co.</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
 <link rel="stylesheet" href="styles.css?v=28">
 <style>
-.py { background: var(--off-white-warm); min-height: 70vh; padding: 3rem 0 5rem; }
-.py .wrap { max-width: 640px; }
-.py h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); margin-top: 0.75rem; }
-.py-lead { font-size: 1.05rem; margin-top: 0.75rem; }
-.py-card { background: #FBF9F5; border-radius: 20px; padding: 1.75rem; margin-top: 2rem; box-shadow: 0 14px 34px rgba(39,51,51,0.08); }
-.py-legend { font-family: var(--font-h); font-weight: 600; font-size: 1.25rem; margin-bottom: 0.9rem; padding: 0; }
-.py-group { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); margin: 1.1rem 0 0.5rem; }
-.py-opt { display: flex; align-items: center; gap: 0.85rem; padding: 0.95rem 1rem; border: 1.5px solid rgba(39,51,51,0.15); border-radius: 12px; cursor: pointer; margin-bottom: 0.5rem; transition: border-color 0.15s, background 0.15s; min-height: 44px; }
-.py-opt:hover { border-color: var(--deep-harbor); }
-.py-opt input { accent-color: var(--terracotta); width: 18px; height: 18px; flex: none; }
-.py-opt:has(input:checked) { border-color: var(--terracotta); background: #F6ECE6; }
-.py-opt span { flex: 1; font-weight: 600; }
-.py-opt b { font-family: var(--font-h); font-size: 1.15rem; }
-.py-custom { display: none; gap: 0.75rem; margin: 0.25rem 0 0.75rem; }
-.py-custom.is-on { display: grid; grid-template-columns: 1fr; }
-@media (min-width: 560px) { .py-custom.is-on { grid-template-columns: 160px 1fr; } }
-.py label.py-l { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.35rem; }
-.py input[type=text], .py input[type=email], .py input[type=number] { width: 100%; font: inherit; font-size: 1rem; padding: 0.8rem 0.9rem; border: 1.5px solid rgba(39,51,51,0.2); border-radius: 10px; background: #fff; color: var(--deep-harbor); min-height: 48px; }
-.py input:focus { outline: 2px solid var(--terracotta); outline-offset: 1px; border-color: transparent; }
-.py-fields { display: grid; gap: 0.9rem; margin-top: 1.25rem; }
-@media (min-width: 560px) { .py-fields { grid-template-columns: 1fr 1fr; } .py-fields .py-full { grid-column: 1 / -1; } }
-.py-pay { width: 100%; justify-content: center; margin-top: 1.5rem; border-radius: 999px; background: var(--terracotta); color: #fff; font-size: 0.9rem; padding: 1.15rem 1.5rem; box-shadow: 0 10px 24px rgba(177,116,88,0.35); }
-.py-pay:hover { background: #9c6249; }
-.py-pay[disabled] { opacity: 0.6; cursor: wait; }
-.py-err { color: #9c3d2a; font-weight: 600; margin-top: 0.9rem; min-height: 1.2em; }
-.py-safe { display: flex; gap: 0.5rem; align-items: center; justify-content: center; font-size: 0.85rem; margin-top: 0.9rem; opacity: 0.8; }
-.py-safe svg { width: 16px; height: 16px; }
-fieldset { border: 0; margin: 0; padding: 0; }
+/* Mobile-first checkout. Scoped: .co- */
+.co { background: var(--off-white-warm); padding: 1.75rem 0 4rem; min-height: 80vh; }
+.co .wrap { max-width: 560px; }
+.co-top h1 { font-size: clamp(2rem, 8vw, 2.8rem); margin-top: 0.5rem; }
+.co-top p { margin-top: 0.5rem; font-size: 1rem; }
+.co-step { margin-top: 2rem; }
+.co-step-h { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-h); font-weight: 600; font-size: 1.25rem; margin-bottom: 0.85rem; }
+.co-num { width: 28px; height: 28px; border-radius: 50%; background: var(--deep-harbor); color: var(--off-white); font-family: var(--font-b); font-size: 0.8rem; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.co-sr { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
+
+/* Package cards */
+.co-pkgs { display: grid; gap: 0.85rem; }
+.co-pkg { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 0.9rem; align-items: start; background: #FBF9F5; border: 2px solid transparent; border-radius: 18px; padding: 1.1rem; cursor: pointer; box-shadow: 0 6px 18px rgba(39,51,51,0.07); transition: border-color 0.15s, transform 0.15s; }
+.co-pkg:has(input:checked) { border-color: var(--terracotta); }
+.co-pkg:has(input:focus-visible) { outline: 2px solid var(--terracotta); outline-offset: 3px; }
+.co-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--deep-harbor); display: flex; align-items: center; justify-content: center; }
+.co-icon img { width: 32px; height: 32px; object-fit: contain; }
+.co-pkg-name { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; }
+.co-pkg-name strong { font-family: var(--font-h); font-size: 1.3rem; line-height: 1.15; }
+.co-pkg-name span { font-family: var(--font-h); font-weight: 600; font-size: 1.2rem; white-space: nowrap; }
+.co-pkg ul { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.co-pkg li { font-size: 0.92rem; line-height: 1.4; padding-left: 1.2rem; position: relative; }
+.co-pkg li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 0.6rem; height: 0.35rem; border-left: 2px solid var(--juniper); border-bottom: 2px solid var(--juniper); transform: rotate(-45deg); }
+.co-badge { position: absolute; top: -11px; right: 14px; background: var(--gold); color: var(--deep-harbor); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 999px; }
+.co-radio { position: absolute; top: 1.1rem; right: 1.1rem; width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(39,51,51,0.3); background: #fff; display: none; }
+
+/* Pay-how toggle */
+.co-how { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.co-how label { display: flex; flex-direction: column; gap: 0.15rem; background: #FBF9F5; border: 2px solid transparent; border-radius: 14px; padding: 0.9rem 1rem; cursor: pointer; min-height: 44px; box-shadow: 0 4px 12px rgba(39,51,51,0.06); }
+.co-how label:has(input:checked) { border-color: var(--terracotta); background: #F6ECE6; }
+.co-how label:has(input:focus-visible) { outline: 2px solid var(--terracotta); outline-offset: 3px; }
+.co-how b { font-size: 1rem; }
+.co-how small { font-size: 0.85rem; opacity: 0.8; }
+
+/* Summary */
+.co-sum { margin-top: 2rem; background: var(--deep-harbor); color: var(--off-white); border-radius: 20px; padding: 1.4rem; }
+.co-sum-item { display: flex; gap: 0.85rem; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid rgba(227,220,210,0.18); }
+.co-sum-item .co-icon { width: 46px; height: 46px; background: rgba(227,220,210,0.1); }
+.co-sum-item .co-icon img { width: 26px; height: 26px; }
+.co-sum-item strong { font-family: var(--font-h); font-size: 1.15rem; display: block; }
+.co-sum-item small { color: var(--drift-sand); font-size: 0.85rem; }
+.co-rows { margin-top: 0.9rem; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.95rem; }
+.co-row { display: flex; justify-content: space-between; gap: 1rem; color: var(--drift-sand); }
+.co-row.is-today { color: var(--off-white); font-weight: 700; font-size: 1.1rem; }
+.co-row.is-today span:last-child { font-family: var(--font-h); font-size: 1.7rem; color: var(--gold); line-height: 1; }
+.co-note { margin-top: 0.85rem; font-size: 0.85rem; color: var(--drift-sand); line-height: 1.5; }
+
+/* Fields */
+.co-fields { display: grid; gap: 0.8rem; }
+.co-field label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.35rem; }
+.co-field input { width: 100%; font: inherit; font-size: 16px; padding: 0.85rem 0.95rem; border: 1.5px solid rgba(39,51,51,0.2); border-radius: 12px; background: #fff; color: var(--deep-harbor); min-height: 50px; }
+.co-field input:focus { outline: 2px solid var(--terracotta); outline-offset: 1px; border-color: transparent; }
+.co-custom { display: grid; gap: 0.8rem; margin-bottom: 0.8rem; }
+
+.co-agree { display: flex; gap: 0.6rem; align-items: flex-start; margin-top: 1.25rem; font-size: 0.92rem; line-height: 1.45; cursor: pointer; }
+.co-agree input { width: 20px; height: 20px; accent-color: var(--terracotta); flex: none; margin-top: 1px; }
+.co-agree a { color: var(--terracotta); font-weight: 700; text-decoration: underline; }
+.co-pay { width: 100%; justify-content: center; margin-top: 1.5rem; border-radius: 999px; background: var(--terracotta); color: #fff; font-size: 0.95rem; padding: 1.2rem 1.5rem; box-shadow: 0 10px 24px rgba(177,116,88,0.35); letter-spacing: 0.06em; }
+.co-pay:hover { background: #9c6249; }
+.co-pay[disabled] { opacity: 0.6; cursor: wait; }
+.co-err { color: #9c3d2a; font-weight: 700; margin-top: 0.8rem; min-height: 1.2em; text-align: center; }
+.co-safe { display: flex; gap: 0.45rem; align-items: center; justify-content: center; font-size: 0.85rem; margin-top: 0.6rem; opacity: 0.8; text-align: center; }
+.co-safe svg { width: 15px; height: 15px; flex: none; }
+.co-help { text-align: center; font-size: 0.9rem; margin-top: 1.5rem; }
+.co-help a { color: var(--terracotta); font-weight: 700; }
+[hidden] { display: none !important; }
+
+@media (min-width: 720px) {
+  .co { padding: 3rem 0 5rem; }
+  .co .wrap { max-width: 980px; }
+  .co-grid { display: grid; grid-template-columns: 1fr 380px; gap: 2.5rem; align-items: start; }
+  .co-side { position: sticky; top: 90px; }
+  .co-sum { margin-top: 0; }
+}
 </style>
 </head>
 <body>
@@ -47,101 +93,203 @@ fieldset { border: 0; margin: 0; padding: 0; }
     <a href="/" class="logo-lockup" aria-label="Sought After Co. home">
       <img src="assets/logos/logo-horizontal-color.svg" alt="Sought After Co." class="logo-img">
     </a>
-    <div class="nav-right">
-      <a href="mailto:hello@soughtafter.design" class="btn btn-outline nav-cta" style="background:transparent;color:var(--deep-harbor)">Questions?</a>
-    </div>
   </div>
 </header>
 
-<main class="py">
+<main class="co">
   <div class="wrap">
-    <p class="eyebrow eyebrow-dark">Secure payment</p>
-    <h1>Let's get you live.</h1>
-    <p class="py-lead">Pick what you're paying for, add your details, and you'll check out securely with Stripe. You'll get a receipt by email.</p>
+    <div class="co-top">
+      <p class="eyebrow eyebrow-dark">Secure checkout</p>
+      <h1 id="co-title">Let's get you live.</h1>
+      <p id="co-sub">Pick your package, choose how to pay, and you're done in under a minute.</p>
+    </div>
 
-    <form class="py-card" id="pay-form" novalidate>
-      <fieldset>
-        <legend class="py-legend">What are you paying for?</legend>
+    <form id="co-form" novalidate>
+      <div class="co-grid">
+        <div>
+          <!-- PACKAGE MODE -->
+          <section class="co-step" id="co-step-pkg">
+            <h2 class="co-step-h"><span class="co-num">1</span>Choose your package</h2>
+            <div class="co-pkgs">
+              <label class="co-pkg">
+                <input class="co-sr" type="radio" name="pkg" value="grow" checked>
+                <span class="co-badge">Most popular</span>
+                <span class="co-icon"><img src="assets/icons/Mountain2-sand.svg" alt=""></span>
+                <span>
+                  <span class="co-pkg-name"><strong>Launch + Grow</strong><span>$3,500</span></span>
+                  <ul>
+                    <li>Your custom website, live in 14 days</li>
+                    <li>Google Business Profile set up</li>
+                    <li>3 months of care: SEO, updates, lead tracking</li>
+                    <li>A call every two weeks on what's working</li>
+                  </ul>
+                </span>
+              </label>
+              <label class="co-pkg">
+                <input class="co-sr" type="radio" name="pkg" value="launch">
+                <span class="co-icon"><img src="assets/icons/webpage-sand.svg" alt=""></span>
+                <span>
+                  <span class="co-pkg-name"><strong>Launch</strong><span>$1,250</span></span>
+                  <ul>
+                    <li>Your custom website, live in 14 days</li>
+                    <li>Inquiries in one place, simple online payments</li>
+                    <li>Revisions until it's right, then it's yours</li>
+                  </ul>
+                </span>
+              </label>
+            </div>
+          </section>
 
-        <p class="py-group">Launch + Grow</p>
-        <label class="py-opt"><input type="radio" name="plan" value="grow-deposit"><span>50% deposit</span><b>$1,750</b></label>
-        <label class="py-opt"><input type="radio" name="plan" value="grow-balance"><span>Final 50% at launch</span><b>$1,750</b></label>
-        <label class="py-opt"><input type="radio" name="plan" value="grow-full"><span>Paid in full</span><b>$3,500</b></label>
+          <section class="co-step" id="co-step-how">
+            <h2 class="co-step-h"><span class="co-num">2</span>How do you want to pay?</h2>
+            <div class="co-how">
+              <label><input class="co-sr" type="radio" name="how" value="deposit" checked><b>Split it</b><small>50% now, 50% at launch</small></label>
+              <label><input class="co-sr" type="radio" name="how" value="full"><b>Pay in full</b><small>All at once, done</small></label>
+            </div>
+          </section>
 
-        <p class="py-group">Launch</p>
-        <label class="py-opt"><input type="radio" name="plan" value="launch-deposit"><span>50% deposit</span><b>$625</b></label>
-        <label class="py-opt"><input type="radio" name="plan" value="launch-balance"><span>Final 50% at launch</span><b>$625</b></label>
-        <label class="py-opt"><input type="radio" name="plan" value="launch-full"><span>Paid in full</span><b>$1,250</b></label>
+          <!-- SINGLE-ITEM (link) MODE: custom amount fields -->
+          <section class="co-step" id="co-step-custom" hidden>
+            <h2 class="co-step-h"><span class="co-num">1</span>What's this payment for?</h2>
+            <div class="co-custom">
+              <div class="co-field"><label for="co-amount">Amount (USD)</label><input type="number" id="co-amount" min="50" max="10000" step="1" inputmode="decimal" placeholder="400"></div>
+              <div class="co-field"><label for="co-desc">Description</label><input type="text" id="co-desc" maxlength="80" placeholder="Google profile setup"></div>
+            </div>
+          </section>
 
-        <p class="py-group">Ongoing</p>
-        <label class="py-opt"><input type="radio" name="plan" value="care-monthly"><span>Grow care plan, monthly</span><b>$500/mo</b></label>
-        <label class="py-opt"><input type="radio" name="plan" value="custom"><span>Something else (an invoice from John)</span><b>Custom</b></label>
-        <div class="py-custom" id="py-custom">
-          <div><label class="py-l" for="py-amount">Amount ($)</label><input type="number" id="py-amount" min="50" max="10000" step="1" inputmode="decimal"></div>
-          <div><label class="py-l" for="py-desc">What's it for?</label><input type="text" id="py-desc" maxlength="80" placeholder="e.g. Google profile setup"></div>
+          <section class="co-step">
+            <h2 class="co-step-h"><span class="co-num" id="co-details-num">3</span>Your details</h2>
+            <div class="co-fields">
+              <div class="co-field"><label for="co-name">Your name</label><input type="text" id="co-name" autocomplete="name" required></div>
+              <div class="co-field"><label for="co-email">Email (for your receipt)</label><input type="email" id="co-email" autocomplete="email" inputmode="email" required></div>
+              <div class="co-field"><label for="co-biz">Business name</label><input type="text" id="co-biz" autocomplete="organization"></div>
+            </div>
+          </section>
         </div>
-      </fieldset>
 
-      <div class="py-fields">
-        <div><label class="py-l" for="py-name">Your name</label><input type="text" id="py-name" autocomplete="name" required></div>
-        <div><label class="py-l" for="py-email">Email for your receipt</label><input type="email" id="py-email" autocomplete="email" required></div>
-        <div class="py-full"><label class="py-l" for="py-biz">Business name</label><input type="text" id="py-biz" autocomplete="organization"></div>
+        <aside class="co-side co-step">
+          <div class="co-sum" aria-live="polite">
+            <div class="co-sum-item">
+              <span class="co-icon"><img id="sum-icon" src="assets/icons/Mountain2-sand.svg" alt=""></span>
+              <span><strong id="sum-name">Launch + Grow</strong><small id="sum-sub">50% deposit</small></span>
+            </div>
+            <div class="co-rows">
+              <div class="co-row is-today"><span id="sum-today-label">Due today</span><span id="sum-today">$1,750</span></div>
+              <div class="co-row" id="sum-later-row"><span>Due at launch</span><span id="sum-later">$1,750</span></div>
+              <div class="co-row" id="sum-total-row"><span>Total</span><span id="sum-total">$3,500</span></div>
+            </div>
+            <p class="co-note" id="sum-note">After your 3 months of care, you can keep it going for $500/month. Only if you want to.</p>
+          </div>
+          <label class="co-agree"><input type="checkbox" id="co-agree" required><span>I agree to the <a href="terms.html#payments" target="_blank" rel="noopener">payment terms and refund policy</a>.</span></label>
+          <button type="submit" class="btn co-pay" id="co-btn">Pay $1,750 securely →</button>
+          <p class="co-err" id="co-err" role="alert"></p>
+          <p class="co-safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Checkout by Stripe. Your receipt and invoice are emailed to you.</p>
+        </aside>
       </div>
-
-      <button type="submit" class="btn py-pay" id="py-btn">Continue to secure checkout →</button>
-      <p class="py-err" id="py-err" role="alert"></p>
-      <p class="py-safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Payments processed by Stripe. Card details never touch our site.</p>
     </form>
+
+    <p class="co-help">Questions first? <a href="mailto:hello@soughtafter.design">hello@soughtafter.design</a> · <a href="terms.html">Terms &amp; Privacy</a></p>
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap footer-bottom">
-    <p>© 2026 Sought After Co.</p>
-    <p><a href="terms.html" style="color:inherit;">Terms &amp; Privacy</a> · soughtafter.design</p>
-  </div>
-</footer>
-
 <script>
 (function () {
-  var form = document.getElementById('pay-form');
-  var custom = document.getElementById('py-custom');
-  var err = document.getElementById('py-err');
-  var btn = document.getElementById('py-btn');
+  // Display copy only. Real prices live server-side in functions/api/checkout.js.
+  var ICONS = {
+    launch: 'assets/icons/webpage-sand.svg',
+    grow: 'assets/icons/Mountain2-sand.svg',
+    care: 'assets/icons/arrows-sand.svg',
+    invoice: 'assets/icons/stone-sand.svg'
+  };
+  var PKG = {
+    launch: { name: 'Launch', total: 1250, note: 'Your site is yours once it launches. Need changes later? Just ask.' },
+    grow: { name: 'Launch + Grow', total: 3500, note: 'After your 3 months of care, you can keep it going for $500/month. Only if you want to.' }
+  };
+  var SINGLE = {
+    'launch-balance': { name: 'Launch: final 50%', sub: 'Your site is live', cents: 62500, icon: 'launch', title: 'Final payment', lead: 'Your site is live. Here is the final 50% for your Launch package.' },
+    'grow-balance': { name: 'Launch + Grow: final 50%', sub: 'Your site is live', cents: 175000, icon: 'grow', title: 'Final payment', lead: 'Your site is live. Here is the final 50% for Launch + Grow.' },
+    'care-monthly': { name: 'Care plan', sub: 'Billed monthly, cancel anytime', cents: 50000, icon: 'care', monthly: true, title: 'Keep it growing.', lead: 'Site health, basic SEO, Google profile management, lead tracking, and a call every two weeks.' },
+    'custom': { name: 'Invoice', sub: 'From Sought After Co.', cents: null, icon: 'invoice', title: 'Pay your invoice.', lead: 'Check the amount and description, add your details, and you are done.' }
+  };
+
+  var form = document.getElementById('co-form');
+  var $ = function (id) { return document.getElementById(id); };
   var q = new URLSearchParams(location.search);
+  var mode = 'package', singleKey = null;
 
-  function syncCustom() {
-    var sel = form.querySelector('input[name=plan]:checked');
-    custom.classList.toggle('is-on', !!sel && sel.value === 'custom');
-  }
-  form.querySelectorAll('input[name=plan]').forEach(function (r) { r.addEventListener('change', syncCustom); });
+  function money(d) { return '$' + d.toLocaleString('en-US', { minimumFractionDigits: d % 1 ? 2 : 0, maximumFractionDigits: 2 }); }
+  function val(name) { var r = form.querySelector('input[name=' + name + ']:checked'); return r ? r.value : null; }
 
-  // Prefill from a link John sends: /pay?plan=grow-deposit or /pay?plan=custom&amount=400&for=Google%20profile%20setup
-  var plan = q.get('plan');
-  if (plan) {
-    var r = form.querySelector('input[name=plan][value="' + plan.replace(/[^a-z-]/g, '') + '"]');
-    if (r) r.checked = true;
+  // Link mode: /pay?plan=grow-balance | care-monthly | custom&amount=400&for=Google%20profile%20setup
+  var plan = (q.get('plan') || '').replace(/[^a-z-]/g, '');
+  if (SINGLE[plan]) {
+    mode = 'single'; singleKey = plan;
+    var s = SINGLE[plan];
+    $('co-step-pkg').hidden = true; $('co-step-how').hidden = true;
+    $('co-title').textContent = s.title; $('co-sub').textContent = s.lead;
+    if (plan === 'custom') {
+      $('co-step-custom').hidden = false; $('co-details-num').textContent = '2';
+      if (q.get('amount')) $('co-amount').value = q.get('amount');
+      if (q.get('for')) $('co-desc').value = q.get('for');
+    } else {
+      $('co-details-num').textContent = '1';
+    }
+  } else if (/^(launch|grow)-(deposit|full)$/.test(plan)) {
+    var p = plan.split('-');
+    form.querySelector('input[name=pkg][value=' + p[0] + ']').checked = true;
+    form.querySelector('input[name=how][value=' + p[1] + ']').checked = true;
   }
-  if (q.get('amount')) document.getElementById('py-amount').value = q.get('amount');
-  if (q.get('for')) document.getElementById('py-desc').value = q.get('for');
-  if (q.get('name')) document.getElementById('py-name').value = q.get('name');
-  if (q.get('business')) document.getElementById('py-biz').value = q.get('business');
-  syncCustom();
+  if (q.get('name')) $('co-name').value = q.get('name');
+  if (q.get('business')) $('co-biz').value = q.get('business');
+
+  function render() {
+    var today, later = null, total = null, name, sub, icon, note = '', monthly = false;
+    if (mode === 'package') {
+      var k = val('pkg'), how = val('how'), pk = PKG[k];
+      name = pk.name; icon = k; total = pk.total; note = pk.note;
+      if (how === 'full') { today = total; sub = 'Paid in full'; }
+      else { today = total / 2; later = total / 2; sub = '50% deposit'; }
+    } else {
+      var s = SINGLE[singleKey];
+      icon = s.icon; monthly = !!s.monthly;
+      if (singleKey === 'custom') {
+        var a = parseFloat($('co-amount').value);
+        today = isFinite(a) && a > 0 ? a : 0;
+        name = $('co-desc').value.trim() || s.name; sub = s.sub;
+      } else { today = s.cents / 100; name = s.name; sub = s.sub; }
+    }
+    $('sum-name').textContent = name; $('sum-sub').textContent = sub;
+    $('sum-icon').src = ICONS[icon];
+    $('sum-today-label').textContent = monthly ? 'Monthly' : 'Due today';
+    $('sum-today').textContent = today ? money(today) + (monthly ? '/mo' : '') : '$0';
+    $('sum-later-row').hidden = later === null; if (later !== null) $('sum-later').textContent = money(later);
+    $('sum-total-row').hidden = total === null; if (total !== null) $('sum-total').textContent = money(total);
+    $('sum-note').hidden = !note; $('sum-note').textContent = note;
+    $('co-btn').textContent = today ? (monthly ? 'Start for ' + money(today) + '/mo →' : 'Pay ' + money(today) + ' securely →') : 'Continue to secure checkout →';
+  }
+  form.addEventListener('change', render);
+  form.addEventListener('input', function (e) { if (e.target.id === 'co-amount' || e.target.id === 'co-desc') render(); });
+  render();
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    var err = $('co-err'), btn = $('co-btn');
     err.textContent = '';
-    var sel = form.querySelector('input[name=plan]:checked');
+    var planKey = mode === 'package' ? val('pkg') + '-' + val('how') : singleKey;
     var body = {
-      plan: sel ? sel.value : '',
-      amount: document.getElementById('py-amount').value,
-      description: document.getElementById('py-desc').value,
-      name: document.getElementById('py-name').value,
-      email: document.getElementById('py-email').value,
-      business: document.getElementById('py-biz').value
+      plan: planKey,
+      amount: $('co-amount').value,
+      description: $('co-desc').value,
+      name: $('co-name').value,
+      email: $('co-email').value,
+      business: $('co-biz').value
     };
-    if (!body.plan) { err.textContent = "Please pick what you're paying for."; return; }
-    if (!body.name.trim() || !body.email.trim()) { err.textContent = 'Please add your name and email.'; return; }
+    if (!body.name.trim()) { err.textContent = 'Please add your name.'; $('co-name').focus(); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(body.email.trim())) { err.textContent = 'Please add a valid email for your receipt.'; $('co-email').focus(); return; }
+    if (mode === 'single' && singleKey === 'custom' && !(parseFloat(body.amount) >= 50)) { err.textContent = 'Please enter an amount of at least $50.'; $('co-amount').focus(); return; }
+    if (!$('co-agree').checked) { err.textContent = 'Please agree to the payment terms to continue.'; $('co-agree').focus(); return; }
+    body.agree = true;
+    var label = btn.textContent;
     btn.disabled = true; btn.textContent = 'Opening secure checkout...';
     fetch('/api/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
       .then(function (r) { return r.json(); })
@@ -151,7 +299,7 @@ fieldset { border: 0; margin: 0; padding: 0; }
       })
       .catch(function (x) {
         err.textContent = x.message || 'Something went wrong. Please email hello@soughtafter.design.';
-        btn.disabled = false; btn.textContent = 'Continue to secure checkout →';
+        btn.disabled = false; btn.textContent = label;
       });
   });
 })();

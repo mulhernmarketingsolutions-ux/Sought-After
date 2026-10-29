@@ -1,0 +1,8 @@
+# Sought After Co. Search engines and AI assistants are welcome.
+User-agent: *
+Allow: /
+Disallow: /pay
+Disallow: /pay-thanks
+Disallow: /api/
+
+Sitemap: https://soughtafter.design/sitemap.xml

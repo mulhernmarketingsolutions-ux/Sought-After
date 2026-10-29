@@ -111,6 +111,17 @@ export async function onRequestPost({ request, env }) {
     "metadata[business]": business,
     "metadata[agreed_terms]": `yes ${new Date().toISOString()}`,
     allow_promotion_codes: "true",
+    // Sought After brand on Stripe's hosted checkout (locked palette).
+    "branding_settings[display_name]": "Sought After Co.",
+    "branding_settings[background_color]": "#EFE9E0",
+    "branding_settings[button_color]": "#B17458",
+    "branding_settings[border_style]": "rounded",
+    "branding_settings[font_family]": "nunito",
+    "branding_settings[icon][type]": "url",
+    "branding_settings[icon][url]": `${origin}/assets/pay/brand-icon.png`,
+    "branding_settings[logo][type]": "url",
+    "branding_settings[logo][url]": `${origin}/assets/pay/brand-logo.png`,
+    "custom_text[submit][message]": "You'll get a receipt by email, and John will text you within one business day to kick things off.",
   };
   if (plan.mode === "subscription") {
     params["line_items[0][price_data][recurring][interval]"] = "month";
